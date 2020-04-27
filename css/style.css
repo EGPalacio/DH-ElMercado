@@ -1,48 +1,40 @@
-/* header */
+/* HEADER */
 .cabecera{
     width: 100%;
     height: 18vh;
     background-color: rgb(86, 126, 228);
     overflow: hidden;
 }
-
 .header1{
     width:27.5%;
     background-color: blueviolet;
     float: left;
     margin: 0px;
 }
-
 .header2{
     width:27.5%;
     background-color: blueviolet;
     float: right;
     height: 20vh;
 }
-
 .logo{
     padding: 1vh 5%;
     float: left;
     width:130px;
 }
-
 form{
     float: left;
     width: 45%;
     height: 3vh;
-    padding: 3vh 0px;
-    
-    
+    padding: 3vh 0px; 
 }
-
 input[type='search']{
     width: 100%;
     height: 40px;
     border-radius: 7px;
     float: right;
     border: none;
-    }
-
+}
 nav{
     width: 45%;
     float: right;  
@@ -59,7 +51,6 @@ li{
     text-align: center;
     padding-top: 3vh;
 }
-
 .iconos{
     color: white;
     font-size: 30px;
@@ -67,31 +58,29 @@ li{
     padding-top: 5vh;
     width: 20%;
 }
+/* HEADER */
 
 
-
-body{
+/* ACA EMPIEZA EL CODIGO DE LOS SLIDES */
+.body{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 0px;
 }
-
 img{
     max-width: 100%;
 }
-
-.containter-all{
+.container-all{
     position: relative;
     max-width: 1000px;
     width: 100%;
     border-radius: 6px;
     overflow: hidden;
 }
-
 .slide{
     display: flex;
-    transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
     transition: all 600ms;
     animation-name: autoplay;
     animation-duration: 6.5s;
@@ -99,7 +88,6 @@ img{
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
 }
-
 .item-slide{
     position: relative;
     display: flex;
@@ -108,7 +96,6 @@ img{
     flex-grow: 0;
     max-width: 100%;
 }
-
 .pagination{
     position: absolute;
     bottom: 20px;
@@ -119,7 +106,6 @@ img{
     justify-content: center;
     width: 100%;
 }
-
 .pagination-item{
     display: flex;
     flex-direction: column;
@@ -127,19 +113,17 @@ img{
     border: 2px solid white;
     width: 16px;
     height: 16px;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
-    background: rgba(255, 255,255, 0.5);
+    background: rgba(255, 255, 255, 0.5);
     margin: 0 10px;
     text-align: center;
     transition: all 300ms;
 }
-
 .pagination-item:hover{
     transform: scale(2);
 }
-
 .pagination-item img{
     display: inline-block;
     max-width: none;
@@ -148,48 +132,57 @@ img{
     opacity: 0;
     transition: all 300ms;
 }
-
 .pagination-item:hover img{
     opacity: 1;
     transform: scale(1);
 }
-
-input[id='1']:checked ~ .slide{
+input[id="1"]:checked ~ .slide{
     animation: none;
     transform: translate3d(0, 0, 0);
 }
-
-input[id='1']:checked ~ .pagination .pagination-item[for='1']{
-    background: white;
+input[id="1"]:checked ~ .pagination .pagination-item[for="1"]{
+    background: #fff;
 }
-
-input[id='2']:checked ~ .slide{
+input[id="2"]:checked ~ .slide{
     animation: none;
     transform: translate3d(calc(-100% * 1), 0, 0);
 }
-
-input[id='2']:checked ~ .pagination .pagination-item[for='1']{
-    background: white;
+input[id="2"]:checked ~ .pagination .pagination-item[for="2"]{
+    background: #fff;
 }
-
-input[id='3']:checked ~ .slide{
+input[id="3"]:checked ~ .slide{
     animation: none;
     transform: translate3d(calc(-100% * 2), 0, 0);
 }
-
-input[id='3']:checked ~ .pagination .pagination-item[for='1']{
-    background: white;
+input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
+    background: #fff;
 }
-
 @keyframes autoplay{
     33%{
         transform: translate3d(calc(-100% * 0), 0, 0);
     }
-
+    
     66%{
         transform: translate3d(calc(-100% * 1), 0, 0);
     }
+    
     100%{
         transform: translate3d(calc(-100% * 2), 0, 0);
     }
+}
+/* ACA TERMINA EL CODIGO DE LOS SLIDES */
+/* PASOS */
+
+h2{
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    font-size: auto;
+}
+.paso{
+    float: right;
+    width:30%;
+    padding: 1.66%;
+}
+.img-pasos{
+    width:100%;
 }
