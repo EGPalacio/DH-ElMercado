@@ -7,18 +7,16 @@
 }
 .header1{
     width:27.5%;
-    background-color: blueviolet;
     float: left;
     margin: 0px;
 }
 .header2{
     width:27.5%;
-    background-color: blueviolet;
     float: right;
     height: 20vh;
 }
 .logo{
-    padding: 1vh 5%;
+    padding: 1vh 30%;
     float: left;
     width:130px;
 }
@@ -37,19 +35,15 @@ input[type='search']{
 }
 nav{
     width: 45%;
-    float: right;  
-}
-ul{
-    width: 100%;
-}
-li{
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
     float: right;
-    list-style-type: none;
-    width: 20%;
-    text-align: center;
-    padding-top: 3vh;
+    display: flex;
+    justify-content: space-between;
+}
+.menu{
+    font-family: arial;
+    color: white;
+    text-decoration: none;
+    padding: 30px 0px 0px 0px;
 }
 .iconos{
     color: white;
@@ -161,11 +155,9 @@ input[id="3"]:checked ~ .pagination .pagination-item[for="3"]{
     33%{
         transform: translate3d(calc(-100% * 0), 0, 0);
     }
-    
     66%{
         transform: translate3d(calc(-100% * 1), 0, 0);
     }
-    
     100%{
         transform: translate3d(calc(-100% * 2), 0, 0);
     }
@@ -177,6 +169,7 @@ h2{
     font-family: Arial, Helvetica, sans-serif;
     color: grey;
     font-size: auto;
+    text-align: center;
 }
 .paso{
     float: right;
