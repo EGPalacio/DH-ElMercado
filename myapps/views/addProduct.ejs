@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4fa9f35e5d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/addproduct.css">
+    <title>Nuevo Producto</title>
+</head>
+<body>
+    <header class="headerNewProduct" > 
+        <div class="logo"> 
+            <img src="../images/logo-elMercado.png" alt="logo-el-mercado">
+        </div>
+        <div class="user-nav">
+            <ul>
+                <li><a href="#"> <i class="far fa-user"></i> - User Menu - <i class="fas fa-angle-down"></i></a></li>
+                
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="new-product col-12"  >
+        <div class="product-menu col-sm-1 col-md-1 col-lg-1 "> <p>Menu de productos</p></div>
+       
+        <div class="product-detail col-sm-10 col-md-5 col-lg-5 ">
+            <h2>NUEVO PRODUCTO</h2>
+            <p>Ingrese el detalle del producto que desea agregar</p>
+            <form action="" class="detail">
+                <input type="number" name="productId" placeholder="ID del producto" >
+                <input type="text" name="productName" placeholder="Nombre del producto">
+                
+             
+             <select id = "productCategory">
+               <option selected="true" disabled="disabled" >Selecciona la Categoria</option>
+               <option value = "1">Alimentos y Bebidas</option>
+               <option value = "2">Indumentaria</option>
+               <option value = "3">Servicios</option>
+               <option value = "4">Decoración</option>
+             </select>
+             <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Breve descripcion del producto" ></textarea>
+            </form>
+           
+        </div> 
+        <div class="product-images col-sm-11 col-md-5 col-lg-6 "><h2>Imagenes del producto</h2>
+            <p>Ingrese las imagenes del producto que desea agregar</p></div>
+        
+       
+    </section>
+    <div class="btn-new-product"><button class="btn-new"><a href="#">CREAR NUEVO PRODUCTO</a> </button></div>
+            
+</body>
+</html>
