@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/4fa9f35e5d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/css/login.css">
-    <title>Ingreso de usuarios</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/register.css">
+    <title>Registro de usuarios</title>
 </head>
 <body>
     <div class="login-box">
@@ -15,8 +15,8 @@
         </div>
         <div class="separador"></div>
         <div class="lb-header">
-            <a href="#"  class="active"  id="login-box-link">INGRESAR</a>
-            <a href="/register" id="register-box-link">REGISTRARSE</a>
+            <a href="/login"  id="login-box-link">INGRESAR</a>
+            <a href="#"class="active"  id="register-box-link">REGISTRARSE</a>
           </div>
         <div class="social-login">
             <a href="#">
@@ -30,9 +30,11 @@
           </div>
           <div class="form-box">
         <form action="/login" class="lb-form" method="POST">
-        <input type="text" name="name" placeholder="Ingresá tu usuario / Correo">
-        <input type="password" name="password" placeholder="Ingresá tu contraseña">
-        <button class="btn-registro"> <a href="#"> INGRESAR </a></button>
+        <input type="text" name="name" placeholder="Ingresá tu nombre y apellido">
+        <input type="text" name="username" placeholder="Ingresá un nombre de usuario">
+        <input type="email" name="email" placeholder="Ingresá tu correo">
+        <input type="password" name="password" placeholder="Ingresá una contraseña">
+        <button class="btn-registro"> <a href="#"> REGISTRARME </a></button>
         
         </form>
     </div>
