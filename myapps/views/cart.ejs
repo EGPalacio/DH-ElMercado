@@ -2,10 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> <%= title %></title>
+    <link
+			rel="stylesheet"
+			href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+			integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+            >
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/header.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </head>
 <body>
-    <h1>testing cart</h1>
+    <%- include('partials/header.ejs')%>
+    <p></p>
+    <section id="cartProducts" class="">
+    <div id="cartProducts" class="" style="background-color: #e3f2fd;">
+        <ul>
+            <li class="cartProduct" class="">
+                <ul id="cartProdTop" class="nav justify-content-left align-items-center">
+                    <li class="nav-item col-1">
+                        <img src="/images/img-camara-nikon.jpg" class="img-fluid img-thumbnail ounded float-left" alt="Responsive image" alt="notFound" class="rounded-sm">
+                    </li>
+                    <li class="nav-link col-6 p-50">
+                        <a href="#" class="text-dark font-weight-bold">Descripcion del producto</a>
+                    </li>
+                    <li class="nav-item  col-1 text-center">
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary">+</button>
+                            <button type="button" class="btn bg-light"> # </button>
+                            <button type="button" class="btn btn-secondary">-</button>
+                        </div>
+                    </li>
+                    <li class="nav-item  col-2 text-right">
+                        <a href="" class="text-dark font-weight-bolder">Precio</a>
+                    </li>
+                </ul>
+                <ul id="cartProdNav" class="nav justify-content-left ml-5">
+                    <li class="nav-item col-1">
+                      <a class="nav-link text-secondary p-0" href="#">Detalle</a>
+                    </li>
+                    <li class="nav-item col-2">
+                      <a class= "nav-link text-secondary p-0" href="#">Productos del vendedor</a>
+                    </li>
+                    <li class="nav-item  col-2">
+                      <a class="nav-link text-secondary p-0" href="#">Guardar para después</a>
+                    </li>
+                    <li class="nav-item  col-1">
+                        <a class="nav-link text-secondary p-0" href="#">Eliminar</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </section>
+    <div id="cartLeft">
+
+    </div>
+    <div id="cartRight">
+
+    </div>
+
+    
+
 </body>
 </html>
