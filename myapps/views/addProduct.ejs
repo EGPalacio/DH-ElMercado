@@ -8,8 +8,49 @@
     <script src="https://kit.fontawesome.com/4fa9f35e5d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/addproduct.css">
     <title>Nuevo Producto</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script>
+    $(document).ready( function() {
+    $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    }); 	
+});
+</script>
 </head>
-<body>
+<body >
     <header class="headerNewProduct" > 
         <div class="logo"> 
             <img src="../images/logo-elMercado.png" alt="logo-el-mercado">
@@ -22,10 +63,10 @@
             </ul>
         </div>
     </header>
-    <section class="new-product col-12"  >
+    <section class="new-product col-14 ">
         <div class="product-menu col-sm-1 col-md-1 col-lg-1 "> <p>Menu de productos</p></div>
        
-        <div class="product-detail col-sm-10 col-md-5 col-lg-5 ">
+        <div class="product-detail col-sm-10 col-md-5 col-lg-5">
             <h2>NUEVO PRODUCTO</h2>
             <p>Ingrese el detalle del producto que desea agregar</p>
             <form action="" class="detail">
@@ -41,15 +82,36 @@
                <option value = "4">Decoración</option>
              </select>
              <textarea name="productDescription" id="" cols="30" rows="5" placeholder="Breve descripcion del producto" ></textarea>
+             <input type="number" name="productPrice" placeholder="Precio del Producto">
+             <input type="text" name="productDescuento" placeholder="Descuento">
+           
+            <!-- image-preview-filename input [CUT FROM HERE]-->
+                         <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                    Subir… <input type="file" id="imgInp">
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        
+             <!-- /input-group image-preview [TO HERE]--> 
+            <button class="btn-new"><a href="#">CREAR NUEVO PRODUCTO</a> </button>
             </form>
            
         </div> 
-        <div class="product-images col-sm-11 col-md-5 col-lg-6 "><h2>Imagenes del producto</h2>
-            <p>Ingrese las imagenes del producto que desea agregar</p></div>
-        
+       
+        <div class="product-images col-sm-11 col-md-5 col-lg-6 ">
+           
+            <h2>Imagenes del producto</h2>
+            <p>Vista previa de las imagenes del producto</p>
+            <img id='img-upload'/>
+            
+        </div>
        
     </section>
-    <div class="btn-new-product"><button class="btn-new"><a href="#">CREAR NUEVO PRODUCTO</a> </button></div>
+    
+    
             
 </body>
 </html>
