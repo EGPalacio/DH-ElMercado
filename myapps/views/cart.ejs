@@ -19,40 +19,39 @@
 </head>
 <body>
     <%- include('partials/header.ejs')%>
-    <p></p>
-    <section id="cartProducts" class="">
+    <section id="cartProducts" class="container col-12 p-0 mt-2">
     <div id="cartProducts" class="" style="background-color: #e3f2fd;">
         <ul>
             <li class="cartProduct" class="">
                 <ul id="cartProdTop" class="nav justify-content-left align-items-center">
-                    <li class="nav-item col-1">
+                    <li class="nav-item col-3 col-lg-1 mt-1">
                         <img src="/images/img-camara-nikon.jpg" class="img-fluid img-thumbnail ounded float-left" alt="Responsive image" alt="notFound" class="rounded-sm">
                     </li>
-                    <li class="nav-link col-6 p-50">
+                    <li class="nav-link col-6 p-0 p-lg-10">
                         <a href="#" class="text-dark font-weight-bold">Descripcion del producto</a>
                     </li>
-                    <li class="nav-item  col-1 text-center">
+                    <li class="nav-item  d-none d-lg-block col-3 text-center">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-secondary">+</button>
                             <button type="button" class="btn bg-light"> # </button>
                             <button type="button" class="btn btn-secondary">-</button>
                         </div>
                     </li>
-                    <li class="nav-item  col-2 text-right">
+                    <li class="nav-item  col-3 col-lg-2 text-right pr-5">
                         <a href="" class="text-dark font-weight-bolder">Precio</a>
                     </li>
                 </ul>
-                <ul id="cartProdNav" class="nav justify-content-left ml-5">
-                    <li class="nav-item col-1">
+                <ul id="cartProdNav" class="nav d-none d-lg-flex justify-content-left ml-5">
+                    <li class="nav-item col-2">
                       <a class="nav-link text-secondary p-0" href="#">Detalle</a>
                     </li>
-                    <li class="nav-item col-2">
+                    <li class="nav-item col-4">
                       <a class= "nav-link text-secondary p-0" href="#">Productos del vendedor</a>
                     </li>
-                    <li class="nav-item  col-2">
+                    <li class="nav-item  col-4">
                       <a class="nav-link text-secondary p-0" href="#">Guardar para después</a>
                     </li>
-                    <li class="nav-item  col-1">
+                    <li class="nav-item  col-2">
                         <a class="nav-link text-secondary p-0" href="#">Eliminar</a>
                     </li>
                 </ul>
