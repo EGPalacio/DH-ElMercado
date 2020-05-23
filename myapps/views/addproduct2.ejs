@@ -64,52 +64,46 @@
         </div>
     </header>
     <section class="new-product col-14 ">
-        <div class="product-menu col-sm-1 col-md-1 col-lg-1 "> <p>Menu de productos</p></div>
-       
-        <div class="product-detail col-sm-10 col-md-5 col-lg-5">
-            <h2>NUEVO PRODUCTO</h2>
-            <p>Ingrese el detalle del producto que desea agregar</p>
-            <form action="/products/add" method="POST" class="detail" enctype="multipart/form-data">
-               
-                <input type="text" name="name" placeholder="Nombre del producto">
-                
-             
-             <select id = "category">
-               <option selected="true" disabled="disabled" >Selecciona la Categoria</option>
-               <option value = "1">Alimentos y Bebidas</option>
-               <option value = "2">Indumentaria</option>
-               <option value = "3">Servicios</option>
-               <option value = "4">Decoración</option>
-             </select>
-             <textarea name="description" id="" cols="30" rows="5" placeholder="Breve descripcion del producto" ></textarea>
-             <input type="number" name="price" placeholder="Precio del Producto">
-             <input type="text" name="discount" placeholder="Descuento">
-            
-             <label for="img" class="form-label">Cargar imagenes del producto:</label>
-			<input type="file" id="img" name="img" placeholder="Ingresa un avatar para tu perfil" class="file" multiple >
-           
-            <!-- image-preview-filename input [CUT FROM HERE]
-                         <div class="input-group">
-                            <span class="input-group-btn">
-                                <span class="btn btn-default btn-file">
-                                    Subir… <input type="file" id="imgInp" >
-                                </span>
-                            </span>
-                            <input type="text" class="form-control" readonly>
+        <div class="container products-wrapper">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="products-title">Formulario de creación de productos</h2>
+                </div>
+            </div>
+            <div class="col-12">
+                <form action="¿?" method="___">
+                    <div class="row product-detail">
+                        <div class="col-12 col-md-6">
+                            <label for="name" class="form-label">Nombre del producto:</label>
+                            <input type="text" id="name" name="name" placeholder="Ej: Zapatillas Reebok" class="form-input">
                         </div>
-                        
-             <!-- /input-group image-preview [TO HERE]--> 
-            <button type="submit" class="btn-new">CREAR NUEVO PRODUCTO</button>
-            </form>
-           
-        </div> 
-       
-        <div class="product-images col-sm-11 col-md-5 col-lg-6 ">
-           
-            <h2>Imagenes del producto</h2>
-            <p>Vista previa de las imagenes del producto</p>
-            <img id='img-upload'/>
-            
+                        <div class="col-12 col-md-6">
+                            <label for="price" class="form-label">Precio del producto:</label>
+                            <input type="text" id="price" name="price" placeholder="Ej: 5678" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="discount" class="form-label">Descuento:</label>
+                            <input type="text" id="discount" name="discount" placeholder="Ej: 15" class="form-input">
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <label for="category" class="form-label">Categoría:</label>
+                            <select name="category" id="category" class="form-input">
+                                <option value="">Elegí</option>
+                                <option value="in-sale">En oferta</option>
+                                <option value="visited">Últimos agregados</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label for="description" class="form-label">Descipción:</label>
+                            <textarea name="description" id="description" class="form-input"></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="buy-now-button">Guardar producto</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+    
         </div>
        
     </section>
