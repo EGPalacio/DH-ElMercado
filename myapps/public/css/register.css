@@ -129,4 +129,22 @@ body {
     text-decoration: none;
     color: #fff;
   }
+
+  .lb-form select {
+    font-family: "Montserrat", sans-serif;
+    width: 100%;
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 6px;
+  border: 2px solid #114bdf69;
+}
+.lb-form select option {
+    font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  margin-top: 10px;
+  padding: 20px;
+  border-radius: 6px;
+  border: 2px solid #114bdf69;
+}
   

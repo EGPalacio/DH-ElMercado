@@ -12,6 +12,7 @@ router.get('/login', userControllers.login);
 
 /* GET Register page. */
 router.get('/register/', userControllers.register);
+router.post('/register/', userControllers.store);
 
 /* GET Cart. */
 router.get('/cart/', cartController.cartStart);

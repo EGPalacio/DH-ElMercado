@@ -29,12 +29,20 @@
             </a>
           </div>
           <div class="form-box">
-        <form action="/login" class="lb-form" method="POST">
-        <input type="text" name="name" placeholder="Ingresá tu nombre y apellido">
-        <input type="text" name="username" placeholder="Ingresá un nombre de usuario">
+        <form action="/register" class="lb-form" method="POST">
+        <input type="text" name="firstName" placeholder="Ingresá tu nombre">
+        <input type="text" name="lastName" placeholder="Ingresá tu apellido">
         <input type="email" name="email" placeholder="Ingresá tu correo">
         <input type="password" name="password" placeholder="Ingresá una contraseña">
-        <button class="btn-registro"> <a href="#"> REGISTRARME </a></button>
+        <input type="password" id="password_repeat" name="password_repeat" placeholder="Ingresa nuevamente tu contraseña" class="form-input">
+        <select id = "category">
+          <option selected="true" disabled="disabled" >Selecciona la Categoria</option>
+          <option value = "1">Individuo</option>
+          <option value = "2">Empresa</option>
+                 
+        </select>
+        <input type="file" id="avatar" name="avatar" placeholder="Ingresa un avatar para tu perfil" class="file" >
+        <button type="submit" class="btn-registro">  REGISTRARME </button>
         
         </form>
     </div>
