@@ -232,7 +232,7 @@ ul li{
 .imagenProducto{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
 }
 .producto{
     width: 70%;
