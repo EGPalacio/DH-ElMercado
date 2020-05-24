@@ -75,7 +75,26 @@ productControllers = {
         console.log('file saved');
 
         res.redirect('/');
-        }
+        },
+    delete: (req,res) =>{
+        let prodToDelete = req.params.id;
+        // let prodDelArr = [];
+        products.forEach(item => {
+            if(item.id == prodToDelete){
+                console.log(`to delete`);
+                console.log(item);
+            }
+            // else {
+            //     prodEditArr.push(item)
+            // }
+        });
+
+        let index = products.indexOf()
+        console.log(`result`);
+        console.log(prodDelArr);
+
+        res.send('/');
+    }
 };
 
 

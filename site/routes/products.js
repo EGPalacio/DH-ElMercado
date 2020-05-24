@@ -28,6 +28,7 @@ router.get('/add', productControllers.add);
 router.post('/add', upload.array('img', 8), productControllers.store);
 
 router.get('/:id/edit', productControllers.edit);
-router.post('/:id/edit', productControllers.editStorage);
+router.put('/:id/edit', productControllers.editStorage);
+router.delete('/:id/delete', productControllers.delete);
 
 module.exports = router;

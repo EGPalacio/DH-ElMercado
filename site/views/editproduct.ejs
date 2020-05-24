@@ -19,22 +19,31 @@
 </head>
 <body>
     <%- include('partials/header.ejs')%>
-    <form action="/products/<%= prod.id %>/edit" method="POST">
-        <div class="container">
-            <ul>
-                <% for (let prop in prod) { %>
-                    <li>
-                        <%= `${prop} : ${prod[prop]}`; %> <br>
-                        <%if(prop != 'id' && prop != 'image' ){ %>
-                        <input name="<%= prop %>" type="text">
-                        <% }; %>
-                    </li>
-                <% }; %>
-            </ul>
-            <input type="file" name="fileImage" id="fileImage">
-            <input type="submit" value="Editar" class="btn btn-dark btn-block mt-2">
+    <div id="main" class="container d-flex">
+        <div>
+            <form action="/products/<%= prod.id %>/edit?_method=PUT" method="POST">
+                <ul>
+                    <% for (let prop in prod) { %>
+                        <li>
+                            <%= `${prop} : ${prod[prop]}`; %> <br>
+                            <%if(prop != 'id' && prop != 'image' ){ %>
+                            <input name="<%= prop %>" type="text">
+                            <% }; %>
+                        </li>
+                    <% }; %>
+                </ul>
+                <div class="form-actions">
+                    <input type="file" name="fileImage" id="fileImage" class="btn btn-dark btn-block mt-2">
+                    <input type="submit" value="Editar" class="btn btn-dark btn-block mt-2">
+                </div>
+            </form>
         </div>
+        <div class="btn btn-dark btn-block mt-2">
+            <a href="products/<%= prod.id %>/delete?_method=DELETE" class="">Eliminar</a>
+        </div>
+    </div>
+
             
-    </form>
+
 </body>
 </html>
