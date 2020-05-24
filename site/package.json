@@ -1,5 +1,5 @@
 {
-  "name": "myapps",
+  "name": "site",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -10,9 +10,12 @@
     "debug": "~2.6.9",
     "ejs": "~2.6.1",
     "express": "~4.16.1",
+    "express-validator": "^6.5.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
-    "multer": "^1.4.2",
-    "nodemon": "^2.0.3"
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
