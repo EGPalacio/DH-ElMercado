@@ -25,9 +25,8 @@ router.get('/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
 router.get('/add', productControllers.add);
-router.post('/add', upload.array('img', 8), productControllers.store);
+router.post('/add', upload.array('img-products', 8), productControllers.store);
 
-router.get('/:id/edit', productControllers.edit);
-router.post('/:id/edit', productControllers.editStorage);
+
 
 module.exports = router;
