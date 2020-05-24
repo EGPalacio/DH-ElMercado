@@ -84,8 +84,14 @@ ul li{
     margin: 5px 0px 20px 0px;
     font-size: 1.75em;
 }
+.descuento{
+    color: green;
+    font-size: 1.5em;
+    margin: 10px 20px;
+}
 .precio{
     font-size: 2em;
+    margin: 10px 20px;
 }
 .ulSegundaColumna{
     font-size: 0.9em;
@@ -161,7 +167,7 @@ ul li{
     border-radius: 7px;
     padding: 15px;
     box-sizing: border-box;
-    margin: auto;
+    margin: 20px auto;
     font-size: 1em;
     transition-duration: 0.25s;
 }
@@ -232,7 +238,7 @@ ul li{
 .imagenProducto{
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
 }
 .producto{
     width: 70%;
