@@ -26,7 +26,7 @@
             <div class="primerColumna">
             <!-- imagenes -->
             <div class="imagenProducto">
-            <img class="producto" src="/images/img2.jpg">
+            <img class="producto" src="/images/<%= productFind.image %>">
             </div>
             <!-- imagenes -->
 
@@ -35,15 +35,8 @@
 
             <h2 class="h2PrimerColumna"><strong>Descripción detallada del Producto: </strong></h2>
 
-            <p class="descripcionPrimerColumna">Descripción detallada del Producto</p>
-            <ul class="ulPrimerColumna">
-                <li>Especificaciones del Producto.</li>
-                <li>Unidades de Medida.</li>
-                <li>Dimensiones.</li>
-                <li>Cantidades de la Unidad de Medida en Cuestión.</li>
-                <li>Especificaciones Técnicas.</li>
-                <li>Otras Especificaciones.</li>
-            </ul>
+            <p class="descripcionPrimerColumna"><%= productFind.description %></p>
+
             </div>
             <!-- descripcion detallada del producto -->
             <!-- PRIMER COLUMNA -->
@@ -52,18 +45,28 @@
             <div class="segundaColumna">
                 <div class="segunda">
                 <p class="NS">NUEVO/USADO</p>
-                <h2 class="h2subrayado"><strong>Descripción del Producto </strong></h2>
+                <h2 class="h2subrayado"><strong><%= productFind.name %></strong></h2>
                 <!-- estrellas -->
                 <!-- estrellas -->
-                <p class="precio">$PRECIO</p>
-                <ul class="ulSegundaColumna">
-                    <li>Especificaciones del Producto.</li>
-                    <li>Unidades de Medida.</li>
-                    <li>Dimensiones.</li>
-                    <li>Cantidades de la Unidad de Medida en Cuestión.</li>
-                    <li>Especificaciones Técnicas.</li>
-                    <li>Otras Especificaciones.</li>
-                </ul>
+            <% if(productFind.discount > 0) { 
+                    let getDiscountPercentage = discount => (100 - discount) / 100;
+                    let finalPrice = (productFind.price * getDiscountPercentage(productFind.discount)).toFixed(0);
+              %>
+              <p class="descuento">
+                <span>$<%= thousandGenerator(productFind.price) %></span>
+                /
+                <b><%= productFind.discount %>% OFF</b>
+              </p>
+              <p class="precio">
+                $<%= thousandGenerator(finalPrice) %>
+              </p>
+            <% } else { %>
+              <p class="precio">
+                $<%= thousandGenerator(productFind.price) %>
+              </p>
+            <% } %>
+
+                <p class="ulSegundaColumna"><%= productFind.description %></p>
                 </div>
             </div>
             <!-- SEGUNDA COLUMNA -->
@@ -82,18 +85,23 @@
                 <p class="letrasAzules">LLEGARA EN 1 DIA</p>
                 </div>
                 <!-- imagenes del camion -->
-                
                 <p class="letrasAzules">SERA ENVIADO A LOCALIDAD</p>
-                <a href="" class="botonAgregar">+ Agregar a la lista</a>
+                
                 <p class="letrasNegras">Vendido por: <a href="">Nombre del vendedor</a></p>
                 <p class="letrasNegras">Puntuación del vendedor</p>
+                
+            <form action='/cart/<%= productFind.id %> 'method="POST">
                 <div class="cant">
                 <p class="cantidad">Cantidad: <label for=""></label>
-                <input class='inputNumber' type="number" name="cantidad" id="cantidad" min="0" max="99" required>
+                <input class='inputNumber' type="number" name="cantidad" id="cantidad" min="1" max="99" required> <!-- El valor de max, debería estar especificado en el json de los productos que sube el usuario -->
                 </p>
                 </div>
-                <a href="" class="botonComprar">COMPRAR</a>
+                <input type="submit" value="+ Agregar al carrito" class="botonAgregar">
+                <input type="submit" value="COMPRAR" class="botonComprar">
+            </form>
+        
                 <!-- TERCER COLUMNA -->
+
             </div>
 	    </main>
 	</div>
