@@ -71,29 +71,34 @@ productControllers = {
 
         let jsonEdit = products.map(obj => prodEditArr.find(o => o.id === obj.id) || obj);
         console.log(jsonEdit);
-        fs.writeFileSync(productsFilePath, JSON.stringify(jsonEdit))
+        fs.writeFileSync(productsFilePath, JSON.stringify(jsonEdit, null, '\t'));
         console.log('file saved');
 
         res.redirect('/');
         },
     delete: (req,res) =>{
-        let prodToDelete = req.params.id;
-        // let prodDelArr = [];
+        let prodToDelete = req.body.id;
+
         products.forEach(item => {
             if(item.id == prodToDelete){
-                console.log(`to delete`);
-                console.log(item);
-            }
-            // else {
-            //     prodEditArr.push(item)
-            // }
+                prodToDelete = item;
+                console.log(`Objeto a eliminar: `);
+                console.log(prodToDelete);
+            };
         });
 
-        let index = products.indexOf()
-        console.log(`result`);
-        console.log(prodDelArr);
+        let prodToDelIndex = products.indexOf(prodToDelete);
 
-        res.send('/');
+        let prodUpdated = products.splice(prodToDelIndex, 1)
+        console.log(`eliminado: `);
+        console.log(prodUpdated);
+        console.log(`resultado a guardar: `);
+        console.log(products);
+        
+        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, '\t'));
+        console.log('file saved');
+
+        res.redirect('/');
     }
 };
 
