@@ -1,12 +1,24 @@
 const fs = require('fs');
 const path = require('path');
 let arrayProductos = require('../articulosJS');
+const pdtosInSale = arrayProductos.filter(pdto => pdto.category == 'in-sale');
+const pdtosVisited = arrayProductos.filter(pdto => pdto.category == 'visited');
+const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 
 
 productControllers = {
+    todosLosProductos: (req,res) => {
+        let index = arrayProductos;
+        res.render('products',{
+            "index":index,
+            pdtosInSale,
+            pdtosVisited,
+            thousandGenerator: toThousand,
+        });
+    },
     productos: (req,res) => {
         let index = arrayProductos;
         res.render('detalleProductos', {"index":index});

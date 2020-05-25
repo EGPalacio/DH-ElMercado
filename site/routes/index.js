@@ -16,5 +16,6 @@ router.post('/register/', userControllers.store);
 
 /* GET Cart. */
 router.get('/cart/', cartController.cartStart);
+router.post('/cart/:id', cartController.cartAdd)
 
 module.exports = router;
