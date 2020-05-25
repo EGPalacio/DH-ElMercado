@@ -1,0 +1,23 @@
+Reunión de equipo 19 de Mayo 2020
+===================================
+
+Nos reunimos para organizar la distribución de tareas del Sprint III.
+
+1 - Se definió el contenido del JSON de productos y sus campos (Leandro Higa).
+2 - Se converso sobre el armado del trello del Sprint III (Martin P.).
+3 - Se resolvió la agenda semanal de las reuniones por Zoom (Martes 19.00). (Invitación Leandro Higa)
+    https://us04web.zoom.us/j/77045174873?pwd=ZmJEOFowc3p3VitvRHo4UWpFT3RBdz09
+    ID de reunión: 770 4517 4873
+    Contraseña: 9Sr75F
+4 - Fecha planificada para la retro Sprint II (26 de Mayo)
+5 - Crear JSON.usuarios (Martín P.)
+6 - Distribución armados vistas y controladores Sprint III - Punto 8 - CRUD
+    - Puntos 1 y 3  - Leandro Higa
+    - Puntos 2 y 4  - Martín P.
+    - Puntos 5, 6 y 7  - Eduardo P.
+
+
+Nice to have:
+=============
+ - Mejorar el Header
+ - Crear Footer

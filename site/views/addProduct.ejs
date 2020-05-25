@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/4fa9f35e5d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/addproduct.css">
+    <title>Nuevo Producto</title>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script>
+    $(document).ready( function() {
+    $(document).on('change', '.btn-file :file', function() {
+    var input = $(this),
+        label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+    input.trigger('fileselect', [label]);
+    });
+
+    $('.btn-file :file').on('fileselect', function(event, label) {
+        
+        var input = $(this).parents('.input-group').find(':text'),
+            log = label;
+        
+        if( input.length ) {
+            input.val(log);
+        } else {
+            if( log ) alert(log);
+        }
+    
+    });
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            
+            reader.onload = function (e) {
+                $('#img-upload').attr('src', e.target.result);
+            }
+            
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#imgInp").change(function(){
+        readURL(this);
+    }); 	
+});
+</script>
+</head>
+<body >
+    <header class="headerNewProduct" > 
+        <div class="logo"> 
+            <img src="../images/logo-elMercado.png" alt="logo-el-mercado">
+        </div>
+        <div class="user-nav">
+            <ul>
+                <li><a href="#"> <i class="far fa-user"></i> - User Menu - <i class="fas fa-angle-down"></i></a></li>
+                
+                <li><a href="#">Ayuda</a></li>
+            </ul>
+        </div>
+    </header>
+    <section class="new-product col-14 ">
+        <div class="product-menu col-sm-1 col-md-1 col-lg-1 "> <p>Menu de productos</p></div>
+       
+        <div class="product-detail col-sm-10 col-md-5 col-lg-5">
+            <h2>NUEVO PRODUCTO</h2>
+            <p>Ingrese el detalle del producto que desea agregar</p>
+            <form action="/products/add" method="POST" class="detail" enctype="multipart/form-data">
+               
+                <input type="text" name="name" placeholder="Nombre del producto">
+                
+             
+             <select id = "category">
+               <option selected="true" disabled="disabled" >Selecciona la Categoria</option>
+               <option value = "1">Alimentos y Bebidas</option>
+               <option value = "2">Indumentaria</option>
+               <option value = "3">Servicios</option>
+               <option value = "4">Decoración</option>
+             </select>
+             <textarea name="description" id="" cols="30" rows="5" placeholder="Breve descripcion del producto" ></textarea>
+             <input type="number" name="price" placeholder="Precio del Producto">
+             <input type="text" name="discount" placeholder="Descuento">
+            
+             <label for="img" class="form-label">Cargar imagenes del producto:</label>
+			<input type="file" id="img" name="img" placeholder="Ingresa un avatar para tu perfil" class="file" multiple >
+           
+            <!-- image-preview-filename input [CUT FROM HERE]
+                         <div class="input-group">
+                            <span class="input-group-btn">
+                                <span class="btn btn-default btn-file">
+                                    Subir… <input type="file" id="imgInp" >
+                                </span>
+                            </span>
+                            <input type="text" class="form-control" readonly>
+                        </div>
+                        
+             <!-- /input-group image-preview [TO HERE]--> 
+            <button type="submit" class="btn-new">CREAR NUEVO PRODUCTO</button>
+            </form>
+           
+        </div> 
+       
+        <div class="product-images col-sm-11 col-md-5 col-lg-6 ">
+           
+            <h2>Imagenes del producto</h2>
+            <p>Vista previa de las imagenes del producto</p>
+            <img id='img-upload'/>
+            
+        </div>
+       
+    </section>
+    
+    
+            
+</body>
+</html>

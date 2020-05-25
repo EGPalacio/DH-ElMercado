@@ -1,0 +1,25 @@
+RETRO SPRINT 1
+==============
+
+Reunión 13 de Mayo de 2020
+
+Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 1.
+
+1 - Que hicimos bien:
+    - Arrancar el trabajo con distribuyendo las tareas en trello desde el arranque.
+    - Incorporar Figma para el armado de los wireframes.
+    - Realizar reunión temprana para distribuir actividades del sprint 1 entre el equipo.
+
+2 - Que hicimos mal:
+    - Al cambiar de repositorio un miembro del equipo subió todo el trabajo del otro respositorio y se perdió visibilidad del trabajo individual de cada uno.
+
+3 - Que tenemos que hacer.
+    - Dejar seteadas reuniones semanales de revisión de status (Martes 19 hs.)
+
+4 - Que es lo que no tenemos que hacer.
+    - Dejar pasar mucho tiempo entre las reuniones de equipo.
+    - Organizar y cumplir el cronograma de reuniones recurrentes.
+
+Martín.
+Leandro.
+Eduardo.

@@ -10,3 +10,7 @@ Listado de 5 referentes:
 - https://www.ebay.com/
 - https://es.aliexpress.com/
 - https://www.shopify.com/
+
+Tablero de trabajo:
+
+https://trello.com/b/CLcabTD8/proyecto-integrador

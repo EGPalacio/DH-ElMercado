@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <!-- CSS bootstrap -->
+    <link rel="stylesheet" href="/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!-- CSS propio -->
+    <link rel="stylesheet" href="/css/indexMF.css">
+     <!-- CSS header -->
+    <link rel="stylesheet" href="/css/header.css">
+    <!-- fontAwesome -->
+    <link
+			rel="stylesheet"
+			href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+			integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
+            crossorigin="anonymous"
+            >
+	<title>Home</title>
+</head>
+
+<body>
+    <div> <!-- Contenedor ppal -->
+<!-- ENCABEZADO -->
+<%- include('partials/header.ejs')%>
+<!-- ENCABEZADO -->
+        <main>
+
+<!-- ACA EMPIEZA EL CODIGO DE LOS SLIDES -->
+            <div class="body">
+                <div class="container-all">
+
+                    <input type="radio" id="1" name="image-slide" hidden/>
+                    <input type="radio" id="2" name="image-slide" hidden/>
+                    <input type="radio" id="3" name="image-slide" hidden/>
+
+                    <div class="slide">
+
+                        <div class="item-slide">
+                            <img src="/images/img1.jpg">
+                        </div>
+
+                        <div class="item-slide">
+                            <img src="/images/img2.jpg">
+                        </div>
+
+                        <div class="item-slide">
+                            <img src="/images/img3.jpg">
+                        </div>
+
+                    </div>
+
+                    <div class="pagination">
+
+                        <label class="pagination-item" for="1">
+                            <img src="/images/img1.jpg">
+                        </label>
+
+                        <label class="pagination-item" for="2">
+                            <img src="/images/img2.jpg">
+                        </label>
+
+                        <label class="pagination-item" for="3">
+                            <img src="/images/img3.jpg">
+                        </label>
+
+                    </div>
+
+                </div>
+               </div> 
+<!-- ACA TERMINA EL CODIGO DE LOS SLIDES -->
+<!-- ACA EMPIEZAN LOS PASOS -->
+               <h2>COMPRÁ EN 3 SIMPLES PASOS DESDE LA COMODIDAD DE TU CASA</h2>
+               <div class="pasos">
+                  <div class="paso">
+                     <h2>PASO 1</h2>
+                     <img class="img-pasos" src='/images/paso1.jpg'>
+                     <h2>ELEGÍ</h2>
+                  </div>
+                  <div class="paso">
+                     <h2>PASO 2</h2>
+                     <img class="img-pasos" src='/images/paso2.jpg'>
+                     <h2>CONFIRMÁ</h2>
+                  </div>
+                  <div class="paso">
+                     <h2>PASO 3</h2>
+                     <img class="img-pasos" src='/images/paso3.jpg'>
+                     <h2>RECIBÍ!!!</h2>
+                  </div>
+                </div>
+<!-- ACA TERMINAN LOS PASOS -->
+<!-- ACA EMPIEZA EL CÓDIGO LAS CARDS -->
+
+
+<!-- ultima visita -->
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Basado en tu última visita</h2>
+        </div>
+        <% for (product of pdtosVisited) { 
+            let getDiscountPercentage = discount => (100 - discount) / 100;
+            let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
+        %>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/detalleProductos/<%= product.id %>">
+                        <figure class="product-box_image">
+                            <img src="/images/<%= product.image %>" alt="imagen de producto">
+                        </figure>
+                        <article class="product-box_data">
+                            <h2>$<%= thousandGenerator(finalPrice) %></h2>
+                            <span><%= product.discount %>% OFF</span>
+                            <p><%= product.name %></p>
+                            <i class="fas fa-truck"></i>
+                        </article>
+                    </a>
+                </section>
+            </div>
+        <% } %>
+    </div>
+</div>
+<!-- /ultima visita -->
+
+<!-- Ofertas -->
+<div class="container products-wrapper">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="products-title">Basado en tu última visita</h2>
+        </div>
+        <% for (product of pdtosInSale) { 
+            let getDiscountPercentage = discount => (100 - discount) / 100;
+            let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
+        %>
+            <div class="col-12 col-sm-6 col-lg-3">
+                <section class="product-box">
+                    <a href="/detalleProductos/<%= product.id %>">
+                        <figure class="product-box_image">
+                            <img src="/images/<%= product.image %>"alt="imagen de producto">
+                        </figure>
+                        <article class="product-box_data">
+                            <h2>$<%= thousandGenerator(finalPrice) %></h2>
+                            <span><%= product.discount %>% OFF</span>
+                            <p><%= product.name %></p>
+                            <i class="fas fa-truck"></i>
+                        </article>
+                    </a>
+                </section>
+            </div>
+        <% } %>
+    </div>
+</div>
+<!-- /Ofertas -->
+
+<!-- ACA TERMINA EL CÓDIGO LAS CARDS -->
+        </main>
+            </div>
+	</div>
+<!-- bootsrap -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+
+</html>
