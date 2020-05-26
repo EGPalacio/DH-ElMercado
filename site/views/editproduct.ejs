@@ -25,13 +25,13 @@
 </head>
 <body>
     <%- include('partials/header.ejs')%>
-    <div id="main" class="col-12 row-md mt-3">
-        <form method="POST" class="">
-            <div class=" text-center col-md-6">
+    <div id="main" class="container justify-content-center row-md mt-3">
+        <form method="POST" class="form-inline">
+            <div class="col-sm-12 col-md-6">
                 <img src="/images/<%=prod.image%>" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="No Image">
                 <input type="file" id="imageEdit" class="form-control-file" data-default-file="" data-height="500">
             </div>
-            <div class="col-12 col-md">
+            <div class="col-sm-12 col-md-6">
                 <% for (let prop in prod) { %>
                     <div class="form-group">
                         <% if(prop == 'id' || prop == 'image'){ %>
@@ -40,9 +40,8 @@
                         <% } else if(prop != 'id' && prop != 'image' ){ %>
                             <div class="input-group mb-3 mb-auto ml-auto">
                                 <span class="input-group-text form-text text-muted text-capitalize"><%= `${prop}:` %></span>
-                                <input name="<%= prop %>" type="text" class="form-control">
+                                <input name="<%= prop %>" type="text" class="form-control" placeholder="<%= `${prod[prop]}` %>">
                             </div>
-                            <smal class="form-text text-muted text-capitalize mt-auto mb-3"><%= `${prod[prop]}` %></smal>
                         <% }; %>
                     </div>
                 <% }; %>
