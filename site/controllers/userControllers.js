@@ -1,5 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+
+const usersFilePath = path.join(__dirname, '../data/users.json');
+const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 //const bcrypt = require('bcrypt');
 //const upload = require('../misFunciones/helpMulter');
 
@@ -18,11 +21,13 @@ let userControllers = {
         console.log(req.body)
 		// Do the magic
 		let usuario = {
+			id : users[users.length - 1].id + 1,
 			nombre: req.body.firstName,
 			apellido: req.body.lastName,
 			email: req.body.email,
             password: req.body.password,
-            categoria: req.body.catgory,
+			categoria: req.body.category,
+			avatar : req.files,
 		}
 		//leer el json
 		
@@ -40,7 +45,7 @@ let userControllers = {
 		usuarios.push(usuario);
 
 
-		usuariosJSON = JSON.stringify(usuarios);
+		usuariosJSON = JSON.stringify(usuarios, null, ' ');
 		fs.writeFileSync('./data/users.json', usuariosJSON);
 
 		res.redirect('/login');

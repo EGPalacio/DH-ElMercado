@@ -154,10 +154,10 @@
  },
  {
   "id": 21,
-  "name": "",
-  "description": "",
-  "price": 0,
-  "discount": 0,
-  "image": []
+  "name": "Teclado Super",
+  "description": "descripcion teclado Super, escribe solo, una maravilla",
+  "price": 999,
+  "discount": 10,
+  "image": "imgPortada-teclado-magico.jpeg"
  }
 ]

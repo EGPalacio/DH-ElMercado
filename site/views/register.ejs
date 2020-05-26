@@ -29,14 +29,14 @@
             </a>
           </div>
           <div class="form-box">
-        <form action="/register" class="lb-form" method="POST">
+        <form action="/register" class="lb-form" method="POST" enctype="multipart/form-data">
         <input type="text" name="firstName" placeholder="Ingresá tu nombre">
         <input type="text" name="lastName" placeholder="Ingresá tu apellido">
         <input type="email" name="email" placeholder="Ingresá tu correo">
         <input type="password" name="password" placeholder="Ingresá una contraseña">
         <input type="password" id="password_repeat" name="password_repeat" placeholder="Ingresa nuevamente tu contraseña" class="form-input">
-        <select id = "category">
-          <option selected="true" disabled="disabled" >Selecciona la Categoria</option>
+        <select  name="category" id="category">
+          <option  value="">Selecciona la Categoria</option>
           <option value = "1">Individuo</option>
           <option value = "2">Empresa</option>
                  
