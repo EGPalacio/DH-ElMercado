@@ -17,5 +17,11 @@ router.get('/add', productControllers.add);
 router.post('/add', upload.productUpload , productControllers.store);
 
 
+router.get('/:id/edit', productControllers.edit);
+router.put('/:id/edit', productControllers.editStorage);
+router.delete('/:id/delete', productControllers.delete);
+
+router.get('/', productControllers.todosLosProductos);
+
 
 module.exports = router;

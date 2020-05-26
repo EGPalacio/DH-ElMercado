@@ -16,7 +16,7 @@ var storage = multer.diskStorage({
   })
    
   var upload = multer({ storage: storage })
-  //var cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'gallery', maxCount: 8 }])
+  var cpUpload = upload.fields([{ name: 'imgPortada', maxCount: 1 }, { name: 'img-products', maxCount: 9 }])
 
 /* GET home page. */
 
@@ -25,7 +25,7 @@ router.get('/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
 router.get('/add', productControllers.add);
-router.post('/add', upload.array('img-products', 8), productControllers.store);
+router.post('/add', cpUpload, productControllers.store);
 
 
 

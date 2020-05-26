@@ -19,13 +19,14 @@ let productControllers = {
         res.render('addProduct');
     },
     store: (req, res) => {
-        console.log()
+        console.log(req.file.originalname)
 		req.body.price = Number(req.body.price);
 		req.body.discount = Number(req.body.discount);
 		let newProduct = {
 			id: products[products.length - 1].id + 1,
             ...req.body,
-            image : req.files,
+            image : req.file.originalname,
+            galeria : req.files,
             
 			
 		};

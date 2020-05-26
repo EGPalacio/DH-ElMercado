@@ -19,22 +19,36 @@
 </head>
 <body>
     <%- include('partials/header.ejs')%>
-    <form action="/products/<%= prod.id %>/edit" method="POST">
-        <div class="container">
-            <ul>
+    <div id="main" class="col-12 row-md mt-3">
+        <form method="POST" class="">
+            <div class=" text-center col-md-6">
+                <img src="/images/<%=prod.image%>" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="No Image">
+                <input type="file" id="imageEdit" class="form-control-file" data-default-file="" data-height="500">
+            </div>
+            <div class="col-12 col-md">
                 <% for (let prop in prod) { %>
-                    <li>
-                        <%= `${prop} : ${prod[prop]}`; %> <br>
-                        <%if(prop != 'id' && prop != 'image' ){ %>
-                        <input name="<%= prop %>" type="text">
+                    <div class="form-group">
+                        <% if(prop == 'id' || prop == 'image'){ %>
+                            <span class="input-group-text form-text text-muted text-capitalize"><%= `${prop}: ${prod[prop]}` %></span>
+                            <input type="hidden" name="<%= prop %>" value="<%= prod[prop] %>">
+                        <% } else if(prop != 'id' && prop != 'image' ){ %>
+                            <div class="input-group mb-3 mb-auto ml-auto">
+                                <span class="input-group-text form-text text-muted text-capitalize"><%= `${prop}:` %></span>
+                                <input name="<%= prop %>" type="text" class="form-control">
+                            </div>
+                            <smal class="form-text text-muted text-capitalize mt-auto mb-3"><%= `${prod[prop]}` %></smal>
                         <% }; %>
-                    </li>
+                    </div>
                 <% }; %>
-            </ul>
-            <input type="file" name="fileImage" id="fileImage">
-            <input type="submit" value="Editar" class="btn btn-dark btn-block mt-2">
+            <div class="form-actions btn-flex mt-3 text-center ">
+                <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-lg col-5">
+                <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-lg col-5">
+            </div>
         </div>
+        </form>
+    </div>
+
             
-    </form>
+
 </body>
 </html>
