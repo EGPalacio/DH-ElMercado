@@ -18,7 +18,7 @@ const newProductId = newId.newProductId;
 
 
 
-let productControllers = {
+
 productControllers = {
     todosLosProductos: (req,res) => {
         let index = arrayProductos;

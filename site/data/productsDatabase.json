@@ -91,69 +91,6 @@
  },
  {
   "id": 17,
-  "name": "cortinas",
-  "description": "Venta y colocacion de cortinas",
-  "price": 1590,
-  "discount": 10,
-  "image": "default-image.png"
- },
- {
-  "id": 18,
-  "name": "CURSO DE FORMACIÓN DE INSTRUCTORES",
-  "description": "Curso de formacion presencial para instructores de remo",
-  "price": 999,
-  "discount": 50,
-  "image": "default-image.png"
- },
- {
-  "id": 19,
-  "name": "Monitor LG",
-  "description": "asasas",
-  "price": 9500,
-  "discount": 10,
-  "image": "Jay7bPK.jpg"
- },
- {
-  "id": 20,
-  "name": "Cortinas",
-  "description": "Venta e instalacion de cortinas",
-  "price": 3500,
-  "discount": 20,
-  "image": [
-   {
-    "fieldname": "img",
-    "originalname": "cortina-03.jpg",
-    "encoding": "7bit",
-    "mimetype": "image/jpeg",
-    "destination": "public/images/",
-    "filename": "img-cortina-03.jpg",
-    "path": "public/images/img-cortina-03.jpg",
-    "size": 82678
-   },
-   {
-    "fieldname": "img",
-    "originalname": "cortina-02.jpg",
-    "encoding": "7bit",
-    "mimetype": "image/jpeg",
-    "destination": "public/images/",
-    "filename": "img-cortina-02.jpg",
-    "path": "public/images/img-cortina-02.jpg",
-    "size": 78720
-   },
-   {
-    "fieldname": "img",
-    "originalname": "cortina-01.jpg",
-    "encoding": "7bit",
-    "mimetype": "image/jpeg",
-    "destination": "public/images/",
-    "filename": "img-cortina-01.jpg",
-    "path": "public/images/img-cortina-01.jpg",
-    "size": 32921
-   }
-  ]
- },
- {
-  "id": 21,
   "name": "Teclado Super",
   "description": "descripcion teclado Super, escribe solo, una maravilla",
   "price": 999,
