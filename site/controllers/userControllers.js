@@ -7,6 +7,10 @@ const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 //const upload = require('../misFunciones/helpMulter');
 
 
+const newId = require('../middlewares/newId');
+
+const newUsertId = newId.newUserId;
+
 //const productsFilePath = path.join(__dirname, '../data/accountsDataBase.json');
 //const accounts = JSON.parse(fs.readFileSync(accountsFilePath, 'utf-8'));
 
@@ -18,20 +22,19 @@ let userControllers = {
         res.render('register');
     },
     store : (req, res) => {
-        console.log(req.body)
+		var avatar = req.files[0].filename;
 		// Do the magic
 		let usuario = {
-			id : users[users.length - 1].id + 1,
+			id : newUsertId,
 			nombre: req.body.firstName,
 			apellido: req.body.lastName,
 			email: req.body.email,
             password: req.body.password,
 			categoria: req.body.category,
-			avatar : req.files,
+			avatar : avatar,
 		}
 		//leer el json
-		
-        //let rutaJson = path.join(__dirname, '../data/accountsDataBase.json');
+		//let rutaJson = path.join(__dirname, '../data/accountsDataBase.json');
 		let archivoUsuario = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
 
 		let usuarios;

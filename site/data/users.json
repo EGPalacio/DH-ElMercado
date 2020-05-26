@@ -15,82 +15,11 @@
  },
  {
   "id": 3,
-  "nombre": "Lu",
-  "apellido": "Divano",
-  "email": "divanolucia@gmail.com",
-  "password": "",
-  "categoria": "1",
-  "avatar": [
-   {
-    "fieldname": "avatar",
-    "originalname": "2020-01-31.jpg",
-    "encoding": "7bit",
-    "mimetype": "image/jpeg",
-    "destination": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/3",
-    "filename": "avatar-2020-01-31.jpg",
-    "path": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/3/avatar-2020-01-31.jpg",
-    "size": 18002
-   }
-  ]
- },
- {
-  "id": 4,
-  "nombre": "Avatar ",
-  "apellido": "Apellido Avatar",
-  "email": "avatar@user.com",
-  "password": "123",
+  "nombre": "Daenerys",
+  "apellido": "Targaryen",
+  "email": "Khaleesi@got.com",
+  "password": "123456",
   "categoria": "2",
-  "avatar": [
-   {
-    "fieldname": "avatar",
-    "originalname": "avatar-01.png",
-    "encoding": "7bit",
-    "mimetype": "image/png",
-    "destination": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/4",
-    "filename": "avatar-avatar-01.png",
-    "path": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/4/avatar-avatar-01.png",
-    "size": 19648
-   }
-  ]
- },
- {
-  "id": 5,
-  "nombre": "Segundo",
-  "apellido": "Fernandez",
-  "email": "fer@segundo.com",
-  "password": "",
-  "categoria": "1",
-  "avatar": [
-   {
-    "fieldname": "avatar",
-    "originalname": "avatar-02.png",
-    "encoding": "7bit",
-    "mimetype": "image/png",
-    "destination": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/5",
-    "filename": "avatar-avatar-02.png",
-    "path": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/5/avatar-avatar-02.png",
-    "size": 20394
-   }
-  ]
- },
- {
-  "id": 6,
-  "nombre": "Tercero",
-  "apellido": "Fernandez",
-  "email": "fer@segundo.com",
-  "password": "",
-  "categoria": "1",
-  "avatar": [
-   {
-    "fieldname": "avatar",
-    "originalname": "avatar-03.png",
-    "encoding": "7bit",
-    "mimetype": "image/png",
-    "destination": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/6",
-    "filename": "avatar-avatar-03.png",
-    "path": "/Users/martuns/webDev/DH/pI/MASTER/Nordelta-Team-4/site/public/images/avatars/6/avatar-avatar-03.png",
-    "size": 21737
-   }
-  ]
+  "avatar": "avatar-Khaleesi.jpg"
  }
 ]
