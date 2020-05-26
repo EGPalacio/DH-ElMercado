@@ -21,5 +21,15 @@
   "password": "123456",
   "categoria": "2",
   "avatar": "avatar-Khaleesi.jpg"
+ },
+ {
+  "id": 4,
+  "firstName": "Arya",
+  "lastName": "Stark",
+  "email": "arya@Stark.com",
+  "password": "123456",
+  "password_repeat": "13456",
+  "category": "1",
+  "avatar": "avatar-AryaStark.jpg"
  }
 ]

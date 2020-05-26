@@ -39,7 +39,7 @@ productControllers = {
         res.render('addProduct');
     },
     store: (req, res) => {
-        var portada = req.files.imgPortada[0].filename;
+        let portada = req.files.imgPortada[0].filename;
 		req.body.price = Number(req.body.price);
 		req.body.discount = Number(req.body.discount);
 		let newProduct = {

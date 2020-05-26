@@ -22,15 +22,11 @@ let userControllers = {
         res.render('register');
     },
     store : (req, res) => {
-		var avatar = req.files[0].filename;
+		let avatar = req.files[0].filename;
 		// Do the magic
 		let usuario = {
 			id : newUsertId,
-			nombre: req.body.firstName,
-			apellido: req.body.lastName,
-			email: req.body.email,
-            password: req.body.password,
-			categoria: req.body.category,
+			...req.body,
 			avatar : avatar,
 		}
 		//leer el json
