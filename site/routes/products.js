@@ -22,6 +22,7 @@ router.put('/:id/edit', productControllers.editStorage);
 router.delete('/:id/delete', productControllers.delete);
 
 router.get('/', productControllers.todosLosProductos);
+router.get('/:id', productControllers.detalleProductos);
 
 
 module.exports = router;

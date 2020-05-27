@@ -20,6 +20,17 @@ const newProductId = newId.newProductId;
 
 
 productControllers = {
+    detalleProductos: (req,res) => {
+        let index = arrayProductos;
+        let pdtoID = req.params.id;
+        let productFind = arrayProductos.find(pdto => pdto.id == pdtoID);
+
+        res.render('detalleProductos', {
+            "index":index,
+            productFind,
+			thousandGenerator: toThousand
+        });
+    },
     todosLosProductos: (req,res) => {
         let index = arrayProductos;
         res.render('products',{
