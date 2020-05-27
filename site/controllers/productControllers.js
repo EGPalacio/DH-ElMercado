@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 var express = require('express');
 var router = express.Router();
-var productoControllers = require('../controllers/detalleProductosControllers')
 let arrayProductos = require('../articulosJS');
 const pdtosInSale = arrayProductos.filter(pdto => pdto.category == 'in-sale');
 const pdtosVisited = arrayProductos.filter(pdto => pdto.category == 'visited');
@@ -108,7 +107,7 @@ productControllers = {
         fs.writeFileSync(productsFilePath, JSON.stringify(jsonEdit, null, '\t'));
         console.log('file saved');
 
-        res.redirect(`/detalleProductos/${req.params.id}`);
+        res.redirect(`/products/${req.params.id}`);
         // router.get(`/detalleProductos/${req.params.id}`, productoControllers.productos);
         },
     delete: (req,res) =>{
