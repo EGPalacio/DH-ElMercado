@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <!-- Redirect, cambiar del home para el detalle de productos
-    Ajustar estilos:
-        - Mobile format: títulos arriba de inputs
-        - Wide: dos columnas para foto y botones izquierda y datos a la derecha
+    <!-- Redirect, cambiar del home para el detalle de productos, está con redirect pero no refresca. está mal.
     Cambiar la ruta para buscar y guardar las imagenes
     configurar la edición de files con multer -->
 <head>
@@ -25,29 +22,29 @@
 </head>
 <body>
     <%- include('partials/header.ejs')%>
-    <div id="main" class="container justify-content-center row-md mt-3">
-        <form method="POST" class="form-inline">
-            <div class="col-sm-12 col-md-6">
-                <img src="/images/<%=prod.image%>" class="rounded mx-auto d-block img-fluid img-thumbnail" alt="No Image">
-                <input type="file" id="imageEdit" class="form-control-file" data-default-file="" data-height="500">
+    <div id="main" class="container-fluid mt-3">
+        <form method="POST" class="form-inline col-12">
+            <div class="col-12 col-md-6">
+                <img src="/images/products/<%=prod.id%>/<%=prod.image%>" class="rounded mx-auto img-fluid d-block img-thumbnail col-md-8 float-md-left" alt="No Image">
+                <input type="file" id="imageEdit" class="form-control-file mb-3" data-default-file="" data-height="500">
             </div>
-            <div class="col-sm-12 col-md-6">
+            <div class="col-md-6">
                 <% for (let prop in prod) { %>
-                    <div class="form-group">
                         <% if(prop == 'id' || prop == 'image'){ %>
-                            <span class="input-group-text form-text text-muted text-capitalize"><%= `${prop}: ${prod[prop]}` %></span>
-                            <input type="hidden" name="<%= prop %>" value="<%= prod[prop] %>">
+                            <div class="input-group-prepend mb-2">
+                                <label class="input-group-text text-left text-capitalize col-md-4"><%= `${prop}:` %></label>
+                                <input name="<%= prop %>" type="text" readonly class="input-group form-control col-8" placeholder="<%= `${prod[prop]}` %>">
+                            </div>
                         <% } else if(prop != 'id' && prop != 'image' ){ %>
-                            <div class="input-group mb-3 mb-auto ml-auto">
-                                <span class="input-group-text form-text text-muted text-capitalize"><%= `${prop}:` %></span>
-                                <input name="<%= prop %>" type="text" class="form-control" placeholder="<%= `${prod[prop]}` %>">
+                            <div class="input-group-prepend mb-2">
+                                <label class="input-group-text text-capitalize col-md-4"><%= `${prop}:` %></label>
+                                <input name="<%= prop %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod[prop]}` %>">
                             </div>
                         <% }; %>
-                    </div>
                 <% }; %>
-            <div class="form-actions btn-flex mt-3 text-center ">
-                <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-lg col-5">
-                <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-lg col-5">
+            <div class="form-actions form-inline btn-toolbar mt-3 ml-auto text-center ">
+                <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-md-lg m-md-auto col-12 col-md-5 mb-3">
+                <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-md-lg m-md-auto col-md-5">
             </div>
         </div>
         </form>
