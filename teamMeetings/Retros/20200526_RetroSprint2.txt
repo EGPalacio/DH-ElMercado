@@ -1,0 +1,25 @@
+﻿RETRO SPRINT 2
+==============
+
+Reunión 26 de Mayo de 2020
+
+Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 2.
+
+1 - Que hicimos bien:
+    - Comenzamos a tener las reuniones semanales programadas todos los martes.
+    - Organizamos la distribución del trabajo desde el inicio del sprint.
+
+2 - Que hicimos mal:
+    - Comenzamos a programar los distintos controladores sin habernos puesto de acuerdo en la estructura de carpetas para guardar los archivos. 
+      Esto nos llevó a tener que modificar la estructura de carpetas a mitad de camino y tener que cambiar algunas líneas de código de rutas y controladores
+      para atender a los cambios en el tree de archivos de imágenes.
+
+3 - Que tenemos que hacer.
+    - Necesitamos hacer la retro en la primer reunión del sprint, para tener más frescos los puntos detectados en el sprint anterior.
+
+4 - Que es lo que no tenemos que hacer.
+    - Al determinar estructuras de carpetas y ruteos no comenzar a programar sin tener la oportunidad de discutir esas estructuras dentro del equipo.
+
+Martín.
+Leandro.
+Eduardo.
