@@ -20,6 +20,8 @@ productControllers = {
         let index = arrayProductos;
         let pdtoID = req.params.id;
         let productFind = arrayProductos.find(pdto => pdto.id == pdtoID);
+        console.log(productFind);
+        
 
         res.render('detalleProductos', {
             "index":index,
@@ -108,7 +110,7 @@ productControllers = {
         console.log('file saved');
 
         res.redirect(`/products/${req.params.id}`);
-        // router.get(`/detalleProductos/${req.params.id}`, productoControllers.productos);
+        // router.get(`/detalleProductos/${req.params.id}`, detalleProductos);
         },
     delete: (req,res) =>{
         let prodToDelete = req.body.id;
