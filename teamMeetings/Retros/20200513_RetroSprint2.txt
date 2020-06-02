@@ -1,5 +1,5 @@
-RETRO SPRINT 1
-==============
+RETRO SPRINT 2: Revisión del trabajo realizado en el Sprint 1
+=============================================================
 
 Reunión 13 de Mayo de 2020
 
