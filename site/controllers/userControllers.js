@@ -17,7 +17,24 @@ const newUsertId = newId.newUserId;
 let userControllers = {
     login: (req,res) => {
         res.render('login');
-    },
+	},
+
+	loggedIn: (req,res) => {
+/*         let usersLogin;
+		if (users == ""){
+			usersLogin = [];
+		}else{
+			usersLogin = users;
+		}
+
+		for (let i = 0; i < usersLogin.length; i++){
+			if (usersLogin[i].email == req.body.name && bcrypt.compareSync(req.body.password, usersLogin[i].password))
+		}
+
+		res.render("index"); */
+		res.send("Ok");
+	},
+
     register : (req, res) => {
         res.render('register');
     },

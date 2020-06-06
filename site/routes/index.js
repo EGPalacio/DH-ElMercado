@@ -11,6 +11,7 @@ router.get('/', indexControllers.index)
 
 /* GET Login page. */
 router.get('/login', userControllers.login);
+router.post('/login', userControllers.loggedIn);
 
 /* GET Register page. */
 router.get('/register/', userControllers.register);
