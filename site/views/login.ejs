@@ -28,12 +28,22 @@
               log in with Google
             </a>
           </div>
+          <% if (typeof errors != "undefined" ) { %>
+            <p>Hay errores</p>
+            <ul>
+                <% errors.forEach(function(elemento){ %>
+                  <li>
+                    <%= elemento.msg %>
+                  </li>
+                <% }) %>
+            </ul>
+          <% } %>
           <div class="form-box">
         <form action="/login" class="lb-form" method="POST">
-        <input type="text" name="name" placeholder="Ingresá tu usuario / Correo">
+        <input type="text" name="email" placeholder="Ingresá tu Correo">
         <input type="password" name="password" placeholder="Ingresá tu contraseña">
         <button class="btn-registro"> <a href="#"> INGRESAR </a></button>
-        
+
         </form>
     </div>
     </div>

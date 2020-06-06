@@ -1,5 +1,7 @@
 const fs = require('fs');
 const path = require('path');
+const bcrypt = require("bcrypt"); /* Después borrar lo agregué para probar mi parte del código */
+var {check, validationResult, body} = require("express-validator");
 
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
@@ -20,19 +22,16 @@ let userControllers = {
 	},
 
 	loggedIn: (req,res) => {
-/*         let usersLogin;
-		if (users == ""){
-			usersLogin = [];
+		let errors = validationResult(req);
+		if (errors.isEmpty()){
+			res.send("TODO OK")
 		}else{
-			usersLogin = users;
+			res.render("login", {errors: errors.errors});
 		}
+		
+		
+		
 
-		for (let i = 0; i < usersLogin.length; i++){
-			if (usersLogin[i].email == req.body.name && bcrypt.compareSync(req.body.password, usersLogin[i].password))
-		}
-
-		res.render("index"); */
-		res.send("Ok");
 	},
 
     register : (req, res) => {
@@ -44,6 +43,7 @@ let userControllers = {
 		let usuario = {
 			id : newUsertId,
 			...req.body,
+		    password: bcrypt.hashSync(req.body.password, 10),    /* Después borrar lo agregué para probar mi parte del código */
 			avatar : avatar,
 		}
 		//leer el json

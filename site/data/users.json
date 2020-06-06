@@ -31,5 +31,15 @@
   "password_repeat": "13456",
   "category": "1",
   "avatar": "avatar-AryaStark.jpg"
+ },
+ {
+  "id": 5,
+  "firstName": "Leandro",
+  "lastName": "Higa",
+  "email": "lah_797@hotmail.com",
+  "password": "$2b$10$PBfVFNQ9LfGaSG5ySZJF7Oob0hLsrqtLThDxZiZVUiaM4K0hMa54S",
+  "password_repeat": "555",
+  "category": "individuo",
+  "avatar": "avatar-jk.jpg"
  }
 ]
