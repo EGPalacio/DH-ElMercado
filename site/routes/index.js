@@ -7,9 +7,14 @@ var { check, validationResult, body } = require("express-validator");
 
 var upload = require('../middlewares/helperMulter');
 
+// Rutas Huesped =>
 /* GET home page. */
 router.get('/', indexControllers.index)
+    /* GET Cart. */
+router.get('/cart', cartRouter);
 
+
+// Rutas Login =>
 /* GET Login page. */
 router.get('/login', userControllers.login);
 /* Acá está el Login - Session */
@@ -31,15 +36,9 @@ router.get("/check", function(req, res) {
     }
 })
 
-
-
 /* GET Register page. */
 router.get('/register/', userControllers.register);
 router.post('/register/', upload.avatarUpload.any(), userControllers.store);
 
-/* GET Cart. */
-router.get('/cart', cartRouter);
-// router.get('/cart/', cartController.cartStart);
-// router.post('/cart/:id', cartController.cartAdd)
 
 module.exports = router;
