@@ -20,20 +20,34 @@ let userControllers = {
     login: (req,res) => {
         res.render('login');
 	},
-
 	loggedIn: (req,res) => {
 		let errors = validationResult(req);
 		if (errors.isEmpty()){
-			res.send("TODO OK")
+			let usuarioALoguearse;
+
+			for ( let user of users){
+				if (user.email == req.body.email && bcrypt.compareSync(req.body.password, user.password)){
+				   usuarioALoguearse = user;
+				}
+			}
+
+			if (usuarioALoguearse == undefined){
+				return res.render("login", {errors: [{msg: "Credenciales no válidas"}]})
+			}
+                 /* Acá está el session */
+			req.session.usuarioLogueado = usuarioALoguearse;
+
+			     /* Acá está la cookie */
+			if (req.body.recordame != undefined){
+				 res.cookie("recordame", usuarioALoguearse, {maxAge: 60000})
+		  }
+
+			res.send(req.session.usuarioLogueado) /* esto hay que cambiarlo por un redirect al home y que en vez de "login" en el header se lea el "firstName" */
+
 		}else{
 			res.render("login", {errors: errors.errors});
 		}
-		
-		
-		
-
 	},
-
     register : (req, res) => {
         res.render('register');
     },

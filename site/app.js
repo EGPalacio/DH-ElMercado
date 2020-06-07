@@ -9,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var productsRouter = require('./routes/products');
 var session = require("express-session");
+var cookieRecordameMiddleware = require ("./middlewares/cookieLoginMiddleware");
 
 var app = express();
 
@@ -23,6 +24,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 app.use(session({secret:"Es un secreto"}));
+app.use(cookieRecordameMiddleware);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
