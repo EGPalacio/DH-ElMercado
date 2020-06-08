@@ -52,12 +52,20 @@ let userControllers = {
         res.render('register');
     },
     store : (req, res) => {
-		let avatar = req.files[0].filename;
+		let errors = validationResult(req);
+		if (errors.isEmpty()){
+		let avatar
+		if (req.files[0] == undefined ) {
+			avatar ='';
+		} else {
+			avatar = req.files[0].filename;
+		};
+		
 		// Do the magic
 		let usuario = {
 			id : newUsertId,
 			...req.body,
-		    password: bcrypt.hashSync(req.body.password, 10),    /* Después borrar lo agregué para probar mi parte del código */
+		    password: bcrypt.hashSync(req.body.password, 10),  
 			avatar : avatar,
 		}
 		//leer el json
@@ -80,7 +88,10 @@ let userControllers = {
 
 		res.redirect('/login');
 
-
+		}
+		else{
+			res.render("register", {errors: errors.errors});
+		}
         
     }
 };

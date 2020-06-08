@@ -41,5 +41,15 @@
   "password_repeat": "555",
   "category": "individuo",
   "avatar": "avatar-jk.jpg"
+ },
+ {
+  "id": 6,
+  "firstName": "Hodor",
+  "lastName": "Hodor-Hodor-Hodor",
+  "email": "Hodor@got.com",
+  "password": "$2b$10$C81/beI4gN7wY.UDJxiqbOxBCRDxoTzJFWMUFjK/d6r8JWsGjaeQ.",
+  "password_repeat": "123456",
+  "category": "individuo",
+  "avatar": "avatar-hodor.jpg"
  }
 ]
