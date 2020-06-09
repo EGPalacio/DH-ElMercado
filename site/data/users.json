@@ -51,5 +51,15 @@
   "password_repeat": "123456",
   "category": "individuo",
   "avatar": "avatar-hodor.jpg"
+ },
+ {
+  "id": 7,
+  "firstName": "Tywin ",
+  "lastName": "Lannister",
+  "email": "tywin@lannister.com",
+  "password": "$2b$10$xHJ51ouyDL/8VGRjFFXk0.Nex6WnY8UiRTke2ZTlUdZVgwAJ1xIFq",
+  "password_repeat": "",
+  "category": "empresa",
+  "avatar": "avatar-260px-TywinLa.png"
  }
 ]

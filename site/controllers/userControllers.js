@@ -52,48 +52,60 @@ let userControllers = {
         res.render('register');
     },
     store : (req, res) => {
-		let errors = validationResult(req);
-		if (errors.isEmpty()){
-		let avatar
-		if (req.files[0] == undefined ) {
-			avatar ='';
-		} else {
-			avatar = req.files[0].filename;
-		};
 		
-		// Do the magic
-		let usuario = {
+		console.log(req.files[0]);
+
+		let errors = validationResult(req);
+		
+		
+		
+		
+		
+		if (errors.isEmpty())
+		
+		{
+
+			let avatar
+
+			if (req.files[0] == undefined ) {
+			avatar ='';
+			} else {
+			avatar = req.files[0].filename;
+			};
+		
+			// Do the magic
+			let usuario = {
 			id : newUsertId,
 			...req.body,
-		    password: bcrypt.hashSync(req.body.password, 10),  
+			password: bcrypt.hashSync(req.body.password, 10),
+			password_repeat: "",  
 			avatar : avatar,
-		}
-		//leer el json
-		//let rutaJson = path.join(__dirname, '../data/accountsDataBase.json');
-		let archivoUsuario = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
+			}
+			//leer el json
+			//let rutaJson = path.join(__dirname, '../data/accountsDataBase.json');
+			let archivoUsuario = fs.readFileSync('./data/users.json', {encoding: 'utf-8'});
 
-		let usuarios;
+			let usuarios;
 
-		if(archivoUsuario == "") {
+			if(archivoUsuario == "") {
 			usuarios = [ ];
-		} else {
+			} else {
 			usuarios = JSON.parse(archivoUsuario);
-		}
+			}
 		
-		usuarios.push(usuario);
+			usuarios.push(usuario);
 
 
-		usuariosJSON = JSON.stringify(usuarios, null, ' ');
-		fs.writeFileSync('./data/users.json', usuariosJSON);
+			usuariosJSON = JSON.stringify(usuarios, null, ' ');
+			fs.writeFileSync('./data/users.json', usuariosJSON);
 
-		res.redirect('/login');
+			res.redirect('/login');
 
-		}
-		else{
+		} else{
 			res.render("register", {errors: errors.errors});
 		}
         
-    }
+    },
 };
 
 module.exports = userControllers;
