@@ -29,16 +29,19 @@
             </a>
           </div>
           <div class="form-box">
-            <% if (typeof errors != "undefined" ) { %>
+            <div class="errores">
+              <% if (typeof errors != "undefined" ) { %>
            
-              <ul>
-                  <% errors.forEach(function(elemento){ %>
-                    <li>
-                      <%= elemento.msg %>
-                    </li>
-                  <% }) %>
-              </ul>
-            <% } %>
+                <ul>
+                    <% errors.forEach(function(elemento){ %>
+                      <li>
+                        <%= elemento.msg %>
+                      </li>
+                    <% }) %>
+                </ul>
+              <% } %>
+            </div>
+           
         <form action="/register" class="lb-form" method="POST" enctype="multipart/form-data">
         <input type="text" name="firstName" placeholder="Ingresá tu nombre">
         <input type="text" name="lastName" placeholder="Ingresá tu apellido">

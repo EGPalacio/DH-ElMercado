@@ -108,6 +108,7 @@ body {
     font-weight: 200;
     border-radius: 10px;
     background: #f6f6f6;
+    border: 0px;
   }
   .lb-form input:focus {
     border-color: #358efb;
@@ -147,4 +148,20 @@ body {
   border-radius: 6px;
   border: 2px solid #114bdf69;
 }
-  
+
+.errores {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+
+}
+
+.errores ul {
+  background-color: #ff0707b9;
+  padding: 30px;
+  border-radius: 15px;
+  list-style: none;
+  line-height: 1.5;
+  color: #f6f6f6;
+}

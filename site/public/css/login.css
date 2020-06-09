@@ -108,6 +108,7 @@ body {
     font-weight: 200;
     border-radius: 10px;
     background: #f6f6f6;
+    border: 0px;
   }
   .lb-form input:focus {
     border-color: #358efb;
