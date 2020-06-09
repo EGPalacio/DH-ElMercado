@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+let vistaRegistro = userControllers.register;
+
 
 let storeValidation = 
     [
@@ -31,7 +33,10 @@ let store = userControllers.store;
 
 
 
+
+
 const userRouter = {
+  vistaRegistro,
   storeValidation,
   perfil,
   store,

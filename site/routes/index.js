@@ -44,9 +44,8 @@ router.get("/check", function(req, res) {
 
 /* GET Register page. */
 
-router.get('/register/', userControllers.register);
-
-router.post('/register',   userRouter.perfil, userRouter.storeValidation, userRouter.store);
+router.get('/register/', userRouter.vistaRegistro);
+router.post('/register', userRouter.perfil, userRouter.storeValidation, userRouter.store);
 
 
 module.exports = router;
