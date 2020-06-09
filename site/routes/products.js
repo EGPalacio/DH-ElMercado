@@ -13,8 +13,8 @@ const upload = require('../middlewares/helperMulter');
 router.get('/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
-router.get('/add', productControllers.add);
-router.post('/add', upload.productUpload , productControllers.store);
+router.get('/create', productControllers.add);
+router.post('/create', upload.productUpload , productControllers.store);
 
 
 router.get('/:id/edit', productControllers.edit);
