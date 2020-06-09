@@ -34,13 +34,11 @@ let store = userControllers.store;
 
 
 
-
 const userRouter = {
   vistaRegistro,
-  storeValidation,
   perfil,
+  storeValidation,
   store,
- 
 };
 
 module.exports = userRouter;
