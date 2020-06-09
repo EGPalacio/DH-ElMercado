@@ -61,5 +61,15 @@
   "password_repeat": "",
   "category": "empresa",
   "avatar": "avatar-260px-TywinLa.png"
+ },
+ {
+  "id": 8,
+  "firstName": "Melisandre",
+  "lastName": " Asshai",
+  "email": "Melisandre@got.com",
+  "password": "$2b$10$gi/dpyY1GDK/gGM17TWqhO.3C3J9w1CDNkdFfUS9.kUwKmYabJ0cK",
+  "password_repeat": "",
+  "category": "individuo",
+  "avatar": "avatar-110816.jpg"
  }
 ]

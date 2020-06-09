@@ -5,7 +5,7 @@ const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 
 const newUserId = users[users.length - 1].id+1;
-const userIdPath = path.join(__dirname, '../public/images/avatars/' + newUserId)
+const userIdPath = path.join(__dirname, '../public/images/users/' + newUserId)
 
 const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
 const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));

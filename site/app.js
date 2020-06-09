@@ -27,7 +27,7 @@ app.use(session({secret:"Es un secreto"}));
 app.use(cookieRecordameMiddleware);
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//app.use('/users', usersRouter);
 app.use('/products', productsRouter);
 
 
