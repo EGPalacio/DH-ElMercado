@@ -4,6 +4,7 @@ var indexControllers = require('../controllers/indexControllers')
 var userControllers = require('../controllers/userControllers')
 var cartRouter = require('./cart')
 var userRouter = require('./users');
+const gestUserCheck = require('../middlewares/guestUserCheck');
 
 
 var { check, validationResult, body } = require("express-validator");
@@ -15,7 +16,7 @@ var { check, validationResult, body } = require("express-validator");
 /* GET home page. */
 router.get('/', indexControllers.index)
     /* GET Cart. */
-router.get('/cart', cartRouter);
+router.get('/cart', gestUserCheck, cartRouter);
 
 
 // Rutas Login =>
