@@ -16,61 +16,68 @@ const newProductId = newId.newProductId;
 
 
 productControllers = {
-    detalleProductos: (req,res) => {
+    detalleProductos: (req, res) => {
         let index = arrayProductos;
         let pdtoID = req.params.id;
         let productFind = arrayProductos.find(pdto => pdto.id == pdtoID);
         console.log(productFind);
-        
+
+        if (req.session.usuarioLogueado) {
+            var userType = req.session.usuarioLogueado.category
+        } else {
+            var userType = 'none'
+        }
 
         res.render('detalleProductos', {
-            "index":index,
+            "index": index,
             productFind,
-			thousandGenerator: toThousand
+            thousandGenerator: toThousand,
+            userType: userType
+
         });
     },
-    todosLosProductos: (req,res) => {
+    todosLosProductos: (req, res) => {
         let index = arrayProductos;
-        res.render('products',{
-            "index":index,
+        res.render('products', {
+            "index": index,
             pdtosInSale,
             pdtosVisited,
             thousandGenerator: toThousand,
         });
     },
-    productos: (req,res) => {
+    productos: (req, res) => {
         let index = arrayProductos;
-        res.render('detalleProductos', {"index":index});
+        res.render('detalleProductos', { "index": index });
     },
-    add:  (req,res) => {
+    add: (req, res) => {
 
-        
+
         res.render('addProduct');
     },
     store: (req, res) => {
         let portada = req.files.imgPortada[0].filename;
-		req.body.price = Number(req.body.price);
-		req.body.discount = Number(req.body.discount);
-		let newProduct = {
-			id: newProductId,
+        req.body.price = Number(req.body.price);
+        req.body.discount = Number(req.body.discount);
+        let newProduct = {
+            id: newProductId,
             ...req.body,
-            
-            image : portada,
-            
-            
-			
+
+            image: portada,
+
+
+
         };
-        
-		let finalProducts = [...products, newProduct];
+
+        let finalProducts = [...products, newProduct];
         fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
-        
+
         console.log(req.files)
         res.redirect('/');
     },
-    edit: (req,res) =>{
+    edit: (req, res) => {
         let prodToEdit = req.params.id;
         products.forEach(item => {
-            if(item.id == prodToEdit){
+            if (item.id == prodToEdit) {
                 prodToEdit = item;
             };
         });
@@ -79,12 +86,12 @@ productControllers = {
             prod: prodToEdit,
         });
     },
-    editStorage: (req,res) => {
+    editStorage: (req, res) => {
         let editFormData = {}
         for (item in req.body) {
-            if(req.body[item] != "" && isNaN(Number(req.body[item])) ){
+            if (req.body[item] != "" && isNaN(Number(req.body[item]))) {
                 editFormData[item] = req.body[item];
-            } else if(req.body[item] != "" ) {
+            } else if (req.body[item] != "") {
                 editFormData[item] = Number(req.body[item]);
             };
         };
@@ -94,10 +101,10 @@ productControllers = {
         let prodToEdit = req.params.id;
         let prodEditArr = [];
         products.forEach(item => {
-            if(item.id == prodToEdit){
+            if (item.id == prodToEdit) {
                 console.log(`to edit`);
                 console.log(item);
-                prodEdit = {...item, ...editFormData};
+                prodEdit = {...item, ...editFormData };
                 prodEditArr.push(prodEdit)
                 console.log(`result`);
                 console.log(prodEdit);
@@ -111,12 +118,12 @@ productControllers = {
 
         res.redirect(`/products/${req.params.id}`);
         // router.get(`/detalleProductos/${req.params.id}`, detalleProductos);
-        },
-    delete: (req,res) =>{
+    },
+    delete: (req, res) => {
         let prodToDelete = req.body.id;
 
         products.forEach(item => {
-            if(item.id == prodToDelete){
+            if (item.id == prodToDelete) {
                 prodToDelete = item;
                 console.log(`Objeto a eliminar: `);
                 console.log(prodToDelete);
@@ -130,7 +137,7 @@ productControllers = {
         console.log(prodUpdated);
         console.log(`resultado a guardar: `);
         console.log(products);
-        
+
         fs.writeFileSync(productsFilePath, JSON.stringify(products, null, '\t'));
         console.log('file saved');
 
