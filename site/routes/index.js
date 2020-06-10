@@ -18,8 +18,6 @@ router.get('/', indexControllers.index)
     /* GET Cart. */
 router.get('/cart', gestUserCheck, cartRouter);
 
-
-// Rutas Login =>
 /* GET Login page. */
 router.get('/login', userControllers.login);
 /* Acá está el Login - Session */
