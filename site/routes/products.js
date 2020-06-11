@@ -13,11 +13,11 @@ const gestUserCheck = require('../middlewares/guestUserCheck');
 router.get('/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
-router.get('/create', gestUserCheck, productControllers.add);
+router.get('/create', gestUserCheck.userCheck, productControllers.add);
 router.post('/create', upload.productUpload, productControllers.store);
 
 
-router.get('/:id/edit', gestUserCheck, productControllers.edit);
+router.get('/:id/edit', gestUserCheck.userCheck, productControllers.edit);
 router.put('/:id/edit', productControllers.editStorage);
 router.delete('/:id/delete', productControllers.delete);
 

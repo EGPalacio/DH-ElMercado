@@ -15,10 +15,10 @@ var { check, validationResult, body } = require("express-validator");
 /* GET home page. */
 router.get('/', indexControllers.index)
     /* GET Cart. */
-router.get('/cart', gestUserCheck, cartRouter);
+router.get('/cart', gestUserCheck.userCheck, cartRouter);
 
 /* GET Login page. */
-router.get('/login', userControllers.login);
+router.get('/login', gestUserCheck.guestCheck, userControllers.login);
 /* GET Profile page. */
 router.get('/profile', profileRouter);
 /* Acá está el Login - Session */

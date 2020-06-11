@@ -1,19 +1,27 @@
 <%- include('partials/head.ejs')%>
     </head>
 
+    <!-- pendientes:
+        - eliminar campos password
+        - incorporar imagen profile
+        - dividir página en dos segmentos 
+        - agregar botón para editar profile, cambiar de usuario o checkout.
+    -->
+
     <body>
         <%- include('partials/header-logo.ejs')%>
             <%- include('partials/header-navbar.ejs')%>
+                <div class="container">
+                    <% for (let userItem in user) { %>
+                        <div class="input-group-prepend mt-2">
+                            <label class="input-group-text text-left text-capitalize col-md-4"><%= `${userItem}:` %></label>
+                            <input name="<%= userItem %>" type="text" readonly class="input-group form-control col-8" placeholder="<%= `${user[userItem]}` %>">
+                        </div>
+                        <% } %>
+                </div>
 
-                <% for (let userItem in user) { %>
-                    <div class="input-group-prepend mb-2">
-                        <label class="input-group-text text-left text-capitalize col-md-4"><%= `${userItem}:` %></label>
-                        <input name="<%= userItem %>" type="text" readonly class="input-group form-control col-8" placeholder="<%= `${user[userItem]}` %>">
-                    </div>
-                    <% } %>
+                <body>
 
-                        <body>
+                </body>
 
-                        </body>
-
-                        </html>
+                </html>
