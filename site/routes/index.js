@@ -4,12 +4,11 @@ var indexControllers = require('../controllers/indexControllers')
 var userControllers = require('../controllers/userControllers')
 var cartRouter = require('./cart')
 var userRouter = require('./users');
+const profileRouter = require('./profile')
 const gestUserCheck = require('../middlewares/guestUserCheck');
 
 
 var { check, validationResult, body } = require("express-validator");
-
-
 
 
 // Rutas Huesped =>
@@ -20,6 +19,8 @@ router.get('/cart', gestUserCheck, cartRouter);
 
 /* GET Login page. */
 router.get('/login', userControllers.login);
+/* GET Profile page. */
+router.get('/profile', profileRouter);
 /* Acá está el Login - Session */
 router.post('/login', [
     check("email").isEmail().withMessage("Email inválido"),
