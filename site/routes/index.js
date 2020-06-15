@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var indexControllers = require('../controllers/indexControllers')
+const productsRouter = require('../routes/products')
 var userControllers = require('../controllers/userControllers')
 var cartRouter = require('./cart')
 var userRouter = require('./users');
@@ -11,12 +12,17 @@ const gestUserCheck = require('../middlewares/guestUserCheck');
 var { check, validationResult, body } = require("express-validator");
 
 
-// Rutas Huesped =>
+// Rutas no login required =>
 /* GET home page. */
-router.get('/', indexControllers.index)
-    /* GET Cart. */
-router.get('/cart', gestUserCheck.userCheck, cartRouter);
+router.get('/', indexControllers.index);
+/* GET home page. */
+router.use('/products', productsRouter);
 
+// Rutas login required =>
+/* GET Cart. */
+router.use('/cart', gestUserCheck.userCheck, cartRouter);
+
+// Rutas Huesped =>
 /* GET Login page. */
 router.get('/login', gestUserCheck.guestCheck, userControllers.login);
 /* GET Profile page. */
