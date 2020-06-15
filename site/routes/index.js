@@ -1,32 +1,27 @@
 var express = require('express');
 var router = express.Router();
 var indexControllers = require('../controllers/indexControllers')
-const productsRouter = require('../routes/products')
 var userControllers = require('../controllers/userControllers')
-var cartRouter = require('./cart')
 var userRouter = require('./users');
+
+//Modularizadas
+const productsRouter = require('../routes/products')
+const cartRouter = require('./cart')
 const profileRouter = require('./profile')
 const gestUserCheck = require('../middlewares/guestUserCheck');
 
-
 var { check, validationResult, body } = require("express-validator");
 
-
-// Rutas no login required =>
 /* GET home page. */
 router.get('/', indexControllers.index);
-/* GET home page. */
-router.use('/products', productsRouter);
 
-// Rutas login required =>
-/* GET Cart. */
-router.use('/cart', gestUserCheck.userCheck, cartRouter);
+/* rutas modularizadas */
+router.use(productsRouter).use(cartRouter).use(profileRouter);
 
 // Rutas Huesped =>
 /* GET Login page. */
 router.get('/login', gestUserCheck.guestCheck, userControllers.login);
-/* GET Profile page. */
-router.get('/profile', profileRouter);
+
 /* Acá está el Login - Session */
 router.post('/login', [
     check("email").isEmail().withMessage("Email inválido"),
@@ -45,8 +40,6 @@ router.get("/check", function(req, res) {
         res.send("No estás logueado");
     }
 })
-
-
 
 /* GET Register page. */
 

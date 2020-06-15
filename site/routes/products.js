@@ -10,19 +10,19 @@ const gestUserCheck = require('../middlewares/guestUserCheck');
 /* GET home page. */
 
 //router.get('/', productControllers.index)
-router.get('/detail/:id/:category', productControllers.productos)
+router.get('/products/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
-router.get('/create', gestUserCheck.userCheck, productControllers.add);
-router.post('/create', upload.productUpload, productControllers.store);
+router.get('/products/create', gestUserCheck.userCheck, productControllers.add);
+router.post('/products/create', upload.productUpload, productControllers.store);
 
 
-router.get('/:id/edit', gestUserCheck.userCheck, productControllers.edit);
-router.put('/:id/edit', productControllers.editStorage);
-router.delete('/:id/delete', productControllers.delete);
+router.get('/products/:id/edit', gestUserCheck.userCheck, productControllers.edit);
+router.put('/products/:id/edit', productControllers.editStorage);
+router.delete('/products/:id/delete', productControllers.delete);
 
-router.get('/', productControllers.todosLosProductos);
-router.get('/:id', productControllers.detalleProductos);
+router.get('/products/', productControllers.todosLosProductos);
+router.get('/products/:id', productControllers.detalleProductos);
 
 
 module.exports = router;
