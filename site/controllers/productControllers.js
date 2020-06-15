@@ -2,13 +2,15 @@ const fs = require('fs');
 const path = require('path');
 var express = require('express');
 var router = express.Router();
+const productJson = require('../middlewares/jsonRead')
+
 let arrayProductos = require('../articulosJS');
 const pdtosInSale = arrayProductos.filter(pdto => pdto.category == 'in-sale');
 const pdtosVisited = arrayProductos.filter(pdto => pdto.category == 'visited');
 const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
-const productsFilePath = path.join(__dirname, '../data/productsDataBase.json');
-const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
+const productsFilePath = productJson.productsFilePath
+const products = productJson.products
 
 const newId = require('../middlewares/newId');
 
@@ -76,6 +78,7 @@ productControllers = {
     },
     edit: (req, res) => {
         let prodToEdit = req.params.id;
+        let products = productJson.products;
         products.forEach(item => {
             if (item.id == prodToEdit) {
                 prodToEdit = item;
