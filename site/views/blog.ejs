@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<link rel="stylesheet" href="/css/blog.css">
+	<!-- Head section -->
+	<%- include('partial/head.ejs')%>
+    <!-- Head section end -->
+ </head>
+<body>
+	<!-- Page Preloder -->
+	<div id="preloder">
+		<div class="loader"></div>
+	</div>
+
+    <!-- Header section -->
+    <%- include('partial/header.ejs')%>
+    <!-- Header section end -->
+    
+
+
+
+    <div class="container">
+        <br><br><h4>Recorrido realizado</h4>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="main-timeline">
+                    <a href="#" class="timeline">
+                        <div class="timeline-icon"><i class="fa fa-rocket"></i></div>
+                        <div class="timeline-content">
+                            <h3 class="title">SPRINT 1</h3>
+                            <p class="description">
+                                El primer desafio nos requirio trabajo en equipo, conocernos, y
+                                sobre todas las cosas, creatividad, desde darle nombre a este proyecto,
+                                hasta generar la identidad visual, y con el camino recorrido aprendimos  
+                                lo importante de dedicarle tiempo a ORGANIZAR el proyecto... <br><br>
+                                ★ URL del repositorio con todos los colaboradores agregados.<br>
+★ Archivo README.md con<br>
+○ Temática del sitio y público objetivo<br>
+○ Listado de al menos 5 referentes<br>
+★ Wireframe de las siguientes páginas<br>
+○ Home<br>
+○ Detalle de producto<br>
+○ Carrito de compras<br>
+○ Formulario de registro<br>
+○ Formulario de carga de producto (para el administrador)<br>
+★ Opcional: Boceto o diseño gráfico del sitio (logo, colores, tipografías, etc)<br>
+
+                                <br>
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="timeline">
+                        <div class="timeline-icon"><i class="fab fa-html5"></i></div>
+                        <div class="timeline-content">
+                            <h3 class="title">SPRINT 2</h3>
+                            <p class="description">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate ducimus officiis quod! Aperiam eveniet nam nostrum odit quasi ullam voluptatum.
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="timeline">
+                        <div class="timeline-icon"><i class="fa fa-briefcase"></i></div>
+                        <div class="timeline-content">
+                            <h3 class="title">SPRINT 3</h3>
+                            <p class="description">
+                                De la misma manera que usamos wireframes y bocetos para definir el sitio, corregirlo y
+determinar si es viable, vamos a estar haciendo lo mismo con los datos y la funcionalidad.
+                                <br><br>
+                                ★ Archivo retro.md con el resultado de la retrospectiva<br>
+                                ★ (Opcional) Archivo daily.md con sus opiniones sobre las dailies / weeklies<br>
+                                ★ Tablero de trabajo actualizado<br>
+                                ★ Archivos products.json y users.json con datos de productos y usuarios<br>
+                                ★ Aplicación Node + Express + EJS con:<br>
+                                ○ Home<br>
+                                ○ Listado de productos<br>
+                                ○ Detalle del producto<br>
+                                ○ Formulario de carga y edición de productos<br>
+                                ○ Formulario de registro y login<br>
+                                ★ Funcionalidad de listado, detalle, alta, modificación y baja de productos.<br>
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="timeline">
+                        <div class="timeline-icon"><i class="fas fa-user-secret"></i></div>
+                        <div class="timeline-content">
+                            <h3 class="title">SPRINT 4</h3>
+                            <p class="description">
+                                En programación siempre buscamos no repetirnos, así que cuando una tarea la estamos
+haciendo muchas veces en diferentes partes de nuestro código, la abstraemos. Es decir que
+aislamos ese comportamiento en un bloque de código reutilizable.<br><br>
+                                ★ Archivo retro.md con el resultado de la retrospectiva<br>
+                                ★ (Opcional) Archivo daily.md con sus opiniones sobre las dailies / weeklies<br>
+                                ★ Tablero de trabajo actualizado<br>
+                                ★ Formulario de registro con:<br>
+                                ○ Los campos mínimos mencionados en el sprint anterior<br>
+                                ○ Subida de una imagen de perfil<br>
+                                ○ Guardado en JSON con encriptación de contraseña<br>
+                                ★ Formulario de login con:<br>
+                                ○ Campos de email y password<br>
+                                ○ (Opcional) Función de recordar al usuario<br>
+                                ★ Rutas de huéspedes y usuarios<br>
+                                ○ Las de huéspedes deberán redireccionar al perfil si el usuario está logeado<br>
+                                ○ Las de usuarios deberán redireccionar al login si el usuario no está logeado<br>
+                            
+                            </p>
+                        </div>
+                    </a>
+                    <a href="#" class="timeline">
+                        <div class="timeline-icon"><i class="fas fa-database"></i></div>
+                        <div class="timeline-content">
+                            <h3 class="title">SPRINT 5</h3>
+                            <p class="description">
+                                Pensar, diseñar, implementar una base de datos no es sencillo pero un buen diseño inicial va a
+asegurar tu éxito en el tiempo. Además implementarlo en Sequelize nos permite corrernos un
+poco de SQL y aprovechar todas las prestaciones de un buen ORM.<br><br>
+                                ★ Archivo retro.md con el resultado de la retrospectiva<br>
+                                ★ (Opcional) Archivo daily.md con sus opiniones sobre las dailies / weeklies<br>
+                                ★ Tablero de trabajo actualizado<br>
+                                ★ Diagrama de base de datos<br>
+                                ★ Script de creación de estructura de base de datos con:<br>
+                                ○ Creación de la base de datos y de todas sus tablas<br>
+                                ○ Tipos de datos de los campos y sus restricciones<br>
+                                ○ Relaciones entre las diferentes tablas<br>
+                                ★ (Opcional) Script de población de base de datos para:<br>
+                                ○ Tabla de usuarios<br>
+                                ○ Tabla de productos<br>
+                                ○ Tablas secundarias (categorías, marcas, colores, talles, etc)<br>
+                                ○ (Opcional) Tabla de carrito de compras y productos de carritos de compras<br>
+                                ★ Creación de carpeta Sequelize con:<br>
+                                ○ Archivos de configuración<br>
+                                ○ Modelos con sus relaciones<br>
+                                ★ CRUD<br>
+                                ○ De productos<br>
+                                ○ De usuarios<br>
+                                ○ (Opcional) De tablas secundarias<br>
+                            </p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+	<!-- Footer section -->
+	<%- include('partial/footer.ejs')%>
+	<!-- Footer section end -->
+
+
+
+	<!--====== Javascripts & Jquery ======-->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.slicknav.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+	<script src="js/jquery.nicescroll.min.js"></script>
+	<script src="js/jquery.zoom.min.js"></script>
+	<script src="js/jquery-ui.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>

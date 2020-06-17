@@ -1,13 +1,23 @@
-<%- include('partials/head.ejs')%>
-    </head>
-
-    <!-- pendientes:
+  
+    <!DOCTYPE html>
+    <html lang="en">
+        <!-- pendientes:
         - agregar botón para editar profile, cambiar de usuario o checkout.
     -->
-
-    <body>
-        <%- include('partials/header-logo.ejs')%>
-            <%- include('partials/header-navbar.ejs')%>
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title> Cart</title>
+        
+      
+         <%- include('partials/head.ejs')%>
+    
+        </head>
+    
+        <body>
+           
+            <%- include('partials/header.ejs')%>
                 <div class="container form-inline">
                     <div class="col-12 col-md-6 mt-2">
                         <img src="/images/users/<%=user.id%>/<%=user.avatar%>" class="rounded mx-auto img-fluid d-block img-thumbnail col-md-8 float-md-left" alt="No Image">

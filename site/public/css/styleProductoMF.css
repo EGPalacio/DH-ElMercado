@@ -10,18 +10,7 @@
                          "segundaColumna"
                          "tercerColumna";
 }
-ul{
-    list-style-type: none;
-}
-ul > li:before{
-    content: "–"; /* en dash here */
-    position: absolute;
-    margin-left: -1.1em;
-    color: grey;
-}
-ul li{
-    color: grey;
-}
+
 .primerColumna{
     grid-area: primerColumna;
     width: 100%;

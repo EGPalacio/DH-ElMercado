@@ -1,9 +1,22 @@
-<%- include('partials/head.ejs')%>
+<!DOCTYPE html>
+<html lang="en">
+    <!-- Redirect, cambiar del home para el detalle de productos, está con redirect pero no refresca. está mal.
+    Cambiar la ruta para buscar y guardar las imagenes
+    configurar la edición de files con multer -->
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Cart</title>
+    
+  
+     <%- include('partials/head.ejs')%>
+
     </head>
 
     <body>
-        <%- include('partials/header-logo.ejs')%>
-            <%- include('partials/header-navbar.ejs')%>
+       
+        <%- include('partials/header.ejs')%>
                 <section id="cartProducts" class="container col-12 p-0 mt-2">
                     <div id="cartProducts" class="" style="background-color: #e3f2fd;">
                         <ul>

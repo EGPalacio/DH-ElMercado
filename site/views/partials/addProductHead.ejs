@@ -1,0 +1,103 @@
+<meta charset="UTF-8">
+<title>Nuevo Producto</title>
+	<meta name="description" content=" El Mercado| Conectando Personas">
+	<meta name="keywords" content="ElMercado, eCommerce, digitalHouse, html">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->
+	<link href="/images/img/favicon.ico" rel="shortcut icon"/>
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="/css/cart/bootstrap.min.css"/>
+	<link rel="stylesheet" href="/css/cart/font-awesome.min.css"/>
+	<link rel="stylesheet" href="/css/cart/flaticon.css"/>
+	<link rel="stylesheet" href="/css/cart/slicknav.min.css"/>
+	<link rel="stylesheet" href="/css/cart/jquery-ui.min.css"/>
+	<link rel="stylesheet" href="/css/cart/owl.carousel.min.css"/>
+	<link rel="stylesheet" href="/css/cart/animate.css"/>
+	<link rel="stylesheet" href="/css/cart/style.css"/>
+
+
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,600;0,700;1,200&display=swap" rel="stylesheet"/>
+    <script
+      src="https://kit.fontawesome.com/4fa9f35e5d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="/css/addproduct.css" />
+    
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(document).on("change", ".btn-file :file", function () {
+          var input = $(this),
+            label = input.val().replace(/\\/g, "/").replace(/.*\//, "");
+          input.trigger("fileselect", [label]);
+        });
+
+        $(".btn-file :file").on("fileselect", function (event, label) {
+          var input = $(this).parents(".input-group").find(":text"),
+            log = label;
+
+          if (input.length) {
+            input.val(log);
+          } else {
+            if (log) alert(log);
+          }
+        });
+        function readURL(input) {
+          if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              $("#img-upload").attr("src", e.target.result);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+          }
+        }
+
+        $("#imgPortada").change(function () {
+          readURL(this);
+        });
+      });
+    </script>
+    <script>
+      $(function () {
+        // Multiple images preview in browser
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+          if (input.files) {
+            var filesAmount = input.files.length;
+
+            for (i = 0; i < filesAmount; i++) {
+              var reader = new FileReader();
+
+              reader.onload = function (event) {
+                $($.parseHTML("<img>"))
+                  .attr("src", event.target.result)
+                  .appendTo(placeToInsertImagePreview);
+              };
+
+              reader.readAsDataURL(input.files[i]);
+            }
+          }
+        };
+
+        $("#img-products").on("change", function () {
+          imagesPreview(this, "div.gallery");
+        });
+      });
+    </script>

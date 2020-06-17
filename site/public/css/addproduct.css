@@ -7,6 +7,7 @@ body {
   background-color: #effbff;
   font-family: "Montserrat", sans-serif;
 }
+/*
 .headerNewProduct {
   position: relative;
   display: flex;
@@ -14,19 +15,14 @@ body {
   align-items: center;
   width: 100%;
 }
-header {
+ header {
   position: fixed;
   height: 120px;
   background-color: #567ee4;
   z-index: 99;
-}
+} */
 
-.logo {
-  padding: 10px;
-  margin-left: 20px;
-  position: relative;
-  width: 120px;
-}
+
 .user-nav {
   display: flex;
   flex-wrap: wrap;
@@ -53,9 +49,6 @@ i.far.fa-user {
   color: #fff;
 }
 
-.logo img {
-  width: 100%;
-}
 
 .new-product {
   z-index: 1;
@@ -100,7 +93,7 @@ i.far.fa-user {
 }
 
 .product-detail {
-  
+  margin-top: 25px;
   
   padding-bottom: 40px;
 }
