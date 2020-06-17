@@ -14,3 +14,6 @@ Listado de 5 referentes:
 Tablero de trabajo:
 
 https://trello.com/b/CLcabTD8/proyecto-integrador
+
+Blog:
+Dentro del proyecto agregamos una seccion para llevar un registro del camino recorrido.
