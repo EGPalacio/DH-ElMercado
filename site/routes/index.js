@@ -14,6 +14,7 @@ var { check, validationResult, body } = require("express-validator");
 
 /* GET home page. */
 router.get('/', indexControllers.index);
+router.get('/blog', indexControllers.blog);
 
 /* rutas modularizadas */
 router.use(productsRouter).use(cartRouter).use(profileRouter);
