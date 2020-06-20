@@ -2,7 +2,7 @@
     "development": {
         "username": "team4",
         "password": "team4",
-        "database": "siteTeam4",
+        "database": "site_team4",
         "host": "127.0.0.1",
         "dialect": "mysql",
         "operatorsAliases": false
