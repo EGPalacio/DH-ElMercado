@@ -27,3 +27,9 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 
 > npx nodemon start
 http://localhost:3000/
+
+Bases de Datos:
+==============
+DB: siteTeam4
+User: team4
+Password: team4
