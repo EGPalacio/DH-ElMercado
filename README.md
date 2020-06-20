@@ -17,3 +17,13 @@ https://trello.com/b/CLcabTD8/proyecto-integrador
 
 Blog:
 Dentro del proyecto agregamos una seccion para llevar un registro del camino recorrido.
+
+PROCESO PARA INSTALACIÓN DEL PROYECTO:
+======================================
+
+> git clone https://github.com/0220CBFSNCN01ARND/Nordelta-Team-4.git
+> cd Nordelta-Team-4\site
+> npm install
+
+> npx nodemon start
+http://localhost:3000/
