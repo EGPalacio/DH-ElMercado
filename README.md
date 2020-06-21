@@ -21,10 +21,21 @@ Dentro del proyecto agregamos una seccion para llevar un registro del camino rec
 PROCESO PARA INSTALACIÓN DEL PROYECTO:
 ======================================
 
+1) Clonar el proyecto e instalar los paquetes
 > git clone https://github.com/0220CBFSNCN01ARND/Nordelta-Team-4.git
 > cd Nordelta-Team-4\site
 > npm install
 
+2) Crear el schema en SQL usando MySQL Workbrench
+Nombre del schema: site_team4
+User: team4
+Pass: team4
+
+3) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
+> cd server\dbInstall
+> node productCreate.js
+
+4) iniciar el sitio con nodemon start
 > npx nodemon start
 http://localhost:3000/
 

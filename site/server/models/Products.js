@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(1000)
         },
         price: {
-            type: DataTypes.DECIMAL(10, 2).ZEROFILL
+            type: DataTypes.DECIMAL
         },
         image: {
             type: DataTypes.STRING(200)
