@@ -1,25 +1,29 @@
 [
  {
   "id": 1,
-  "nombre": "Jon",
-  "apellido": "Snow",
+  "firstName": "Jon",
+  "lastName": "Snow",
   "email": "jon@snow.com",
-  "password": "1324"
+  "password": "1324",
+  "category": 1,
+  "avatar": "avatar.jpg"
  },
  {
   "id": 2,
-  "nombre": "Tyrion",
-  "apellido": "Lannister",
+  "firstName": "Tyrion",
+  "lastName": "Lannister",
   "email": "tyrion@lannister.com",
-  "password": "12345"
+  "password": "12345",
+  "category": 1,
+  "avatar": "avatar.jpg"
  },
  {
   "id": 3,
-  "nombre": "Daenerys",
-  "apellido": "Targaryen",
+  "firstName": "Daenerys",
+  "lastName": "Targaryen",
   "email": "Khaleesi@got.com",
   "password": "123456",
-  "categoria": "2",
+  "category": 1,
   "avatar": "avatar-Khaleesi.jpg"
  },
  {
@@ -29,7 +33,7 @@
   "email": "arya@Stark.com",
   "password": "123456",
   "password_repeat": "13456",
-  "category": "1",
+  "category": 2,
   "avatar": "avatar-AryaStark.jpg"
  },
  {
@@ -39,7 +43,7 @@
   "email": "lah_797@hotmail.com",
   "password": "$2b$10$PBfVFNQ9LfGaSG5ySZJF7Oob0hLsrqtLThDxZiZVUiaM4K0hMa54S",
   "password_repeat": "555",
-  "category": "individuo",
+  "category": 1,
   "avatar": "avatar-jk.jpg"
  },
  {
@@ -49,7 +53,7 @@
   "email": "Hodor@got.com",
   "password": "$2b$10$C81/beI4gN7wY.UDJxiqbOxBCRDxoTzJFWMUFjK/d6r8JWsGjaeQ.",
   "password_repeat": "123456",
-  "category": "empresa",
+  "category": 1,
   "avatar": "avatar-hodor.jpg"
  },
  {
@@ -59,7 +63,7 @@
   "email": "tywin@lannister.com",
   "password": "$2b$10$xHJ51ouyDL/8VGRjFFXk0.Nex6WnY8UiRTke2ZTlUdZVgwAJ1xIFq",
   "password_repeat": "",
-  "category": "empresa",
+  "category": 2,
   "avatar": "avatar-260px-TywinLa.png"
  },
  {
@@ -69,7 +73,7 @@
   "email": "Melisandre@got.com",
   "password": "$2b$10$gi/dpyY1GDK/gGM17TWqhO.3C3J9w1CDNkdFfUS9.kUwKmYabJ0cK",
   "password_repeat": "",
-  "category": "individuo",
+  "category": 1,
   "avatar": "avatar-110816.jpg"
  }
 ]

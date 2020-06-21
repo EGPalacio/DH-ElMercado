@@ -34,6 +34,7 @@ Pass: team4
 3) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
 > cd server\dbInstall
 > node productCreate.js
+> node UserCreate.js
 
 4) iniciar el sitio con nodemon start
 > npx nodemon start
