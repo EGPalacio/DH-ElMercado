@@ -29,11 +29,6 @@ router.post('/login', [
     check("password").isLength({ min: 3 }).withMessage("La constraseña debe tener minimo 3 Caractéres"),
 ], userControllers.loggedIn);
 
-router.get("/c", function(req, res) {
-    console.log(req.cookies.recordame);
-
-})
-
 router.get("/check", function(req, res) {
     if (req.session.usuarioLogueado != undefined) {
         res.send(req.session.usuarioLogueado.firstName)
