@@ -1,7 +1,15 @@
+// Require fs y Express
 const fs = require('fs');
 const path = require('path');
 var express = require('express');
 var router = express.Router();
+
+// Require Sequelize
+const db = require('../server/models');
+const { Sequelize } = require('../server/models');
+const Op = Sequelize.Op
+
+//Require JSON Productos
 const productJson = require('../middlewares/jsonRead')
 
 let arrayProductos = require('../articulosJS');
@@ -16,8 +24,8 @@ const newId = require('../middlewares/newId');
 
 const newProductId = newId.newProductId;
 
-
-productControllers = {
+// Product Controller
+module.exports = {
     detalleProductos: (req, res) => {
         let index = arrayProductos;
         let pdtoID = req.params.id;
@@ -78,18 +86,22 @@ productControllers = {
     },
     edit: (req, res) => {
         let prodToEdit = req.params.id;
-        let products = productJson.products;
-        products.forEach(item => {
-            if (item.id == prodToEdit) {
-                prodToEdit = item;
-            };
-        });
-        res.render('editProduct', {
-            title: 'editProduct',
-            prod: prodToEdit,
-        });
+        db.Product.findByPk(prodToEdit)
+            .then((prod) => {
+                console.log(`este es el producto que vamos a editar`);
+                console.log(prod.dataValues);
+                res.render('editProduct', {
+                    title: 'editProduct',
+                    prod: prod.dataValues,
+                });
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     },
     editStorage: (req, res) => {
+
+
         let editFormData = {}
         for (item in req.body) {
             if (req.body[item] != "" && isNaN(Number(req.body[item]))) {
@@ -147,5 +159,3 @@ productControllers = {
         res.redirect('/');
     }
 };
-
-module.exports = productControllers;
