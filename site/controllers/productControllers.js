@@ -88,7 +88,7 @@ module.exports = {
         let prodToEdit = req.params.id;
         db.Product.findByPk(prodToEdit)
             .then((prod) => {
-                console.log(`este es el producto que vamos a editar`);
+                console.log(`  ==> este es el producto que vamos a editar`);
                 console.log(prod.dataValues);
                 res.render('editProduct', {
                     title: 'editProduct',
@@ -100,8 +100,6 @@ module.exports = {
             });
     },
     editStorage: (req, res) => {
-
-
         let editFormData = {}
         for (item in req.body) {
             if (req.body[item] != "" && isNaN(Number(req.body[item]))) {
@@ -110,51 +108,33 @@ module.exports = {
                 editFormData[item] = Number(req.body[item]);
             };
         };
-        console.log(`form`);
+        console.log(`  ==> form`);
         console.log(editFormData);
+        db.Product.update(editFormData, { where: { id: editFormData.id } })
+            .then((result) => {
+                console.log(`  ==> product updated`);
+                console.log(editFormData.name);
+                res.redirect(`/products/${editFormData.id}`);
+            })
+            .catch((err) => { console.log(err) });
 
-        let prodToEdit = req.params.id;
-        let prodEditArr = [];
-        products.forEach(item => {
-            if (item.id == prodToEdit) {
-                console.log(`to edit`);
-                console.log(item);
-                prodEdit = {...item, ...editFormData };
-                prodEditArr.push(prodEdit)
-                console.log(`result`);
-                console.log(prodEdit);
-            }
-        });
-
-        let jsonEdit = products.map(obj => prodEditArr.find(o => o.id === obj.id) || obj);
-        console.log(jsonEdit);
-        fs.writeFileSync(productsFilePath, JSON.stringify(jsonEdit, null, '\t'));
-        console.log('file saved');
-
-        res.redirect(`/products/${req.params.id}`);
         // router.get(`/detalleProductos/${req.params.id}`, detalleProductos);
     },
     delete: (req, res) => {
         let prodToDelete = req.body.id;
-
-        products.forEach(item => {
-            if (item.id == prodToDelete) {
-                prodToDelete = item;
-                console.log(`Objeto a eliminar: `);
-                console.log(prodToDelete);
-            };
-        });
-
-        let prodToDelIndex = products.indexOf(prodToDelete);
-
-        let prodUpdated = products.splice(prodToDelIndex, 1)
-        console.log(`eliminado: `);
-        console.log(prodUpdated);
-        console.log(`resultado a guardar: `);
-        console.log(products);
-
-        fs.writeFileSync(productsFilePath, JSON.stringify(products, null, '\t'));
-        console.log('file saved');
+        db.Product.findByPk(prodToDelete)
+            .then((prod) => {
+                console.log(`  ==> este es el producto que vamos a eliminar`);
+                console.log(prod.dataValues);
+                db.Product.destroy({
+                        where: {
+                            id: prodToDelete
+                        }
+                    })
+                    .then((result) => { console.log('  ==> Producto eliminado!') })
+                    .catch((err) => { console.log(err) });
+            })
+            .catch((err) => { console.log(err) });
 
         res.redirect('/');
     }
