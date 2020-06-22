@@ -24,7 +24,7 @@
                 <div class="primerColumna">
                     <!-- imagenes -->
                     <div class="imagenProducto">
-                        <img class="producto" src="/images/<%= productFind.image %>">
+                        <img class="producto" src="/images/<%= products.image %>">
                     </div>
                     <!-- imagenes -->
 
@@ -34,7 +34,7 @@
                     <h2 class="h2PrimerColumna"><strong>Descripción detallada del Producto: </strong></h2>
 
                     <p class="descripcionPrimerColumna">
-                        <%= productFind.description %>
+                        <%= products.description %>
                     </p>
 
                 </div>
@@ -45,16 +45,16 @@
                 <div class="segundaColumna">
                     <div class="segunda">
                         <p class="NS">NUEVO/USADO</p>
-                        <h2 class="h2subrayado"><strong><%= productFind.name %></strong></h2>
+                        <h2 class="h2subrayado"><strong><%= products.name %></strong></h2>
                         <!-- estrellas -->
                         <!-- estrellas -->
-                        <% if(productFind.discount > 0) { 
+                        <% if(products.discount > 0) { 
                     let getDiscountPercentage = discount => (100 - discount) / 100;
-                    let finalPrice = (productFind.price * getDiscountPercentage(productFind.discount)).toFixed(0);
+                    let finalPrice = (products.price * getDiscountPercentage(products.discount)).toFixed(0);
               %>
                             <p class="descuento">
-                                <span>$<%= thousandGenerator(productFind.price) %></span> /
-                                <b><%= productFind.discount %>% OFF</b>
+                                <span>$<%= thousandGenerator(products.price) %></span> /
+                                <b><%= products.discount %>% OFF</b>
                             </p>
                             <p class="precio">
                                 $
@@ -63,12 +63,12 @@
                             <% } else { %>
                                 <p class="precio">
                                     $
-                                    <%= thousandGenerator(productFind.price) %>
+                                    <%= thousandGenerator(products.price) %>
                                 </p>
                                 <% } %>
 
                                     <p class="ulSegundaColumna">
-                                        <%= productFind.description %>
+                                        <%= products.description %>
                                     </p>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
                     <p class="letrasNegras">Vendido por: <a href="">Nombre del vendedor</a></p>
                     <p class="letrasNegras">Puntuación del vendedor</p>
 
-                    <form action='/cart/<%= productFind.id %> ' method="POST">
+                    <form action='/cart/<%= products.id %> ' method="POST">
                         <div class="cant">
                             <p class="cantidad">Cantidad: <label for=""></label>
                                 <input class='inputNumber' type="number" name="cantidad" id="cantidad" min="1" max="99" required>
@@ -104,7 +104,7 @@
 
                         <input type="submit" value="COMPRAR" class="botonComprar">
                         <% if(userType == 2){ %>
-                            <a href="/products/<%= productFind.id %>/edit" class="botonComprar">EDITAR</a>
+                            <a href="/products/<%= products.id %>/edit" class="botonComprar">EDITAR</a>
                             <% } %>
 
                     </form>

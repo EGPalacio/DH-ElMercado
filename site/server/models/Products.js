@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    Product.associate = (models) => {
+   /*  Product.associate = (models) => {
         Product.belongsTo(models.Categories, {
             as: 'categories',
             foreignKey: 'category_id',
@@ -48,7 +48,7 @@ module.exports = (sequelize, DataTypes) => {
             as: 'discounts',
             foreignKey: 'discount_id',
         });
-    };
+    }; */
 
     return Product;
 }

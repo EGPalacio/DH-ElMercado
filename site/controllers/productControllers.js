@@ -12,6 +12,8 @@ const Op = Sequelize.Op
 //Require JSON Productos
 const productJson = require('../middlewares/jsonRead')
 
+
+
 let arrayProductos = require('../articulosJS');
 const pdtosInSale = arrayProductos.filter(pdto => pdto.category == 'in-sale');
 const pdtosVisited = arrayProductos.filter(pdto => pdto.category == 'visited');
@@ -27,24 +29,26 @@ const newProductId = newId.newProductId;
 // Product Controller
 module.exports = {
     detalleProductos: (req, res) => {
-        let index = arrayProductos;
-        let pdtoID = req.params.id;
-        let productFind = arrayProductos.find(pdto => pdto.id == pdtoID);
-        console.log(productFind);
+         let index = arrayProductos;
+/*         let pdtoID = req.params.id;
+        let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
 
-        if (req.session.usuarioLogueado) {
-            var userType = req.session.usuarioLogueado.category
-        } else {
-            var userType = 'none'
-        }
-
-        res.render('detalleProductos', {
-            "index": index,
-            productFind,
-            thousandGenerator: toThousand,
-            userType: userType
-
-        });
+        db.Product.findByPk(req.params.id,{
+           /*  include: [{association: "Discounts"}] */
+        })
+            .then(function(products){
+                if (req.session.usuarioLogueado) {
+                    var userType = req.session.usuarioLogueado.category
+                } else {
+                    var userType = 'none'
+                }
+                res.render("detalleProductos", {
+                    "index": index,
+                    products:products,
+                    thousandGenerator: toThousand,
+                    userType: userType,
+                })
+            })
     },
     todosLosProductos: (req, res) => {
         let index = arrayProductos;
