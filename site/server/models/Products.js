@@ -36,16 +36,19 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-/*     Product.associate = function(models) {
-        Product.hasMany(models.Categories, {
-            as: "categories",
-            foreignKey: "category_id",
+   /*  Product.associate = (models) => {
+        Product.belongsTo(models.Categories, {
+            as: 'categories',
+            foreignKey: 'category_id',
         });
-        Product.hasMany(models.Discounts, {
-            as: "discounts",
-            foreignKey: "discount_id",
+    };
+
+    Product.associate = (models) => {
+        Product.belongsTo(models.Discount, {
+            as: 'discounts',
+            foreignKey: 'discount_id',
         });
-    } */
+    }; */
 
     return Product;
 }

@@ -2,21 +2,21 @@
 <html>
 
 <head>
-    
-    
-   
+
+
+
     <link rel="stylesheet" href="/css/styleProductoMF.css">
-  
+
     <%- include('partials/head.ejs')%>
-    <title>Home</title>
+        <title>Home</title>
 </head>
 
 <body>
     <%- include('partials/header.ejs')%>
-    <div>
-        <!-- Contenedor ppal -->
-        <!-- ENCABEZADO -->
-       
+        <div>
+            <!-- Contenedor ppal -->
+            <!-- ENCABEZADO -->
+
             <!-- ENCABEZADO -->
 
             <main class="contenedor">
@@ -103,7 +103,7 @@
                         <input type="submit" value="+ Agregar al carrito" class="botonAgregar">
 
                         <input type="submit" value="COMPRAR" class="botonComprar">
-                        <% if(userType == 'empresa'){ %>
+                        <% if(userType == 2){ %>
                             <a href="/products/<%= products.id %>/edit" class="botonComprar">EDITAR</a>
                             <% } %>
 
@@ -114,10 +114,10 @@
 
                 </div>
             </main>
-    </div>
-<!-- Footer section -->
-<%- include('partials/footer.ejs')%>
-<!-- Footer section end -->
+        </div>
+        <!-- Footer section -->
+        <%- include('partials/footer.ejs')%>
+            <!-- Footer section end -->
 </body>
 
 </html>

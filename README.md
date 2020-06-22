@@ -27,9 +27,7 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 > npm install
 
 2) Crear el schema en SQL usando MySQL Workbrench
-Nombre del schema: site_team4
-User: team4
-Pass: team4
+>npx sequelize-cli db:create
 
 3) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
 > cd server\dbInstall
