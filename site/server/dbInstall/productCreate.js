@@ -31,9 +31,9 @@ console.log(categToCreate);
 
 // descuentos
 let discoToCreate = [
-    { category: 10 },
-    { category: 20 },
-    { category: 30 },
+    { discount: 10 },
+    { discount: 20 },
+    { discount: 30 },
 ];
 
 console.log(discoToCreate);
