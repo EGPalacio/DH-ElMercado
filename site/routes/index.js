@@ -16,6 +16,8 @@ var { check, validationResult, body } = require("express-validator");
 router.get('/', indexControllers.index);
 router.get('/blog', indexControllers.blog);
 
+router.get('/prueba', indexControllers.prueba);
+
 /* rutas modularizadas */
 router.use(productsRouter).use(cartRouter).use(profileRouter);
 

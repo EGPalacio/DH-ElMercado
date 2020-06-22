@@ -15,12 +15,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-    Discount.associate = function(models) {
+/*     Discount.associate = function(models) {
         Discount.hasMany(models.Product, {
             as: "products",
             foreignKey: "category_id",
         })
-    };
+    }; */
 
     return Discount;
 }

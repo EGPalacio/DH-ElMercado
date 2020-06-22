@@ -59,19 +59,16 @@
 
 	<!-- ultimos productos section -->
 
-	
-	  
 	<section class="top-letest-product-section">
 		<div class="container">
 			<div class="section-title">
 				<h2>ULTIMOS PRODUCTOS AGREGADOS</h2>
 			</div>
 
-			
 			<div class="product-slider owl-carousel">
-				<% for (product of pdtosVisited) { 
+				<% for (product of products) { 
 					let getDiscountPercentage = discount => (100 - discount) / 100;
-					let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
+					let finalPrice = (product.price * getDiscountPercentage(10)).toFixed(0); 
 				%>
 				<div class="product-item">
 					<div class="pi-pic">
@@ -88,14 +85,10 @@
 				</div>
 				<% } %>
 
-
-				
 			</div>
 		</div>
 	</section>
 	<!-- lultimos productos end -->
-
-
 
 	<!-- Product filter section -->
 	<section class="product-filter-section">
@@ -113,9 +106,9 @@
 				<li><a href="#">NIÑES</a></li>
 			</ul>
 			<div class="row">
-				<% for (product of pdtosInSale) { 
+				<% for (product of products) { 
 					let getDiscountPercentage = discount => (100 - discount) / 100;
-					let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
+					let finalPrice = (product.price * getDiscountPercentage(10)).toFixed(0); 
 				%>
 				<div class="col-lg-3 col-sm-6">
 					
