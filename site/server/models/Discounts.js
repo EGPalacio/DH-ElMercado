@@ -1,5 +1,5 @@
 module.exports = (sequelize, dataTypes) => {
-    let alias = "Discounts";
+    let alias = "Discount";
     let cols = {
         id: {
             type: dataTypes.INTEGER,
@@ -7,7 +7,7 @@ module.exports = (sequelize, dataTypes) => {
             autoIncremet: true,
             allowNull: false,
         },
-        category: {
+        discount: {
             type: dataTypes.TINYINT(4),
             allowNull: false,
         }
