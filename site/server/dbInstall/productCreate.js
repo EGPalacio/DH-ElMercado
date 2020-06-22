@@ -6,19 +6,6 @@ const products = require('../../middlewares/jsonRead');
 // Requires Sequelize Models
 const db = require('../models');
 
-// Array construction for DB upload in bulk create
-let prodToCreate = [];
-products.products.forEach(producto => {
-    prodToCreate.push({
-        name: producto.name,
-        description: producto.description,
-        price: producto.price,
-        image: producto.image,
-    })
-});
-
-console.log(prodToCreate);
-
 // categorías
 let categToCreate = [
     { category: 'Indumentaria' },
@@ -44,7 +31,7 @@ db.Category.sync({ alter: true })
         console.log(`    => the table Category has just created!`);
 
         // Product DB upload
-        db.Product.bulkCreate(categToCreate)
+        db.Category.bulkCreate(categToCreate)
             .then((result) => {
                 console.log('    => Categorías creados en DB')
             })
@@ -58,13 +45,26 @@ db.Discount.sync({ alter: true })
         console.log(`    => the table Discount has just created!`);
 
         // Product DB upload
-        db.Product.bulkCreate(discoToCreate)
+        db.Discount.bulkCreate(discoToCreate)
             .then((result) => {
                 console.log('    => Discounts creados en DB')
             })
             .catch((err) => { console.log(err) });
     })
     .catch((err) => { console.log(err) });
+
+// Array construction for DB upload in bulk create
+let prodToCreate = [];
+products.products.forEach(producto => {
+    prodToCreate.push({
+        name: producto.name,
+        description: producto.description,
+        price: producto.price,
+        image: producto.image,
+    })
+});
+
+console.log(prodToCreate);
 
 // Alter table PRODUCTS - adjustments to existing model
 db.Product.sync({ alter: true })
