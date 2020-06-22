@@ -28,18 +28,19 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 
 2) Crear el schema en SQL usando MySQL Workbrench
 >npx sequelize-cli db:create
+    Bases de Datos:
+        DB: siteTeam4
+        User: team4
+        Password: team4
 
 3) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
 > cd server\dbInstall
 > node productCreate.js
+    // crea tablas y completa datos de testing productos y tablas secundarias de producto.
 > node UserCreate.js
 
 4) iniciar el sitio con nodemon start
 > npx nodemon start
 http://localhost:3000/
 
-Bases de Datos:
-==============
-DB: siteTeam4
-User: team4
-Password: team4
+
