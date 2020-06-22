@@ -86,7 +86,12 @@ module.exports = {
     },
     edit: (req, res) => {
         let prodToEdit = req.params.id;
-        db.Product.findByPk(prodToEdit)
+        db.Product.findByPk(prodToEdit, {
+                // include: [
+                //     { association: 'discounts' },
+                //     { association: 'categories' },
+                // ]
+            })
             .then((prod) => {
                 console.log(`  ==> este es el producto que vamos a editar`);
                 console.log(prod.dataValues);
