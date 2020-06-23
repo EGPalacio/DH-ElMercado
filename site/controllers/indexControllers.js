@@ -34,12 +34,11 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         },
 
         prueba : (req, res) => {
-            db.Discounts.findAll()
+            db.Product.findAll()
             .then(function(products){
                 res.render("prueba", {products:products})
-               
             })
-            
+
         },
     };
 
