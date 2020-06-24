@@ -93,7 +93,19 @@ db.Product.sync({ alter: true })
         // Product DB upload
         db.Product.bulkCreate(prodToCreate)
             .then((result) => {
-                console.log('Productos creados en DB')
+                console.log('Productos creados en DB');
+
+                // Product Elim Null items
+                db.Product.destroy({
+                        where: {
+                            name: 'Eliminar'
+                        },
+                    })
+                    .then((distroyResult) => {
+                        console.log(`destroy completed - product DB clean`);
+                        console.log(distroyResult);
+                    })
+                    .catch((err) => { console.log(err) });
             })
             .catch((err) => { console.log(err) });
     })
