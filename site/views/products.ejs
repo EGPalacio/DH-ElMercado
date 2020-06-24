@@ -51,25 +51,64 @@
 	<!-- Destacado end -->
 
 
-	<!-- ultimos productos section -->
+<!-- ultimos productos section -->
 
-	
-	  
-	<section class="top-letest-product-section">
-		<div class="container">
-			<div class="section-title">
-				<h2>ULTIMOS PRODUCTOS AGREGADOS</h2>
+<section class="top-letest-product-section">
+	<div class="container">
+		<div class="section-title">
+			<h2>ULTIMOS PRODUCTOS AGREGADOS</h2>
+		</div>
+
+		<div class="product-slider owl-carousel">
+			<% for (product of products) { 
+				let getDiscountPercentage = discount => (100 - discount) / 100;
+				let finalPrice = (product.price * getDiscountPercentage(10)).toFixed(0); 
+			%>
+			<div class="product-item">
+				<div class="pi-pic">
+					<img src="/images/<%= product.image %>" alt="<%= product.name %>">
+					<div class="pi-links">
+						<a href="/products/<%= product.id %>" class="add-card"><i class="flaticon-bag"></i><span>COMPRAR</span></a>
+						<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+					</div>
+				</div>
+				<div class="pi-text">
+					<h6>$<%= thousandGenerator(finalPrice) %></h6>
+					<p><%= product.name %> </p>
+				</div>
 			</div>
+			<% } %>
 
-			
-			<div class="product-slider owl-carousel">
-				<% for (product of pdtosVisited) { 
-					let getDiscountPercentage = discount => (100 - discount) / 100;
-					let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
-				%>
+		</div>
+	</div>
+</section>
+<!-- lultimos productos end -->
+
+<!-- Product filter section -->
+<section class="product-filter-section">
+	<div class="container">
+		<div class="section-title">
+			<h2>LO MAS SOLICITADOS</h2>
+		</div>
+		<ul class="product-filter-menu">
+			<li><a href="#">SEMILLAS</a></li>
+			<li><a href="#">ELECTRONICA</a></li>
+			<li><a href="#">DEPORTES</a></li>
+			<li><a href="#">LIFE STYLE</a></li>
+			<li><a href="#">HOMBRE</a></li>
+			<li><a href="#">MUJER</a></li>
+			<li><a href="#">NIÑES</a></li>
+		</ul>
+		<div class="row">
+			<% for (product of products) { 
+				let getDiscountPercentage = discount => (100 - discount) / 100;
+				let finalPrice = (product.price * getDiscountPercentage(10)).toFixed(0); 
+			%>
+			<div class="col-lg-3 col-sm-6">
+				
 				<div class="product-item">
 					<div class="pi-pic">
-						<img src="/images/<%= product.image %>" alt="<%= product.name %>">
+						<img src="/images/<%= product.image %>"alt="<%= product.name %>">
 						<div class="pi-links">
 							<a href="/products/<%= product.id %>" class="add-card"><i class="flaticon-bag"></i><span>COMPRAR</span></a>
 							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
@@ -77,65 +116,19 @@
 					</div>
 					<div class="pi-text">
 						<h6>$<%= thousandGenerator(finalPrice) %></h6>
-						<p><%= product.name %> </p>
+						<p><%= product.name %></p>
 					</div>
 				</div>
-				<% } %>
-
-
 				
 			</div>
+			<% } %>
 		</div>
-	</section>
-	<!-- lultimos productos end -->
-
-
-
-	<!-- Product filter section -->
-	<section class="product-filter-section">
-		<div class="container">
-			<div class="section-title">
-				<h2>LO MAS SOLICITADOS</h2>
-			</div>
-			<ul class="product-filter-menu">
-				<li><a href="#">SEMILLAS</a></li>
-				<li><a href="#">ELECTRONICA</a></li>
-				<li><a href="#">DEPORTES</a></li>
-				<li><a href="#">LIFE STYLE</a></li>
-				<li><a href="#">HOMBRE</a></li>
-				<li><a href="#">MUJER</a></li>
-				<li><a href="#">NIÑES</a></li>
-			</ul>
-			<div class="row">
-				<% for (product of pdtosInSale) { 
-					let getDiscountPercentage = discount => (100 - discount) / 100;
-					let finalPrice = (product.price * getDiscountPercentage(product.discount)).toFixed(0); 
-				%>
-				<div class="col-lg-3 col-sm-6">
-					
-					<div class="product-item">
-						<div class="pi-pic">
-							<img src="/images/<%= product.image %>"alt="<%= product.name %>">
-							<div class="pi-links">
-								<a href="/products/<%= product.id %>" class="add-card"><i class="flaticon-bag"></i><span>COMPRAR</span></a>
-								<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
-							</div>
-						</div>
-						<div class="pi-text">
-							<h6>$<%= thousandGenerator(finalPrice) %></h6>
-							<p><%= product.name %></p>
-						</div>
-					</div>
-					
-				</div>
-				<% } %>
-			</div>
-			<div class="text-center pt-5">
-				<button class="site-btn sb-line sb-dark">CARGAR MAS</button>
-			</div>
+		<div class="text-center pt-5">
+			<button class="site-btn sb-line sb-dark">CARGAR MAS</button>
 		</div>
-	</section>
-	<!-- Product filter section end -->
+	</div>
+</section>
+<!-- Product filter section end -->
 
 
 	<!-- Banner section -->

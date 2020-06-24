@@ -29,7 +29,7 @@ const newProductId = newId.newProductId;
 // Product Controller
 module.exports = {
     detalleProductos: (req, res) => {
-         let index = arrayProductos;
+        /*  let index = arrayProductos; */
 /*         let pdtoID = req.params.id;
         let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
 
@@ -51,13 +51,22 @@ module.exports = {
             })
     },
     todosLosProductos: (req, res) => {
-        let index = arrayProductos;
+      /*   let index = arrayProductos;
         res.render('products', {
             "index": index,
             pdtosInSale,
             pdtosVisited,
             thousandGenerator: toThousand,
-        });
+        }); */
+        db.Product.findAll({
+            /*  include: [{association: "Discounts"}, {association: "Categories"} ] */
+         })
+         .then(function(products){
+             res.render("products", {
+                 products:products,
+                 thousandGenerator: toThousand,
+             })
+         })
     },
     productos: (req, res) => {
         let index = arrayProductos;
