@@ -1,19 +1,24 @@
 module.exports = (sequelize, DataTypes) => {
-    const UserType = sequelize.define("UserTypes", {
+    let alias = "UserTypes";
+    let cols = {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
             primaryKey: true,
             allowNull: false
         },
-        userType: {
+        user_type: {
             type: DataTypes.STRING(200),
             allowNull: false
         },
-    }, {
-        tableName: 'userTypes',
+    };
+
+    let config = {
+        tableName: 'user_types',
         timestamps: false,
-    });
+    };
+
+    const UserType = sequelize.define(alias, cols, config);
 
     UserType.associate = function(models) {
         UserType.hasMany(models.User, {
