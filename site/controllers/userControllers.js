@@ -1,20 +1,21 @@
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require("bcrypt"); /* Después borrar lo agregué para probar mi parte del código */
+const bcrypt = require("bcrypt");
 var { check, validationResult, body } = require("express-validator");
 
+// Require Sequelize
+const db = require('../server/models');
+const { Sequelize } = require('../server/models');
+const Op = Sequelize.Op
+
+// JSON Users para eliminar ===============>
 const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-//const bcrypt = require('bcrypt');
-//const upload = require('../misFunciones/helpMulter');
-
+// JSON Users para eliminar ===============>
 
 const newId = require('../middlewares/newId');
 
 const newUsertId = newId.newUserId;
-
-//const productsFilePath = path.join(__dirname, '../data/accountsDataBase.json');
-//const accounts = JSON.parse(fs.readFileSync(accountsFilePath, 'utf-8'));
 
 let userControllers = {
     login: (req, res) => {
@@ -22,33 +23,44 @@ let userControllers = {
     },
     loggedIn: (req, res) => {
         let errors = validationResult(req);
-        if (errors.isEmpty()) {
-            let usuarioALoguearse;
+        if (!errors.isEmpty()) {
+            console.log('  ==> validación con error');
+            return res.render("login", { errors: [{ msg: "Credenciales no válidas" }] })
 
-            for (let user of users) {
-                if (user.email == req.body.email && bcrypt.compareSync(req.body.password, user.password)) {
-                    usuarioALoguearse = user;
-                }
-            }
-
-            if (usuarioALoguearse == undefined) {
-                return res.render("login", { errors: [{ msg: "Credenciales no válidas" }] })
-            }
-            /* Acá está el session */
-            req.session.usuarioLogueado = usuarioALoguearse;
-
-            /* Acá está la cookie */
-            if (req.body.recordame != undefined) {
-                res.cookie("recordame", usuarioALoguearse, { maxAge: 60000 })
-            }
-
-            console.log(` ==> confirmación de usuario logueado como: ${req.session.usuarioLogueado.firstName}`);
-            /* esto hay que cambiarlo por un redirect al home y que en vez de "login" en el header se lea el "firstName" */
-            // EGP ajusté el código para redireccionarlo al home y dejar por terminal la confirmación del login
-            res.redirect('/')
         } else {
-            res.render("login", { errors: errors.errors });
-        }
+            var usuarioALoguearse;
+
+            db.User.findAll({
+                where: {
+                    email: req.body.email
+                }
+            }).then((resultFindUser) => {
+
+                usuarioALoguearse = resultFindUser[0].dataValues
+
+                if (bcrypt.compareSync(req.body.password, usuarioALoguearse.password)) {
+                    console.log('  ==> validación usuario autorizado');
+
+                    /* Acá está el session */
+                    req.session.usuarioLogueado = usuarioALoguearse;
+                    console.log(` ==> confirmación de usuario logueado como: ${req.session.usuarioLogueado.first_name}`);
+
+                    /* Acá está la cookie */
+                    if (req.body.recordame != undefined) {
+                        res.cookie("recordame", usuarioALoguearse, { maxAge: 60000 });
+                    };
+
+                    res.redirect('/');
+
+                } else {
+                    res.render("login", { errors: [{ msg: "Credenciales no válidas" }] })
+                };
+
+            }).catch((err) => {
+                console.log(err);
+            });
+
+        };
     },
     register: (req, res) => {
         res.render('register');
