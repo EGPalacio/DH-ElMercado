@@ -43,7 +43,7 @@ module.exports = {
                     var userType = 'none'
                 }
                 res.render("detalleProductos", {
-                    "index": index,
+                    /* "index": index, */
                     products:products,
                     thousandGenerator: toThousand,
                     userType: userType,

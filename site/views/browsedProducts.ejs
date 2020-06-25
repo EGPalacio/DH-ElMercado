@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <!-- CSS propio -->
+
+     <!-- CSS header -->
+     <%- include('partials/head.ejs')%>
+	<title>Products</title>
+</head>
+
+<body>
+    <div> <!-- Contenedor ppal -->
+<!-- ENCABEZADO -->
+<%- include('partials/header.ejs')%>
+<!-- ENCABEZADO -->
+
+<!-- Product filter section -->
+<section class="product-filter-section">
+	<div class="container">
+		<div class="row">
+			<% for (product of products) { 
+				let getDiscountPercentage = discount => (100 - discount) / 100;
+				let finalPrice = (product.price * getDiscountPercentage(10)).toFixed(0); 
+			%>
+			<div class="col-lg-3 col-sm-6">
+
+				<div class="product-item">
+					<div class="pi-pic">
+						<img src="/images/<%= product.image %>"alt="<%= product.name %>">
+						<div class="pi-links">
+							<a href="/products/<%= product.id %>" class="add-card"><i class="flaticon-bag"></i><span>COMPRAR</span></a>
+							<a href="#" class="wishlist-btn"><i class="flaticon-heart"></i></a>
+						</div>
+					</div>
+					<div class="pi-text">
+						<h6>$<%= thousandGenerator(finalPrice) %></h6>
+						<p><%= product.name %></p>
+					</div>
+				</div>
+
+			</div>
+			<% } %>
+		</div>
+	</div>
+</section>
+<!-- Product filter section end -->
+
+
+	<!-- Banner section -->
+	<section class="banner-section">
+		<div class="container">
+			<div class="banner set-bg" data-setbg="/images/delivery-gratis-02.jpg">
+				<div class="tag-new">Exclusivo</div>
+				<span>No te lo Pierdas!</span>
+				<h2>DELIVERY GRATIS</h2>
+				<a href="#" class="site-btn">COMPRA</a>
+			</div>
+		</div>
+	</section>
+	<!-- Banner section end  -->
+
+
+	<!-- Footer section -->
+	<%- include('partials/footer.ejs')%>
+	<!-- Footer section end -->
+
+
+</body>
+
+</html>
