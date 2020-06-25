@@ -16,19 +16,28 @@
         <p>Ingrese el detalle del producto que desea agregar</p>
         <form
           id="newProduct"
-          action="/products/add"
+          action="/products/create"
           method="POST"
           class="detail"
           enctype="multipart/form-data"
         >
           <input type="text" name="name" placeholder="Nombre del producto" />
 
-          <select id="category">
-            <option selected="true" disabled="disabled">Selecciona la Categoria</option>
-            <option value="in-sale">Ofertas</option>
-            <option value="visited">Ultimos Vistos</option>
-            
-          </select>
+
+          <select name="category_id" >
+
+            <option value="0">Selecciona la categoria</option>
+            <% for (let i=0; i < categorias.length; i++) { %>
+    
+                <option value="<%=categorias[i].id%>">
+                    <%=categorias[i].category%>
+                </option>
+    
+           <% } %>
+           
+        </select>
+
+         
           <textarea
             name="description"
             id=""
@@ -37,7 +46,18 @@
             placeholder="Breve descripcion del producto"
           ></textarea>
           <input type="number" name="price" placeholder="Precio del Producto" />
-          <input type="text" name="discount" placeholder="Descuento" />
+         
+          <select name="discount_id" >
+            <option value="0">Selecciona el descuento a aplicar</option>
+            <% for (let i=0; i < descuentos.length; i++) { %>
+                 
+                <option value="<%=descuentos[i].id%>">
+                    <%=descuentos[i].discount%>
+                </option>
+    
+           <% } %>
+           
+        </select> <br>
 
           <div class="container col-12">
             <div class="form-group col-12">

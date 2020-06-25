@@ -74,29 +74,39 @@ module.exports = {
     },
     add: (req, res) => {
 
+      
+        let pedidoCategorias = db.Category.findAll({
+            include : [{association : "products"}]
+        });
 
-        res.render('addProduct');
-    },
-    store: (req, res) => {
-        let portada = req.files.imgPortada[0].filename;
-        req.body.price = Number(req.body.price);
-        req.body.discount = Number(req.body.discount);
-        let newProduct = {
-            id: newProductId,
-            ...req.body,
-
-            image: portada,
+        let pedidoDescuentos = db.Discount.findAll({
+            include : [{association : "products"}]
+        });
+ 
+        Promise.all([pedidoCategorias, pedidoDescuentos])
+             .then(function([categorias, descuentos]){
+                 res.render("addProduct", {categorias: categorias, descuentos : descuentos} )
+             })
 
 
+        
 
-        };
+},
+store: (req, res) => {
+    let portada = req.files.imgPortada[0].filename;
+    req.body.price = Number(req.body.price);
+    
+    db.Product.create({
+        name: req.body.name,
+        description: req.body.description,
+        price: req.body.price,
+        discount_id: req.body.discount_id,
+        category_id: req.body.category_id,
+        image: portada,
 
-        let finalProducts = [...products, newProduct];
-        fs.writeFileSync(productsFilePath, JSON.stringify(finalProducts, null, ' '));
-
-        console.log(req.files)
-        res.redirect('/');
-    },
+    });
+    res.redirect('/');
+},
     edit: (req, res) => {
         let prodToEdit = req.params.id;
         db.Product.findByPk(prodToEdit, {

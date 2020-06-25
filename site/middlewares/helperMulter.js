@@ -9,7 +9,7 @@ const Op = Sequelize.Op
 
 const multer = require("multer");
 
-const maestroPath = require("./GlobalVariables");
+
 
 
 
@@ -38,10 +38,18 @@ var avatarUpload = multer({ storage: storage });
 
 var storageProduct = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, maestroPath.Product)
+      db.Product.max('id').then(max => {
+        // this will return 40
+        let lastId = max + 1;
+        prodIdPath2 = path.join(__dirname, '../public/images/products/' + lastId)
+        if (!fs.existsSync(prodIdPath2)){
+          fs.mkdirSync(prodIdPath2);
+          };
+        cb(null, prodIdPath2);
+      }) 
     },
     filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + file.originalname)
+      cb(null, req.body.name + '-' + file.originalname)
     }
   })
    
@@ -55,9 +63,7 @@ var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, {
 const upload = {
     avatarUpload,
     productUpload
-    
-    
-   
+     
 };
 
 module.exports = upload;
