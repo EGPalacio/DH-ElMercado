@@ -18,7 +18,7 @@ var storage = multer.diskStorage({
     destination: function(req, file, cb) {
 
       db.User.max('id').then(max => {
-        // this will return 40
+        
         let lastId = max + 1;
         userIdPath2 = path.join(__dirname, '../public/images/users/' + lastId)
         if (!fs.existsSync(userIdPath2)){
@@ -27,7 +27,8 @@ var storage = multer.diskStorage({
         cb(null, userIdPath2);
       }) 
 
-        
+      
+      
     },
     filename: function(req, file, cb) {
         cb(null, req.body.first_name + path.extname(file.originalname));

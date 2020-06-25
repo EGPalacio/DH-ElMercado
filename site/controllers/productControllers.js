@@ -38,10 +38,15 @@ module.exports = {
         })
             .then(function(products){
                 if (req.session.usuarioLogueado) {
-                    var userType = req.session.usuarioLogueado.category
+                    var userType = req.session.usuarioLogueado.user_type_id
                 } else {
                     var userType = 'none'
                 }
+                console.log(userType);
+                var userLog = req.session.usuarioLogueado;
+                console.log(userLog);
+                
+                
                 res.render("detalleProductos", {
                     /* "index": index, */
                     products:products,
