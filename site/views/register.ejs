@@ -43,15 +43,15 @@
             </div>
            
         <form action="/register" class="lb-form" method="POST" enctype="multipart/form-data" >
-        <input type="text" name="firstName" placeholder="Ingresá tu nombre">
-        <input type="text" name="lastName" placeholder="Ingresá tu apellido">
+        <input type="text" name="first_name" placeholder="Ingresá tu nombre">
+        <input type="text" name="last_name" placeholder="Ingresá tu apellido">
         <input type="email" name="email" placeholder="Ingresá tu correo">
         <input type="password" name="password" placeholder="Ingresá una contraseña">
         <input type="password" name="password_repeat" placeholder="Ingresa nuevamente tu contraseña">
-        <select  name="category" id="category">
+        <select  name="user_type_id" id="user_type_id">
           <option  value="">Selecciona la Categoria</option>
-          <option value = "individuo">Individuo</option>
-          <option value = "empresa">Empresa</option>
+          <option value = "2">Individuo</option>
+          <option value = "1">Empresa</option>
                  
         </select>
         <input type="file"  id="avatar" name="avatar" placeholder="Ingresa un avatar para tu perfil" class="file" >
