@@ -231,7 +231,7 @@
 }
 .producto{
     width: 70%;
-    height: 50vh;
+    height: auto;
     object-fit: cover;
     border-radius: 3%;
 }

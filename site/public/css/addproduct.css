@@ -220,7 +220,7 @@ display: block;
 
 .portada img{
   width: 450px;
-  height: 300px;
+  height: auto;
 }
 
 .caja-galeria{
@@ -233,15 +233,15 @@ justify-content: center;
 .gallery{
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 .gallery img{
 width: 250px;
   border: #4667b9 solid 1px;
   padding: 5px;
-  margin: 15px;
-  height: 180px;
+  margin: 10px;
+  height: 50%;
 
 }
 
