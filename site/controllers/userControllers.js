@@ -13,9 +13,9 @@ const usersFilePath = path.join(__dirname, '../data/users.json');
 const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
 // JSON Users para eliminar ===============>
 
-const newId = require('../middlewares/newId');
 
-const newUsertId = newId.newUserId;
+
+
 
 let userControllers = {
     login: (req, res) => {
@@ -70,11 +70,6 @@ let userControllers = {
         console.log(req.files[0]);
 
         let errors = validationResult(req);
-
-
-
-
-
         if (errors.isEmpty())
 
         {
@@ -88,30 +83,17 @@ let userControllers = {
             };
 
             // Do the magic
-            let usuario = {
-                    id: newUsertId,
-                    ...req.body,
-                    password: bcrypt.hashSync(req.body.password, 10),
-                    password_repeat: "",
-                    avatar: avatar,
-                }
-                //leer el json
-                //let rutaJson = path.join(__dirname, '../data/accountsDataBase.json');
-            let archivoUsuario = fs.readFileSync('./data/users.json', { encoding: 'utf-8' });
 
-            let usuarios;
-
-            if (archivoUsuario == "") {
-                usuarios = [];
-            } else {
-                usuarios = JSON.parse(archivoUsuario);
-            }
-
-            usuarios.push(usuario);
-
-
-            usuariosJSON = JSON.stringify(usuarios, null, ' ');
-            fs.writeFileSync('./data/users.json', usuariosJSON);
+            db.User.create({
+                first_name: req.body.first_name,
+                last_name: req.body.last_name,
+                email: req.body.email,
+                password: bcrypt.hashSync(req.body.password, 10),
+                user_type_id:req.body.user_type_id,
+                createdAt: Date.now(),
+                avatar : avatar
+                
+            });
 
             res.redirect('/login');
 

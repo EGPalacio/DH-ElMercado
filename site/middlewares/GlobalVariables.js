@@ -1,7 +1,7 @@
 const dirPaths = require('./dirPaths');
 
 const MaestroPath = {
-    Avatar: dirPaths.userIdPath,
+    //Linea a eliminar ==>> Avatar: dirPaths.userIdPath2,
     Product: dirPaths.productIdPath,
    
 };

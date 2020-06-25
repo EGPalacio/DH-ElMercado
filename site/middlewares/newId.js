@@ -13,6 +13,7 @@ const products = JSON.parse(fs.readFileSync(productsFilePath, 'utf-8'));
 const newProductId = products[products.length - 1].id + 1;
 const productIdPath = path.join(__dirname, '../public/images/products/' + newProductId)
 
+
 const newId = {
     newUserId,
     userIdPath,

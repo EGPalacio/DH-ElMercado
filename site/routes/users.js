@@ -13,10 +13,10 @@ let vistaRegistro = userControllers.register;
 
 let storeValidation = 
     [
-    check("firstName")
+    check("first_name")
     .isLength({min:2})
     .withMessage("El nombre debe tener minimo 2 caracteres"),
-    check("lastName").isLength({min:3}).withMessage("El apellido debe tener minimo 3 caracteres"),
+    check("last_name").isLength({min:3}).withMessage("El apellido debe tener minimo 3 caracteres"),
     check("email").isEmail().withMessage("El Email ingresado no es válido"),
    
     check("password").isLength({ min: 3 }).withMessage("La constraseña debe tener minimo 3 Caractéres"),
