@@ -27,13 +27,21 @@
             </div>
             <div>
                 <% for (let userItem in user) { %>
-                    <% if(!userItem.includes('password')){ %>
+                    <% if(!userItem.includes('password') && !userItem.includes('user') ){ %>
                         <div class="input-group-prepend mt-2">
                             <label class="input-group-text text-left text-capitalize col-4"><%= `${userItem}:` %></label>
                             <input name="<%= userItem %>" type="text" readonly class="input-group form-control col-10" placeholder="<%= `${user[userItem]}` %>">
                         </div>
                         <% } %>
                             <% } %>
+                                <% for (let userType in user.userTypes) { %>
+                                    <% if(!userType.includes('id') ){ %>
+                                        <div class="input-group-prepend mt-2">
+                                            <label class="input-group-text text-left text-capitalize col-4"><%= `${userType}:` %></label>
+                                            <input name="<%= userType %>" type="text" readonly class="input-group form-control col-10" placeholder="<%= `${user.userTypes[userType]}` %>">
+                                        </div>
+                                        <% } %>
+                                            <% } %>
             </div>
         </div>
 
