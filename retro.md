@@ -16,7 +16,7 @@ Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora ob
     - También se movieron las rutas del index a archivos individuales para cada sección (productos, carrito, etc.)
 
 2 - Que hicimos mal:
-    - Quedamos a la espera de la devolución del sprint 4 para identificar puntos de mejora.
+    - Revisamos la devolución del sprint 4 y explicamos a los profesores que el punto de validación de usuario para ciertas páginas ya estaba completo.
 
 3 - Que tenemos que hacer.
     Entendemos que la clave para encarar bien este sprint es separarnos bien las tareas y organizar el timing para coordinar bien el trabajo de cada uno y no trabarnos para llegar al resultado:
