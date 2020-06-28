@@ -8,15 +8,6 @@ const db = require('../server/models');
 const { Sequelize } = require('../server/models');
 const Op = Sequelize.Op
 
-// JSON Users para eliminar ===============>
-const usersFilePath = path.join(__dirname, '../data/users.json');
-const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-// JSON Users para eliminar ===============>
-
-
-
-
-
 let userControllers = {
     login: (req, res) => {
         res.render('login');
@@ -30,13 +21,10 @@ let userControllers = {
         } else {
             var usuarioALoguearse;
 
-            db.User.findAll( {
-                where: {
-                    email: req.body.email
-                }
-            })
-                
-                .then((resultFindUser) => {
+            db.User.findAll({
+                where: { email: req.body.email },
+                include: [{ association: 'userTypes' }],
+            }).then((resultFindUser) => {
 
                 usuarioALoguearse = resultFindUser[0].dataValues
                 
@@ -93,10 +81,10 @@ let userControllers = {
                 last_name: req.body.last_name,
                 email: req.body.email,
                 password: bcrypt.hashSync(req.body.password, 10),
-                user_type_id:req.body.user_type_id,
+                user_type_id: req.body.user_type_id,
                 createdAt: Date.now(),
-                avatar : avatar
-                
+                avatar: avatar
+
             });
 
             res.redirect('/login');

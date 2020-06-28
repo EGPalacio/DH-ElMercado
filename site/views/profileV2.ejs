@@ -1,0 +1,51 @@
+  
+    <!DOCTYPE html>
+    <html lang="en">
+        <!-- pendientes:
+        - agregar botón para editar profile, cambiar de usuario o checkout.
+    -->
+    <head>
+        <meta charset="UTF-8">
+        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/css/profile.css">
+        <title> Perfil de <%=user.first_name%></title>
+        
+      
+         <%- include('partials/head.ejs')%>
+    
+        </head>
+    
+        <body>
+           
+            <%- include('partials/header.ejs')%>
+
+            
+
+
+
+            <div class="cont">
+                <div class="avatar-flip">
+                  <img src="/images/users/<%=user.id%>/<%=user.avatar%>"  height="150" width="150">
+                  <img src="/images/bk-profile.jpg"  height="150" width="150">
+                </div>
+                <strong>Nombre :</strong> <%=user.first_name%> <%=user.last_name%> <br>
+                <strong>Tipo de Usuario:</strong>  <%=user.userTypes.user_type %> <br>
+                <strong>Email:</strong> <%=user.email%><br>
+                <strong>Password:</strong> ***** <br>
+                <p></p>
+               
+                <a href="/profile/edit/<%=user.id%>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Editar</a>
+<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Salir</a>
+                
+              </div>
+              
+                
+
+               <!-- Footer section -->
+	<%- include('partials/footer.ejs')%>
+	<!-- Footer section end -->
+
+                </body>
+
+                </html>

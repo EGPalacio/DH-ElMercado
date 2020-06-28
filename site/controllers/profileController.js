@@ -7,23 +7,28 @@ const bcrypt = require("bcrypt");
 
 module.exports = {
     profile: (req, res) => {
-        var users = req.session.usuarioLogueado
-        if (users) {
-            let userName = req.session.usuarioLogueado.firstName
+        var user = req.session.usuarioLogueado
+        if (user) {
+            let userName = user.first_name
             console.log(` ==> acceso autorizado para: ${userName}`);
+            res.render('profileV2', {
+                tag: 'profile',
+                user: user
+            });
+
         } else {
             console.log(` ==> login requerido - redireccionado para confirmar acceso`);
             res.redirect('/login')
         }
 
-        db.User.findByPk(req.session.usuarioLogueado.id, {include : [{association : "rol"}]})
+        db.User.findByPk(req.session.usuarioLogueado.id, {include : [{association : "userTypes"}]})
 
        
         
         .then(function(user){
-            console.log(user.rol.user_type);
+            //console.log(user.userTypes.user_type);
 
-        res.render('profile', {
+        res.render('profileV2', {
             title: 'Perfil',
             user: user
         })

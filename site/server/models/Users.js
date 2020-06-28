@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),
             allowNull: false
         },
-       user_type_id: {
+        user_type_id: {
             type: DataTypes.INTEGER
         },
         createdAt: {
@@ -43,18 +43,14 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     };
 
-    const User = sequelize.define (alias, cols, config);
+    const User = sequelize.define(alias, cols, config);
 
-    User.associate = function (models) {
+    User.associate = function(models) {
         User.belongsTo(models.UserTypes, {
-            as : "rol",
-            foreignKey : "user_type_id"
+            as: "userTypes",
+            foreignKey: "user_type_id",
         })
-
-       
     };
-
-
 
     return User;
 }

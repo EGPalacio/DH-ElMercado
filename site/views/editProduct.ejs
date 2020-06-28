@@ -35,17 +35,30 @@
                             <% } else if( prop == 'createdAt' || prop == 'updatedAt'){ %>
                                 <div class="input-group-prepend mb-2">
                                 </div>
-                                <% } else if(prop != 'id' && prop != 'image' ){ %>
+                                <% } else if( prop.includes('categ') ){ %>
                                     <div class="input-group-prepend mb-2">
                                         <label class="input-group-text text-capitalize col-md-4"><%= `${prop}:` %></label>
-                                        <input name="<%= prop %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod[prop]}` %>" aria-describedby="addon-wrapping">
+                                        <select name="<%= prop %>" class="input-group form-control col-8" aria-describedby="addon-wrapping">
+                                            <% for (let item of categ) { %>
+                                                <% if ( item.id == prod[prop]){ %>
+                                                    <option value="<%= item.id %>" seleted="selected"> <%= item.category %> </option>
+                                                    <% } else { %>
+                                                    <option value="<%= item.id %>"> <%= item.category %> </option>
+                                                    <% } %>
+                                                <% } %>
+                                        </select>
                                     </div>
-                                    <% }; %>
+                                    <% } else { %>
+                                        <div class="input-group-prepend mb-2">
+                                            <label class="input-group-text text-capitalize col-md-4"><%= `${prop}:` %></label>
+                                            <input name="<%= prop %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod[prop]}` %>" aria-describedby="addon-wrapping">
+                                        </div>
                                         <% }; %>
-                                            <div class="form-actions form-inline btn-toolbar mt-3 ml-auto text-center ">
-                                                <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-md-lg m-md-auto col-12 col-md-5 mb-3">
-                                                <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-md-lg m-md-auto col-md-5">
-                                            </div>
+                                            <% }; %>
+                                                <div class="form-actions form-inline btn-toolbar mt-3 ml-auto text-center ">
+                                                    <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-md-lg m-md-auto col-12 col-md-5 mb-3">
+                                                    <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-md-lg m-md-auto col-md-5">
+                                                </div>
                 </div>
             </form>
         </div>

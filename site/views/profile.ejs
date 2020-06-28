@@ -1,51 +1,54 @@
-  
-    <!DOCTYPE html>
-    <html lang="en">
-        <!-- pendientes:
+<!DOCTYPE html>
+<html lang="en">
+<!-- pendientes:
         - agregar botón para editar profile, cambiar de usuario o checkout.
     -->
-    <head>
-        <meta charset="UTF-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="/css/profile.css">
-        <title> <%=title%> de <%=user.first_name%></title>
-        
-      
-         <%- include('partials/head.ejs')%>
-    
-        </head>
-    
-        <body>
-           
-            <%- include('partials/header.ejs')%>
 
-            
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        <%= tag %>
+    </title>
 
 
+    <%- include('partials/head.ejs')%>
 
-            <div class="cont">
-                <div class="avatar-flip">
-                  <img src="/images/users/<%=user.id%>/<%=user.avatar%>"  height="150" width="150">
-                  <img src="/images/bk-profile.jpg"  height="150" width="150">
-                </div>
-                <strong>Nombre :</strong> <%=user.first_name%> <%=user.last_name%> <br>
-                <strong>Tipo de Usuario:</strong>  <%=user.rol.user_type %> <br>
-                <strong>Email:</strong> <%=user.email%><br>
-                <strong>Password:</strong> ***** <br>
-                <p></p>
-               
-                <a href="/profile/edit/<%=user.id%>" class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Editar</a>
-<a href="#" class="btn btn-danger btn-sm active" role="button" aria-pressed="true">Salir</a>
-                
-              </div>
-              
-                
+</head>
 
-               <!-- Footer section -->
-	<%- include('partials/footer.ejs')%>
-	<!-- Footer section end -->
+<body>
 
-                </body>
+    <%- include('partials/header.ejs')%>
+        <div class="container form-inline">
+            <div class="col-12 col-md-6 mt-2">
+                <img src="/images/users/<%=user.id%>/<%=user.avatar%>" class="rounded mx-auto img-fluid d-block img-thumbnail col-md-8 float-md-left" alt="No Image">
+                <!-- <input type="file" id="imageEdit" class="form-control-file mb-3" data-default-file="" data-height="500"> -->
+            </div>
+            <div>
+                <% for (let userItem in user) { %>
+                    <% if(!userItem.includes('password') && !userItem.includes('user') ){ %>
+                        <div class="input-group-prepend mt-2">
+                            <label class="input-group-text text-left text-capitalize col-4"><%= `${userItem}:` %></label>
+                            <input name="<%= userItem %>" type="text" readonly class="input-group form-control col-10" placeholder="<%= `${user[userItem]}` %>">
+                        </div>
+                        <% } %>
+                            <% } %>
+                                <% for (let userType in user.userTypes) { %>
+                                    <% if(!userType.includes('id') ){ %>
+                                        <div class="input-group-prepend mt-2">
+                                            <label class="input-group-text text-left text-capitalize col-4"><%= `${userType}:` %></label>
+                                            <input name="<%= userType %>" type="text" readonly class="input-group form-control col-10" placeholder="<%= `${user.userTypes[userType]}` %>">
+                                        </div>
+                                        <% } %>
+                                            <% } %>
+            </div>
+        </div>
 
-                </html>
+        <!-- Footer section -->
+        <%- include('partials/footer.ejs')%>
+            <!-- Footer section end -->
+
+</body>
+
+</html>
