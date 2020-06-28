@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
     let alias = "Product";
-    
+
     let cols = {
         id: {
             type: DataTypes.INTEGER,
@@ -34,24 +34,24 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE
         },
     };
-    
+
     let config = {
         tableName: 'products',
         timestamps: false,
     };
 
 
-    const Product = sequelize.define (alias, cols, config);
-   
-    Product.associate = function (models) {
+    const Product = sequelize.define(alias, cols, config);
+
+    Product.associate = function(models) {
         Product.belongsTo(models.Category, {
-            as : "categories",
-            foreignKey : "category_id"
+            as: "categories",
+            foreignKey: "category_id"
         })
 
         Product.belongsTo(models.Discount, {
-            as : "discounts",
-            foreignKey : "discount_id"
+            as: "discounts",
+            foreignKey: "discount_id"
         });
     }
 

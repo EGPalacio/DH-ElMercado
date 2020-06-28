@@ -52,6 +52,10 @@ products.products.forEach(producto => {
         description: producto.description,
         price: producto.price,
         image: producto.image,
+        category_id: producto.category_id,
+        discount_id: producto.discount_id,
+        createdAt: new Date(),
+        updatedAt: new Date(),
     })
 });
 

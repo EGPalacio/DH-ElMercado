@@ -9,6 +9,7 @@
         "discount": 50,
         "category": "in-sale",
         "description": "Macbook Pro 2019 Mpxq2ll/a Intel Core i5 2.3 Ghz 8gb RAM 128gb SSD Pantalla 13.3\" Retina Apple Nueva Original. Importada de USA. Se entrega con la factura de compra para contar con la garantía del fabricante",
+        "category_id": 2,
         "image": "img-macbook-pro-2019.jpg"
     },
     {
@@ -22,6 +23,8 @@
         "price": 47900,
         "discount": 10,
         "image": "img-heladera-whirpool.jpg",
+        "category_id": 4,
+        "discount_id": 1,
         "category": "in-sale"
     },
     {
@@ -31,6 +34,8 @@
         "price": 53000,
         "discount": 20,
         "image": "img-camara-nikon.jpg",
+        "category_id": 2,
+        "discount_id": 2,
         "category": "in-sale"
     },
     {
@@ -40,6 +45,8 @@
         "price": 20999,
         "discount": 12,
         "image": "img-aire-acondicionado.jpg",
+        "category_id": 4,
+        "discount_id": 3,
         "category": "in-sale"
     },
     {
@@ -49,6 +56,7 @@
         "price": 36700,
         "discount": 5,
         "image": "img-laptop-lenovo.jpg",
+        "category_id": 2,
         "category": "in-sale"
     },
     {
@@ -58,6 +66,8 @@
         "price": 148000,
         "discount": 2,
         "image": "img-iphone-11.jpg",
+        "category_id": 2,
+        "discount_id": 1,
         "category": "in-sale"
     },
     {
@@ -84,6 +94,8 @@
         "price": 34990,
         "discount": 0,
         "image": "img-tv-samsung-smart.jpg",
+        "category_id": 4,
+        "discount_id": 3,
         "category": "visited"
     },
     {
@@ -93,6 +105,7 @@
         "price": 10999,
         "discount": 5,
         "image": "img-sony-blueray.jpg",
+        "category_id": 4,
         "category": "visited"
     },
     {
@@ -111,6 +124,8 @@
         "discount": 5,
         "category": "in-sale",
         "description": "Deja que la música dance cobre vida con EXTRA BASS™ Anima el ambiente con EXTRA BASS™1. Un radiador pasivo trabaja con el parlante monoaural para potenciar los tonos bajos y mejorar los graves, a pesar del tamaño compacto. ",
+        "category_id": 4,
+        "discount_id": 1,
         "image": "img-parlante-sony.jpg"
     },
     {
@@ -119,6 +134,8 @@
         "description": "descripcion teclado Super, escribe solo, una maravilla",
         "price": 999,
         "discount": 10,
+        "category_id": 2,
+        "discount_id": 3,
         "image": "imgPortada-teclado-magico.jpeg"
     }
 ]
