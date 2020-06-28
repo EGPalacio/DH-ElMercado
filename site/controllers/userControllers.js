@@ -30,13 +30,17 @@ let userControllers = {
         } else {
             var usuarioALoguearse;
 
-            db.User.findAll({
+            db.User.findAll( {
                 where: {
                     email: req.body.email
                 }
-            }).then((resultFindUser) => {
+            })
+                
+                .then((resultFindUser) => {
 
                 usuarioALoguearse = resultFindUser[0].dataValues
+                
+                
 
                 if (bcrypt.compareSync(req.body.password, usuarioALoguearse.password)) {
                     console.log('  ==> validación usuario autorizado');

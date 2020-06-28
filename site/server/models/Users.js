@@ -1,5 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
-    const User = sequelize.define("User", {
+    let alias ="User";
+    
+    let cols = {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -34,12 +36,23 @@ module.exports = (sequelize, DataTypes) => {
         updatedAt: {
             type: DataTypes.DATE
         },
-    }, {
+    };
+    
+    let config = {
         tableName: 'users',
         timestamps: false,
-    });
+    };
 
-   
+    const User = sequelize.define (alias, cols, config);
+
+    User.associate = function (models) {
+        User.belongsTo(models.UserTypes, {
+            as : "rol",
+            foreignKey : "user_type_id"
+        })
+
+       
+    };
 
 
 

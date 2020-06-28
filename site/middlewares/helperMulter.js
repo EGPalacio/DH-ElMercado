@@ -37,6 +37,27 @@ var storage = multer.diskStorage({
 
 var avatarUpload = multer({ storage: storage });
 
+
+var updateAvatar = multer.diskStorage({
+  
+  destination: function(req, file, cb) {
+
+    
+      
+      let id =req.params.id;
+      userId = path.join(__dirname, '../public/images/users/' +id)
+      
+      cb(null, userId);
+    
+  },
+  filename: function(req, file, cb) {
+    
+      cb(null, file.fieldname + path.extname(file.originalname));
+  },
+});
+
+var avatarUpdate = multer({ storage: updateAvatar });
+
 var storageProduct = multer.diskStorage({
     destination: function (req, file, cb) {
       db.Product.max('id').then(max => {
@@ -63,6 +84,7 @@ var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, {
 
 const upload = {
     avatarUpload,
+    avatarUpdate,
     productUpload
      
 };

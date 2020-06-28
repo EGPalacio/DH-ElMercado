@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- pendientes:
+        - agregar botón para editar profile, cambiar de usuario o checkout.
+    -->
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/css/profile.css">
+    <title> <%=title%> de <%=user.first_name%></title>
+
+
+    <%- include('partials/head.ejs')%>
+
+    
+
+</head>
+
+<body>
+
+    <%- include('partials/header.ejs')%>
+  
+   
+
+    <div class="cont">
+        <div class="avatar-flip">
+            <img src="/images/users/<%=user.id%>/<%=user.avatar%>" height="150" width="150">
+            <img src="/images/bk-profile.jpg" height="150" width="150">
+
+                   
+        </div>
+
+
+
+        
+
+        <form action="/profile/edit/<%=user.id%>" method="POST" enctype="multipart/form-data" >
+
+            <div class="input-group mb-3">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">Avatar</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="avatar" name="avatar"
+                        aria-describedby="inputGroupFileAddon01"  >
+                      <label class="custom-file-label" for="inputGroupFile01">Elegir avatar</label>
+                    </div>
+                  </div>
+
+                
+               
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" name="first_name" value="<%=user.first_name%>">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" name="last_name" value="<%=user.last_name%>">
+                </div>
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Tipo de usuario</span>
+                    </div>
+                    <select name="user_type_id" class="custom-select" >
+                        <% for (let i=0; i < roles.length; i++) { %>
+                
+                            <% if (roles[i].id == user.user_type_id) { %> 
+                                <option value="<%=roles[i].id%>" selected>
+                                    <%=roles[i].user_type%>
+                                </option>
+                
+                
+                            <% } else { %>
+                
+                            <option value="<%=roles[i].id%>">
+                                <%=roles[i].user_type%>
+                            </option>
+                
+                       <% } %>
+                       <% } %>
+                       
+                    </select>
+                </div>
+
+               
+
+                
+
+
+
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
+                    </div>
+                    <input type="email" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" name="email" value=" <%=user.email%>">
+                </div>
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
+                    </div>
+                    <input type="password" class="form-control" aria-label="Default"
+                        aria-describedby="inputGroup-sizing-default" name="password" placeholder="Ingresa un nuevo password">
+                </div>
+
+
+
+
+            </div>
+
+          
+                <div class="bd-example">
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                   
+    <a href="/profile" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Volver</a>
+                </div>
+         
+        </form>
+    </div>
+
+
+
+    <!-- Footer section -->
+    <%- include('partials/footer.ejs')%>
+    <!-- Footer section end -->
+
+</body>
+
+</html>
