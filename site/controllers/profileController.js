@@ -5,17 +5,12 @@ const Op = Sequelize.Op
 
 const bcrypt = require("bcrypt");
 
-module.exports = {
+module.exports =  {
     profile: (req, res) => {
-        var user = req.session.usuarioLogueado
-        if (user) {
-            let userName = user.first_name
+        var users = req.session.usuarioLogueado
+        if (users) {
+            let userName = req.session.usuarioLogueado.first_name
             console.log(` ==> acceso autorizado para: ${userName}`);
-            res.render('profileV2', {
-                tag: 'profile',
-                user: user
-            });
-
         } else {
             console.log(` ==> login requerido - redireccionado para confirmar acceso`);
             res.redirect('/login')
@@ -26,7 +21,7 @@ module.exports = {
        
         
         .then(function(user){
-            //console.log(user.userTypes.user_type);
+          
 
         res.render('profileV2', {
             title: 'Perfil',
