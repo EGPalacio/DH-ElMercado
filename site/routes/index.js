@@ -42,8 +42,12 @@ router.get("/check", function(req, res) {
 })
 
 /* GET Register page. */
-router.get('/register/', userRouter.vistaRegistro);
+router.get('/register/', gestUserCheck.guestCheck, userRouter.vistaRegistro);
 router.post('/register', userRouter.perfil, userRouter.storeValidation, userRouter.store);
+
+/* LOGOUT page */
+
+router.get('/logout', indexControllers.logout );
 
 
 

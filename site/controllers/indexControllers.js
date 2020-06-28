@@ -11,6 +11,8 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
  let indexControllers = {
         index: (req,res) => {
+
+            var user = req.session.usuarioLogueado
             /* let index = arrayProductos;
             res.render('index',{
                 "index":index,
@@ -26,11 +28,13 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 res.render("index", {
                     products:products,
                     thousandGenerator: toThousand,
+                    user : user
                 })
             })
         },
         blog : (req, res) => {
-            res.render('blog')
+            var user = req.session.usuarioLogueado
+            res.render('blog', {user : user})
         },
 
         prueba : (req, res) => {
@@ -40,6 +44,18 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             })
 
         },
+        logout : (req, res, next)  => {
+            if (req.session) {
+              // delete session object
+              req.session.destroy(function(err) {
+                if(err) {
+                  return next(err);
+                } else {
+                  return res.redirect('/');
+                }
+              });
+            }
+          }
     };
 
 module.exports = indexControllers;

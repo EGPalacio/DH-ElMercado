@@ -15,7 +15,22 @@
                     <div class="user-panel">
                         <div class="up-item">
                             <i class="flaticon-profile"></i>
-                            <a href="/login">Ingresa</a> o <a href="/register">Registrate</a>
+
+                            <% if (user == undefined ) { %> 
+                                <a href="/login">Ingresa</a> o <a href="/register">Registrate</a>
+                                  
+                              
+                            <% } else { %>
+                                <a href="/profile">Hola <%=user.first_name%></a>
+                                || <a href="/logout">Salir</a>
+                
+                       <% } %>
+
+
+
+
+
+                            
                         </div>
                         <div class="up-item">
                             <div class="shopping-card">

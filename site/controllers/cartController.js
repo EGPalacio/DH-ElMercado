@@ -6,9 +6,11 @@ const cartFilePath = path.join(__dirname, '../data/cart.json');
 
 module.exports = {
     cartStart: (req,res) => {
-        res.render('cart', {title: 'cart'})
+        var user = req.session.usuarioLogueado
+        res.render('cart', {title: 'cart', user: user})
     },
     cartAdd: (req,res) => {
+        var user = req.session.usuarioLogueado
         let productId = Number(req.params.id);
         let productCantidad = req.body.cantidad;
 
@@ -20,6 +22,6 @@ module.exports = {
             };
 
         fs.appendFileSync(cartFilePath, JSON.stringify(productToAdd, null, '\t'));
-        res.redirect('/cart/');
+        res.redirect('/cart/', {user : user});
     }
 }

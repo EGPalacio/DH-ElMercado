@@ -9,6 +9,7 @@ const toThousand = n => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 
 module.exports = {
     search: (req, res) => {
+        var user = req.session.usuarioLogueado
         db.Product.findAll({
             where: {
                 name:{[db.Sequelize.Op.substring]: req.query.search}
@@ -18,6 +19,7 @@ module.exports = {
                 res.render("browsedProducts", {
                     products: products,
                     thousandGenerator: toThousand,
+                    user : user,
                 });
             })
      }

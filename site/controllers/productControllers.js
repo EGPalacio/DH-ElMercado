@@ -29,6 +29,7 @@ const newProductId = newId.newProductId;
 // Product Controller
 module.exports = {
     detalleProductos: (req, res) => {
+        var user = req.session.usuarioLogueado
         /*  let index = arrayProductos; */
         /*         let pdtoID = req.params.id;
                 let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
@@ -52,10 +53,13 @@ module.exports = {
                     products: products,
                     thousandGenerator: toThousand,
                     userType: userType,
+                    user : user
                 })
             })
     },
     todosLosProductos: (req, res) => {
+
+        var user = req.session.usuarioLogueado
         /*   let index = arrayProductos;
           res.render('products', {
               "index": index,
@@ -70,6 +74,7 @@ module.exports = {
                 res.render("products", {
                     products: products,
                     thousandGenerator: toThousand,
+                    user : user
                 })
             })
     },
@@ -78,6 +83,7 @@ module.exports = {
         res.render('detalleProductos', { "index": index });
     },
     add: (req, res) => {
+        var user = req.session.usuarioLogueado
 
 
         let pedidoCategorias = db.Category.findAll({
@@ -90,7 +96,7 @@ module.exports = {
 
         Promise.all([pedidoCategorias, pedidoDescuentos])
             .then(function([categorias, descuentos]) {
-                res.render("addProduct", { categorias: categorias, descuentos: descuentos })
+                res.render("addProduct", { categorias: categorias, descuentos: descuentos, user: user })
             })
 
 
@@ -113,6 +119,7 @@ module.exports = {
         res.redirect('/');
     },
     edit: (req, res) => {
+        var user = req.session.usuarioLogueado
         let prodToEdit = req.params.id;
 
         db.Product.findByPk(prodToEdit)
@@ -131,7 +138,8 @@ module.exports = {
                         res.render('editProduct', {
                             title: 'editProduct',
                             prod: prod.dataValues,
-                            categ: categories
+                            categ: categories,
+                            user : user,
 
                         });
                     });
