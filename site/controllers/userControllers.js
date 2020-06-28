@@ -22,9 +22,8 @@ let userControllers = {
             var usuarioALoguearse;
 
             db.User.findAll({
-                where: {
-                    email: req.body.email
-                }
+                where: { email: req.body.email },
+                include: [{ association: 'userTypes' }],
             }).then((resultFindUser) => {
 
                 usuarioALoguearse = resultFindUser[0].dataValues

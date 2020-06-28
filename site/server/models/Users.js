@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING(255),
             allowNull: false
         },
-       user_type_id: {
+        user_type_id: {
             type: DataTypes.INTEGER
         },
         createdAt: {
@@ -39,9 +39,12 @@ module.exports = (sequelize, DataTypes) => {
         timestamps: false,
     });
 
-   
-
-
+    User.associate = function(models) {
+        User.belongsTo(models.UserTypes, {
+            as: "userTypes",
+            foreignKey: "user_type_id",
+        })
+    };
 
     return User;
 }
