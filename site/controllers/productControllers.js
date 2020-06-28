@@ -30,13 +30,13 @@ const newProductId = newId.newProductId;
 module.exports = {
     detalleProductos: (req, res) => {
         /*  let index = arrayProductos; */
-/*         let pdtoID = req.params.id;
-        let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
+        /*         let pdtoID = req.params.id;
+                let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
 
-        db.Product.findByPk(req.params.id,{
-           /*  include: [{association: "Discounts"}] */
-        })
-            .then(function(products){
+        db.Product.findByPk(req.params.id, {
+                /*  include: [{association: "Discounts"}] */
+            })
+            .then(function(products) {
                 if (req.session.usuarioLogueado) {
                     var userType = req.session.usuarioLogueado.user_type_id
                 } else {
@@ -45,33 +45,33 @@ module.exports = {
                 console.log(userType);
                 var userLog = req.session.usuarioLogueado;
                 console.log(userLog);
-                
-                
+
+
                 res.render("detalleProductos", {
                     /* "index": index, */
-                    products:products,
+                    products: products,
                     thousandGenerator: toThousand,
                     userType: userType,
                 })
             })
     },
     todosLosProductos: (req, res) => {
-      /*   let index = arrayProductos;
-        res.render('products', {
-            "index": index,
-            pdtosInSale,
-            pdtosVisited,
-            thousandGenerator: toThousand,
-        }); */
+        /*   let index = arrayProductos;
+          res.render('products', {
+              "index": index,
+              pdtosInSale,
+              pdtosVisited,
+              thousandGenerator: toThousand,
+          }); */
         db.Product.findAll({
-            /*  include: [{association: "Discounts"}, {association: "Categories"} ] */
-         })
-         .then(function(products){
-             res.render("products", {
-                 products:products,
-                 thousandGenerator: toThousand,
-             })
-         })
+                /*  include: [{association: "Discounts"}, {association: "Categories"} ] */
+            })
+            .then(function(products) {
+                res.render("products", {
+                    products: products,
+                    thousandGenerator: toThousand,
+                })
+            })
     },
     productos: (req, res) => {
         let index = arrayProductos;
@@ -79,54 +79,62 @@ module.exports = {
     },
     add: (req, res) => {
 
-      
+
         let pedidoCategorias = db.Category.findAll({
-            include : [{association : "products"}]
+            include: [{ association: "products" }]
         });
 
         let pedidoDescuentos = db.Discount.findAll({
-            include : [{association : "products"}]
+            include: [{ association: "products" }]
         });
- 
+
         Promise.all([pedidoCategorias, pedidoDescuentos])
-             .then(function([categorias, descuentos]){
-                 res.render("addProduct", {categorias: categorias, descuentos : descuentos} )
-             })
+            .then(function([categorias, descuentos]) {
+                res.render("addProduct", { categorias: categorias, descuentos: descuentos })
+            })
 
 
-        
 
-},
-store: (req, res) => {
-    let portada = req.files.imgPortada[0].filename;
-    req.body.price = Number(req.body.price);
-    
-    db.Product.create({
-        name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-        discount_id: req.body.discount_id,
-        category_id: req.body.category_id,
-        image: portada,
 
-    });
-    res.redirect('/');
-},
+    },
+    store: (req, res) => {
+        let portada = req.files.imgPortada[0].filename;
+        req.body.price = Number(req.body.price);
+
+        db.Product.create({
+            name: req.body.name,
+            description: req.body.description,
+            price: req.body.price,
+            discount_id: req.body.discount_id,
+            category_id: req.body.category_id,
+            image: portada,
+
+        });
+        res.redirect('/');
+    },
     edit: (req, res) => {
         let prodToEdit = req.params.id;
-        db.Product.findByPk(prodToEdit, {
-                // include: [
-                //     { association: 'discounts' },
-                //     { association: 'categories' },
-                // ]
-            })
+
+        db.Product.findByPk(prodToEdit)
             .then((prod) => {
-                console.log(`  ==> este es el producto que vamos a editar`);
-                console.log(prod.dataValues);
-                res.render('editProduct', {
-                    title: 'editProduct',
-                    prod: prod.dataValues,
-                });
+                db.Category.findAll()
+                    .then((categ) => {
+                        console.log(`  ==> selector de categorías`);
+                        let categories = [];
+                        for (let item of categ) {
+                            categories.push(item.dataValues);
+                        };
+                        console.log(categories);
+
+                        console.log(`  ==> este es el producto que vamos a editar`);
+                        console.log(prod.dataValues);
+                        res.render('editProduct', {
+                            title: 'editProduct',
+                            prod: prod.dataValues,
+                            categ: categories
+
+                        });
+                    });
             })
             .catch((err) => {
                 console.log(err);
