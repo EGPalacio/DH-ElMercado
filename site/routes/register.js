@@ -41,7 +41,14 @@ let storeValidation =
    
    
    
-    check("password").isLength({ min: 3 }).withMessage("La constraseña debe tener minimo 3 Caractéres"),
+    check("password")
+    
+    .isLength({ min: 8 })
+    .withMessage("La constraseña debe tener minimo 8 Caractéres")
+    .matches(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/, "i")
+    .withMessage("La constraseña debe tener al menos una letra mayuscula, una minuscula y un numero"),
+
+
     check('password_repeat', 'Los campos de contraseña no coinciden')
     .exists()
     .custom((value, { req }) => value === req.body.password),
