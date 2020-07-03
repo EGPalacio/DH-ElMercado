@@ -28,13 +28,21 @@ let storeValidation =
     .withMessage("El nombre debe tener minimo 2 caracteres"),
     check("last_name").isLength({min:2}).withMessage("El apellido debe tener minimo 2 caracteres"),
     check("email")
-    .isEmail().withMessage("El Email ingresado no es válido"),
+    .isEmail().withMessage("El Email ingresado no es válido")
+    .custom(value => {
+        return db.User.findOne({where : {email : value }})
+        .then(user => {
+         if (user) {
+            console.log('paso x aca')
+            return Promise.reject('El correo ingresado ya se encuentra registrado');
+          }
+        });
+      }),
    
    
    
     check("password").isLength({ min: 3 }).withMessage("La constraseña debe tener minimo 3 Caractéres"),
     check('password_repeat', 'Los campos de contraseña no coinciden')
-    
     .exists()
     .custom((value, { req }) => value === req.body.password),
     ];
