@@ -48,12 +48,18 @@
         <input type="email" name="email" placeholder="Ingresá tu correo">
         <input type="password" name="password" placeholder="Ingresá una contraseña">
         <input type="password" name="password_repeat" placeholder="Ingresa nuevamente tu contraseña">
-        <select  name="user_type_id" id="user_type_id">
-          <option  value="">Selecciona la Categoria</option>
-          <option value = "2">Individuo</option>
-          <option value = "1">Empresa</option>
-                 
-        </select>
+        <select name="user_type_id" class="custom-select" >
+          <% for (let i=0; i < roles.length; i++) { %>
+  
+             
+              <option value="<%=roles[i].id%>">
+                  <%=roles[i].user_type%>
+              </option>
+  
+        
+         <% } %>
+         
+      </select>
         <input type="file"  id="avatar" name="avatar" placeholder="Ingresa un avatar para tu perfil" class="file" >
         <button type="submit" class="btn-registro">  REGISTRARME </button>
         

@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var indexControllers = require('../controllers/indexControllers')
 var userControllers = require('../controllers/userControllers')
-var userRouter = require('./users');
+
 
 
 //Modularizadas
@@ -10,7 +10,8 @@ const productsRouter = require('../routes/products')
 const cartRouter = require('./cart')
 const profileRouter = require('./profile')
 const gestUserCheck = require('../middlewares/guestUserCheck');
-const searchRouter = require ("./search")
+const searchRouter = require ("./search");
+const registerRouter = require('../routes/register');
 
 var { check, validationResult, body } = require("express-validator");
 
@@ -21,7 +22,7 @@ router.get('/blog', indexControllers.blog);
 router.get('/prueba', indexControllers.prueba);
 
 /* rutas modularizadas */
-router.use(productsRouter).use(cartRouter).use(profileRouter).use(searchRouter);
+router.use(productsRouter).use(cartRouter).use(profileRouter).use(searchRouter).use(registerRouter);
 
 // Rutas Huesped =>
 /* GET Login page. */
@@ -41,9 +42,7 @@ router.get("/check", function(req, res) {
     }
 })
 
-/* GET Register page. */
-router.get('/register/', gestUserCheck.guestCheck, userRouter.vistaRegistro);
-router.post('/register', userRouter.perfil, userRouter.storeValidation, userRouter.store);
+
 
 /* LOGOUT page */
 
