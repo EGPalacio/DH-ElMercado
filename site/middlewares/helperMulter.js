@@ -14,6 +14,8 @@ const multer = require("multer");
 
 
 var storage = multer.diskStorage({
+
+  
   
     destination: function(req, file, cb) {
 
@@ -33,9 +35,10 @@ var storage = multer.diskStorage({
     filename: function(req, file, cb) {
         cb(null, req.body.first_name + path.extname(file.originalname));
     },
+   
 });
 
-var avatarUpload = multer({ storage: storage });
+var avatarUpload = multer({ storage: storage  });
 
 
 var updateAvatar = multer.diskStorage({

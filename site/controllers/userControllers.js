@@ -72,6 +72,9 @@ let userControllers = {
        
     },
     store: (req, res) => {
+
+        console.log(req.body);
+        
         
 
         console.log(req.files[0]);
@@ -112,7 +115,7 @@ let userControllers = {
  
              Promise.all([pedidoUser, pedidoRoles])
              .then(function([user, roles]){
-                 res.render("register", {errors: errors.errors,user: user, roles : roles} )
+                 res.render("register", {errors: errors.errors, user: user, roles : roles} )
              })
            
                  
