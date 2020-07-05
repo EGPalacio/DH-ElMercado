@@ -1,3 +1,40 @@
+RETRO SPRINT 6: Revisión del trabajo realizado en el Sprint 5
+==============
+
+Reunión 30 de Junio de 2020
+
+Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 4.
+
+1 - Que hicimos bien:
+    - El equipo está muy contento con las mejoras estéticas del sitio que aportó Martín para mejorar la visual del Home y el agregado del blog del recorrido del curso.
+    - Nos gustó como quedaron los archivos para el seed de datos en sequelize y la incorporación de la secuencia de instalación del proyecto que documentamos en Readme.md.
+
+2 - Que hicimos mal:
+    - Las promesas anidadas que usamos en algunos controllers se pueden mejorar con el uso de PromiseAll, nos gustó mucho más esa lógica.
+
+3 - Que tenemos que hacer.
+    - Tenemos que seguir trabajando organizados como hasta ahora para llegar bien al fin del sprint y la entrega en término.
+
+    Para este Sprint nos repartimos los trabajos de validación de la siguiente manera:
+    ==================================================================================
+    - Login (LH)
+    - Register (MP)
+    - Crear Product (MP)
+    - Edit Product (EGP)
+    - Edit User (LH)
+
+
+4 - Que es lo que no tenemos que hacer.
+    - Sin comentarios para esta retro.
+    - Tuvimos mejor feedback del sprint 5!!
+
+Martín.
+Leandro.
+Eduardo.
+
+
+---------------------------------------------------------------------------------------------------------------
+
 RETRO SPRINT 5: Revisión del trabajo realizado en el Sprint 4
 ==============
 
