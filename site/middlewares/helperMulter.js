@@ -38,7 +38,14 @@ var storage = multer.diskStorage({
    
 });
 
-var avatarUpload = multer({ storage: storage  });
+var avatarUpload = multer({ storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      cb(null, true);
+    }else {
+      cb(null, false);
+      ;
+    }}   });
 
 
 var updateAvatar = multer.diskStorage({
