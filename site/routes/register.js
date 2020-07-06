@@ -32,27 +32,13 @@ let storeValidation =
         .trim()
         .isLength({min:2})
         .withMessage("El nombre debe tener minimo 2 caracteres")
-        .custom((value, { req }) => {
-
-            if (req.files[0]) {
-                var avatarFile =req.files[0].mimetype;
-
-                if ( avatarFile == 'image/jpeg' || avatarFile == 'image/png' || avatarFile == 'image/jpg' ) {
-                    return true;
-                } else {
-                    throw new Error("Error en el formato de la imagen ");
-                }
-
-
-            } else {
-                return true;
-            }
+        
 
                                
            
                 
             
-        }),
+       ,
     
     check("last_name")
         .isLength({min:2})
@@ -85,6 +71,23 @@ let storeValidation =
         .exists()
         .custom((value, { req }) => value === req.body.password),
 
+    check('avatar') 
+    .custom((value, { req }) => {
+
+        if (req.files[0]) {
+            var avatarFile =req.files[0].mimetype;
+
+            if ( avatarFile == 'image/jpeg' || avatarFile == 'image/png' || avatarFile == 'image/jpg' ) {
+                return true;
+            } else {
+                throw new Error("Error en el formato de la imagen ");
+            }
+
+
+        } else {
+            return true;
+        }
+    })
         
        
         

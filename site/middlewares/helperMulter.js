@@ -15,6 +15,7 @@ const multer = require("multer");
 
 var storage = multer.diskStorage({
 
+ 
   
   
     destination: function(req, file, cb) {
@@ -33,19 +34,22 @@ var storage = multer.diskStorage({
       
     },
     filename: function(req, file, cb) {
+
+      if (file.mimetype != "image/png" || file.mimetype != "image/jpg" || file.mimetype != "image/jpeg") {
+
+        let nombre = req.body.first_name + '.error';
+     
+        cb(null, nombre );
+      } else {
         cb(null, req.body.first_name + path.extname(file.originalname));
+      }
+
+        
     },
    
 });
 
-var avatarUpload = multer({ storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-      cb(null, true);
-    }else {
-      cb(null, false);
-      ;
-    }}   });
+var avatarUpload = multer({ storage: storage   });
 
 
 var updateAvatar = multer.diskStorage({

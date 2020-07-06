@@ -73,12 +73,7 @@ let userControllers = {
     },
     store: (req, res) => {
 
-        console.log(req.body);
         
-        
-
-        console.log(req.files[0]);
-
         let errors = validationResult(req);
         if (errors.isEmpty())
 
