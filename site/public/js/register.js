@@ -12,7 +12,7 @@ window.addEventListener("load", function () {
   
   let password_repeat = document.querySelector("#password_repeat");
 
-  console.log(document.querySelector("#avatar"));
+  let file = document.getElementById("avatar");
 
   let errorSec = document.querySelector("#errors");
   let errores = [];
@@ -49,7 +49,15 @@ window.addEventListener("load", function () {
       errores.push("Las contraseñas no coinciden");
     }
 
-    
+    var avatar = file.value,
+  idxDot = avatar.lastIndexOf(".") + 1,
+  extFile = avatar.substr(idxDot, avatar.length).toLowerCase();
+  if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+   
+  }else{
+    errores.push("Solo archivos jpg/jpeg y png estan permitidos!");
+    file.value = "";  // Reset  input 
+  }
 
    
 
