@@ -1,11 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require("bcrypt");
-var { check, validationResult, body } = require("express-validator");
+var { check, validationResult, body, Result } = require("express-validator");
+
+var upload = require('../middlewares/helperMulter');
 
 // Require Sequelize
 const db = require('../server/models');
 const { Sequelize } = require('../server/models');
+const { errors } = require('../middlewares/helperMulter');
 const Op = Sequelize.Op
 
 let userControllers = {
@@ -74,7 +77,14 @@ let userControllers = {
     store: (req, res) => {
 
         
+        
         let errors = validationResult(req);
+
+        //pushear el array error nuevo a la propiedad errors del objeto Result
+        
+       
+        
+        
         if (errors.isEmpty())
 
         {

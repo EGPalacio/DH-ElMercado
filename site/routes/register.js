@@ -70,10 +70,12 @@ let storeValidation =
     check('password_repeat', 'Los campos de contraseña no coinciden')
         .exists()
         .custom((value, { req }) => value === req.body.password),
-
-    check('avatar') 
+    
+    check('avatar')
     .custom((value, { req }) => {
-
+        
+        console.log(value);
+        
         if (req.files[0]) {
             var avatarFile =req.files[0].mimetype;
 
@@ -87,7 +89,7 @@ let storeValidation =
         } else {
             return true;
         }
-    })
+    }) 
         
        
         

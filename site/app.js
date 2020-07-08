@@ -5,6 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
 
+const Swal = require('sweetalert2');
+
+
+
 
 
 var indexRouter = require('./routes/index');

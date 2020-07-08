@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { check, validationResult } = require('express-validator');
 
 // Require Sequelize
 const db = require('../server/models');
@@ -37,7 +38,7 @@ var storage = multer.diskStorage({
 
       if (file.mimetype != "image/png" || file.mimetype != "image/jpg" || file.mimetype != "image/jpeg") {
 
-        let nombre = req.body.first_name + '.error';
+        let nombre = '.error';
      
         cb(null, nombre );
       } else {
@@ -49,7 +50,26 @@ var storage = multer.diskStorage({
    
 });
 
-var avatarUpload = multer({ storage: storage   });
+
+
+var avatarUpload = multer({ 
+  storage: storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
+      cb(null, true);
+    } else {
+      cb(null, true);
+      
+     
+     
+        
+        
+
+    }
+  }
+   });
+   
+
 
 
 var updateAvatar = multer.diskStorage({
@@ -99,7 +119,10 @@ var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, {
 const upload = {
     avatarUpload,
     avatarUpdate,
-    productUpload
+    productUpload,
+    
+   
+   
      
 };
 
