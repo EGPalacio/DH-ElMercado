@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
     var avatar = file.value,
   idxDot = avatar.lastIndexOf(".") + 1,
   extFile = avatar.substr(idxDot, avatar.length).toLowerCase();
-  if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
+  if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile==""){
    
   }else{
     errores.push("Solo archivos jpg/jpeg y png estan permitidos!");
@@ -76,7 +76,7 @@ window.addEventListener("load", function () {
         
         Swal.fire({
           icon: 'error',
-          title: 'Oops...Algo salio mail!',
+          title: 'Oops...Algo salio mal!',
           html:  mensajes,
          
         })

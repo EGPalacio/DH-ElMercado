@@ -36,14 +36,8 @@ var storage = multer.diskStorage({
     },
     filename: function(req, file, cb) {
 
-      if (file.mimetype != "image/png" || file.mimetype != "image/jpg" || file.mimetype != "image/jpeg") {
-
-        let nombre = '.error';
-     
-        cb(null, nombre );
-      } else {
         cb(null, req.body.first_name + path.extname(file.originalname));
-      }
+      
 
         
     },

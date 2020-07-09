@@ -29,16 +29,8 @@ let perfil = upload.avatarUpload.any();
 let storeValidation = 
     [
     check("first_name")
-        .trim()
         .isLength({min:2})
-        .withMessage("El nombre debe tener minimo 2 caracteres")
-        
-
-                               
-           
-                
-            
-       ,
+        .withMessage("El nombre debe tener minimo 2 caracteres"),
     
     check("last_name")
         .isLength({min:2})

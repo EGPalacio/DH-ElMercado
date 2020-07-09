@@ -59,7 +59,7 @@
           <div class="form-row">
             <div class="col-md-12 mb-3">
               
-              <input type="text" class="form-control" id="first_name" placeholder="Ingresá tu nombre"  required>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingresá tu nombre"  required>
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -148,20 +148,7 @@
 
 <script type="text/javascript" src="/js/register.js" > </script>
 
-<!-- <script>
-  let file = document.getElementById("avatar");
-function validateFileType(){
-  var avatar = file.value,
-  idxDot = avatar.lastIndexOf(".") + 1,
-  extFile = avatar.substr(idxDot, avatar.length).toLowerCase();
-  if (extFile=="jpg" || extFile=="jpeg" || extFile=="png"){
-    //TO DO
-  }else{
-    alert("Only jpg/jpeg and png files are allowed!");
-    file.value = "";  // Reset the input so no files are uploaded
-  }
-}
-</script> -->
+
 
 
     <!-- JQuery -->
@@ -172,6 +159,7 @@ function validateFileType(){
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <!-- MDB core JavaScript -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
 <!-- Sweet Alert JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
