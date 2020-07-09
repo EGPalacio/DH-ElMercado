@@ -10,7 +10,7 @@
 
     
     
-    <section class="new-product col-12">
+    <section class="container new-product col-12">
       <div class="product-detail col-sm-10 col-md-10 col-lg-10">
         <h2>NUEVO PRODUCTO</h2>
         <p>Ingrese el detalle del producto que desea agregar</p>
@@ -57,27 +57,23 @@
     
            <% } %>
            
-        </select> <br>
+        </select> 
 
-          <div class="container col-12">
+          
             <div class="form-group col-12">
-              <div class="input-group-local col-6">
+              <div class="input-group-local col-sm-12 col-12">
                 <label>Subir Portada:</label>
                 <input type="file" name="imgPortada" id="imgPortada" />
               </div>
-              <div class="input-group-local col-6">
+            </div>
+            
+              <div class="input-group-local col-sm-12 col-12">
                 <label>Galeria de fotos</label>
-
-                <input
-                  type="file"
-                  name="img-products"
-                  placeholder="Puede cargar hasta 8 fotos"
-                  multiple
-                  id="img-products"
-                />
+                <div class="form-group col-12">
+                <input type="file" name="img-products" placeholder="Puede cargar hasta 8 fotos" multiple id="img-products" />
               </div>
             </div>
-          </div>
+         
         </form>
       </div>
 

@@ -156,6 +156,7 @@ form.detail {
   padding: 20px;
   border-radius: 6px;
   border: 2px solid #114bdf69;
+  width: 100%;
 }
 .detail select option {
     font-family: "Montserrat", sans-serif;
@@ -167,6 +168,7 @@ form.detail {
 }
 
 .detail textarea {
+  width: 100%;
     font-family: "Montserrat", sans-serif;
   font-size: 14px;
   margin-top: 10px;
@@ -177,9 +179,9 @@ form.detail {
 }
 
 .form-group{
+  margin-top: 20px;
   position: relative;
-  display: flex;
-  justify-content: space-between;
+ 
   
   
 }
@@ -190,8 +192,7 @@ form.detail {
 
 
 .input-group-local{
-  display: flex;
-  align-items: center;
+ 
   position: relative;
   border-collapse: separate;
 margin-bottom: 10px;
