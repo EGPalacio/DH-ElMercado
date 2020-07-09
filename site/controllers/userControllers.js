@@ -80,7 +80,7 @@ let userControllers = {
         
         let errors = validationResult(req);
 
-        //pushear el array error nuevo a la propiedad errors del objeto Result
+        
         
        
         

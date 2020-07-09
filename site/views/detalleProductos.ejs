@@ -103,7 +103,7 @@
                         <input type="submit" value="+ Agregar al carrito" class="botonAgregar">
 
                         <input type="submit" value="COMPRAR" class="botonComprar">
-                        <% if(userType == 2){ %>
+                        <% if(userType == 2 || userType == 1){ %>
                             <a href="/products/<%= products.id %>/edit" class="botonComprar">EDITAR</a>
                             <% } %>
 

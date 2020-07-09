@@ -5,7 +5,7 @@ var productControllers = require('../controllers/productControllers');
 const upload = require('../middlewares/helperMulter');
 const gestUserCheck = require('../middlewares/guestUserCheck');
 
-
+const addProdValidate = require('../middlewares/addProductValidation');
 
 /* GET home page. */
 
@@ -14,7 +14,7 @@ router.get('/products/detail/:id/:category', productControllers.productos)
 
 /* GET Login page. */
 router.get('/products/create', gestUserCheck.userCheck, productControllers.add);
-router.post('/products/create', upload.productUpload, productControllers.store);
+router.post('/products/create', upload.productUpload, addProdValidate.storeValidation, productControllers.store);
 
 
 router.get('/products/:id/edit', gestUserCheck.userCheck, productControllers.edit);

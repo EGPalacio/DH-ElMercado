@@ -12,6 +12,9 @@ const Op = Sequelize.Op
 //Require JSON Productos
 const productJson = require('../middlewares/jsonRead')
 
+//Require Express Validator
+var { check, validationResult, body, Result } = require("express-validator");
+
 
 
 let arrayProductos = require('../articulosJS');
@@ -104,8 +107,23 @@ module.exports = {
 
     },
     store: (req, res) => {
-        let portada = req.files.imgPortada[0].filename;
+
+        let errors = validationResult(req);      
+        if (errors.isEmpty())
+
+        {
+        
         req.body.price = Number(req.body.price);
+
+        let portada
+
+            if (req.files.imgPortada == undefined) {
+                portada = '';
+            } else {
+                portada = req.files.imgPortada[0].filename;
+                console.log(portada);
+                
+            };
 
         db.Product.create({
             name: req.body.name,
@@ -117,6 +135,27 @@ module.exports = {
 
         });
         res.redirect('/');
+    } else {
+
+        var user = req.session.usuarioLogueado
+
+
+        let pedidoCategorias = db.Category.findAll({
+            include: [{ association: "products" }]
+        });
+
+        let pedidoDescuentos = db.Discount.findAll({
+            include: [{ association: "products" }]
+        });
+
+        Promise.all([pedidoCategorias, pedidoDescuentos])
+            .then(function([categorias, descuentos]) {
+                res.render("addProduct", { errors: errors.errors, categorias: categorias, descuentos: descuentos, user: user })
+            })
+       
+             
+       
+    }
     },
     edit: (req, res) => {
         var user = req.session.usuarioLogueado
