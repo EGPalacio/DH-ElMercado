@@ -18,7 +18,13 @@
 	<link rel="stylesheet" href="/css/cart/jquery-ui.min.css"/>
 	<link rel="stylesheet" href="/css/cart/owl.carousel.min.css"/>
 	<link rel="stylesheet" href="/css/cart/animate.css"/>
-	<link rel="stylesheet" href="/css/cart/style.css"/>
+  <link rel="stylesheet" href="/css/cart/style.css"/>
+  
+  <!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  
 
 
 	<!--[if lt IE 9]>
@@ -96,8 +102,26 @@
           }
         };
 
-        $("#img-products").on("change", function () {
+        $("#gallery").on("change", function () {
           imagesPreview(this, "div.gallery");
         });
       });
     </script>
+
+    <script  type="text/javascript" src="/js/addProduct.js" ></script>
+
+   <!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+
+<!-- Sweet Alert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+ 
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
