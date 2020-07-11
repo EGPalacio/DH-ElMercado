@@ -19,7 +19,7 @@ let userControllers = {
         let errors = validationResult(req);
         if (!errors.isEmpty()) {
             console.log('  ==> validación con error');
-            return res.render("login", { errors: [{ msg: "Credenciales no válidas" }] })
+            return res.render("login", { errors: errors.errors })
 
         } else {
             var usuarioALoguearse;
@@ -30,8 +30,7 @@ let userControllers = {
             }).then((resultFindUser) => {
 
                 usuarioALoguearse = resultFindUser[0].dataValues
-                
-                
+
 
                 if (bcrypt.compareSync(req.body.password, usuarioALoguearse.password)) {
                     console.log('  ==> validación usuario autorizado');
@@ -76,7 +75,9 @@ let userControllers = {
     },
     store: (req, res) => {
 
-        
+        console.log("es por acaaaaaaaaa");
+        console.log(req.files[0])
+        console.log(req.files)
         
         let errors = validationResult(req);
 

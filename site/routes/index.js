@@ -30,8 +30,12 @@ router.get('/login', gestUserCheck.guestCheck, userControllers.login);
 
 /* Acá está el Login - Session */
 router.post('/login', [
-    check("email").isEmail().withMessage("Email inválido"),
-    check("password").isLength({ min: 3 }).withMessage("La constraseña debe tener minimo 3 Caractéres"),
+    check("email")
+    .isEmail()
+    .withMessage("Email inválido"),
+    check("password")
+    .isLength({ min: 3 })
+    .withMessage("La constraseña debe tener minimo 3 Caractéres"),
 ], userControllers.loggedIn);
 
 router.get("/check", function(req, res) {

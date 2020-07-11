@@ -7,6 +7,7 @@
     <script src="https://kit.fontawesome.com/4fa9f35e5d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/login.css">
     <title>Ingreso de usuarios</title>
+    <script src="/js/login.js"></script>
 </head>
 <body>
     <div class="login-box">
@@ -29,25 +30,30 @@
             </a>
           </div>
           <class class="form-box">
-          <% if (typeof errors != "undefined" ) { %>
+            <div class="errores">
+              <% if (typeof errors != "undefined" ) { %>
            
-            <ul>
-                <% errors.forEach(function(elemento){ %>
+               <ul>
+                  <% errors.forEach(function(elemento){ %>
                   <li>
                     <%= elemento.msg %>
                   </li>
-                <% }) %>
-            </ul>
-          <% } %>
+                  <% }) %>
+               </ul>
+             <% } %>
+            </div>
           
-        <form action="/login" class="lb-form" method="POST">
-        <input type="text" name="email" placeholder="Ingresá tu Correo">
-        <input type="password" name="password" placeholder="Ingresá tu contraseña">
+        <form id="form" action="/login" class="lb-form" method="POST">
+        <input id="email" type="text" name="email" placeholder="Ingresá tu Correo">
+        <input id="password" type="password" name="password" placeholder="Ingresá tu contraseña">
         <input type="checkbox" name="recordame"> <!-- acomodar el botón de recordame -->
         <button type="submit" class="btn-registro">INGRESAR </button>
 
         </form>
     </div>
     </div>
+<!-- Sweet Alert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>

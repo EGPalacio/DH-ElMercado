@@ -66,10 +66,11 @@ let storeValidation =
     check('avatar')
     .custom((value, { req }) => {
         
-        console.log(value);
+        console.log("es por acaaaaaaaaa");
         
         if (req.files[0]) {
             var avatarFile =req.files[0].mimetype;
+            console.log(avatarFile)
 
             if ( avatarFile == 'image/jpeg' || avatarFile == 'image/png' || avatarFile == 'image/jpg' ) {
                 return true;
