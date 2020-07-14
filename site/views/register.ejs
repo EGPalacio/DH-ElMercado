@@ -59,7 +59,7 @@
           <div class="form-row">
             <div class="col-md-12 mb-3">
               
-              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingresá tu nombre"  required>
+              <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ingresá tu nombre"  required pattern=".{3,}"  >
               <div class="valid-feedback">
                 Looks good!
               </div>
@@ -69,7 +69,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ingresá tu apellido" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ingresá tu apellido" required required pattern=".{3,}">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -79,16 +79,14 @@
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 
-                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresá tu correo" required>
-                <div class="valid-feedback">
-                  Looks good!
-                </div>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Ingresá tu correo" required onchange="validarEmail(this)" >
+                
               </div>
             </div>
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 
-                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresá una contraseña" required>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Ingresá una contraseña" required required pattern=".{8,}">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
@@ -98,7 +96,7 @@
             <div class="form-row">
               <div class="col-md-12 mb-3">
                 
-                <input type="password" class="form-control" id="password_repeat" name="password_repeat" placeholder="Ingresá nuevamente tu contraseña" required>
+                <input type="password" class="form-control" id="password_repeat" name="password_repeat" placeholder="Ingresá nuevamente tu contraseña" required required pattern=".{8,}">
                 <div class="valid-feedback">
                   Looks good!
                 </div>
