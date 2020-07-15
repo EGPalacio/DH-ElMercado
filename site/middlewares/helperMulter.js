@@ -7,84 +7,78 @@ const db = require('../server/models');
 const { Sequelize } = require('../server/models');
 const Op = Sequelize.Op
 
-
 const multer = require("multer");
-
-
-
-
 
 var storage = multer.diskStorage({
 
- 
-  
-  
     destination: function(req, file, cb) {
 
       db.User.max('id').then(max => {
-        
+
         let lastId = max + 1;
         userIdPath2 = path.join(__dirname, '../public/images/users/' + lastId)
         if (!fs.existsSync(userIdPath2)){
           fs.mkdirSync(userIdPath2);
           };
         cb(null, userIdPath2);
-      }) 
+      })
 
-      
-      
     },
     filename: function(req, file, cb) {
 
         cb(null, req.body.first_name + path.extname(file.originalname));
-      
 
-        
     },
-   
+
 });
 
 
 
-var avatarUpload = multer({ 
+var avatarUpload = multer({
   storage: storage,
   fileFilter: (req, file, cb) => {
     if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
       cb(null, true);
     } else {
       cb(null, true);
-      
-     
-     
-        
-        
 
     }
   }
    });
-   
+
 
 
 
 var updateAvatar = multer.diskStorage({
-  
+
   destination: function(req, file, cb) {
 
-    
-      
       let id =req.params.id;
       userId = path.join(__dirname, '../public/images/users/' +id)
-      
       cb(null, userId);
-    
+
   },
   filename: function(req, file, cb) {
-    
+
       cb(null, file.fieldname + path.extname(file.originalname));
   },
 });
 
-var avatarUpdate = multer({ storage: updateAvatar });
+let error;
+var avatarUpdate = multer({ 
+  storage: updateAvatar,
+  fileFilter: (req, file, cb) => {
+    if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
+      cb(null,true);
+    }else{
+      cb(null, false);
+      console.log("ACÁ ESTÁ EL EROROR")
+      /* error.push(
+        colocar acá el mismo formato que los errores .msg y exportarlo al controller
+      ) */
+    }
+  }
+});
 
 var storageProduct = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -96,13 +90,13 @@ var storageProduct = multer.diskStorage({
           fs.mkdirSync(prodIdPath2);
           };
         cb(null, prodIdPath2);
-      }) 
+      })
     },
     filename: function (req, file, cb) {
       cb(null, req.body.name + '-' + file.originalname)
     }
   })
-   
+
 var uploadProduct = multer({ storage: storageProduct })
 var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, { name: 'gallery', maxCount: 9 }]) 
 
@@ -114,10 +108,6 @@ const upload = {
     avatarUpload,
     avatarUpdate,
     productUpload,
-    
-   
-   
-     
 };
 
 module.exports = upload;

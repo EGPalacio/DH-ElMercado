@@ -42,6 +42,8 @@ module.exports =  {
      },
      save: (req, res) => {
         let errors = validationResult(req);
+        console.log("ERRRRRRRRRRRRRRRRRORRRRRRRRR")
+        console.log(errors)
         if (errors.isEmpty()) {
 
            let userToEdit = req.params.id;
