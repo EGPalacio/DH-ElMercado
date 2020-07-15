@@ -28,7 +28,7 @@ window.addEventListener("load", function(){
         if (errores.length > 0) {
             e.preventDefault()
 
-            let mensaje;
+            let mensaje = "";
             for (let error of errores) {
                 mensaje += `${error}` + " <br>";
                 console.log(error)

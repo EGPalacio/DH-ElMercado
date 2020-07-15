@@ -1,114 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <%- include('partials/addProductHead.ejs')%>
-  </head>
-  
-  <body>
 
-    <%- include('partials/header.ejs')%>
+<head>
+  <%- include('partials/addProductHead.ejs')%>
+</head>
 
-    
-    
-    <section class="container new-product col-12">
-      <div class="product-detail col-sm-10 col-md-10 col-lg-10">
+<body>
+
+  <%- include('partials/header.ejs')%>
+
+
+
+  <section class="container new-product col-12">
+    <div class="product-detail col-sm-10 col-md-10 col-lg-10">
+
+
+
+      <h2>NUEVO PRODUCTO</h2>
+      <p>Ingrese el detalle del producto que desea agregar</p>
+
+      <div class="errores">
+        <% if (typeof errors != "undefined" ) { %>
+
+        <ul>
+          <% errors.forEach(function(elemento){ %>
+          <li>
+            <%= elemento.msg %>
+          </li>
+          <% }) %>
+        </ul>
+        <% } %>
+      </div>
+      <form id="newProduct" action="/products/create" method="POST" class="newProduct detail needs-validation"
+      novalidate enctype="multipart/form-data">
+        
+
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del producto"  required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
+
+        <select name="category_id">
+
+          <option value="0">Selecciona la categoria</option>
+          <% for (let i=0; i < categorias.length; i++) { %>
+
+          <option value="<%=categorias[i].id%>">
+            <%=categorias[i].category%>
+          </option>
+
+          <% } %>
+
+        </select>
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            
+            <textarea name="description" id="description" cols="30" rows="5" placeholder="Breve descripcion del producto"
+            required></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="col-md-12 mb-3">
+            
+            <input type="number" class="form-control" id="price" name="price" placeholder="Precio del Producto"  required>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </div>
+        </div>
         
        
-       
-        <h2>NUEVO PRODUCTO</h2>
-        <p>Ingrese el detalle del producto que desea agregar</p>
-       
-        <div class="errores">
-          <% if (typeof errors != "undefined" ) { %>
-       
-            <ul>
-                <% errors.forEach(function(elemento){ %>
-                  <li>
-                    <%= elemento.msg %>
-                  </li>
-                <% }) %>
-            </ul>
+
+        <select name="discount_id">
+          <option value="0">Selecciona el descuento a aplicar</option>
+          <% for (let i=0; i < descuentos.length; i++) { %>
+
+          <option value="<%=descuentos[i].id%>">
+            <%=descuentos[i].discount%>
+          </option>
+
           <% } %>
-        </div> 
-        <form
-          id="newProduct"
-          action="/products/create"
-          method="POST"
-          class="detail"
-          enctype="multipart/form-data"
-        >
-          <input type="text" id="name" name="name" placeholder="Nombre del producto" />
 
-
-          <select name="category_id" >
-
-            <option value="0">Selecciona la categoria</option>
-            <% for (let i=0; i < categorias.length; i++) { %>
-    
-                <option value="<%=categorias[i].id%>">
-                    <%=categorias[i].category%>
-                </option>
-    
-           <% } %>
-           
         </select>
 
-         
-          <textarea
-            name="description"
-            id="description"
-            cols="30"
-            rows="5"
-            placeholder="Breve descripcion del producto"
-          ></textarea>
-          <input type="number" name="price" placeholder="Precio del Producto" />
-         
-          <select name="discount_id" >
-            <option value="0">Selecciona el descuento a aplicar</option>
-            <% for (let i=0; i < descuentos.length; i++) { %>
-                 
-                <option value="<%=descuentos[i].id%>">
-                    <%=descuentos[i].discount%>
-                </option>
-    
-           <% } %>
-           
-        </select> 
 
-          
-            <div class="form-group col-12">
-              <div class="input-group-local col-sm-12 col-12">
-                <label>Subir Portada:</label>
-                <input type="file" name="imgPortada" id="imgPortada" />
+        <div class="form-group col-12">
+          <div class="input-group-local col-sm-12 col-12">
+            <label>Subir Portada:</label>
+            <input type="file" name="imgPortada" id="imgPortada" accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
               </div>
             </div>
             
-              <div class="input-group-local col-sm-12 col-12">
-                <label>Galeria de fotos</label>
-                <div class="form-group col-12">
-                <input type="file" name="img-products" placeholder="Puede cargar hasta 8 fotos" multiple id="img-products" />
+              <div class=" input-group-local col-sm-12 col-12">
+            <label>Galeria de fotos</label>
+            <div class="form-group col-12">
+              <input type="file" name="gallery" placeholder="Puede cargar hasta 8 fotos" multiple id="gallery"
+                accept=".jpg,.jpeg,.png" onchange="validateFileType()" />
               </div>
             </div>
          
         </form>
       </div>
 
-      <div class="product-images col-sm-10 col-md-10 col-lg-10">
-        <div class="caja-galeria">
-          <h2>Imagenes del producto</h2>
-          <p>Vista previa de las imagenes del producto</p>
-          <h3>Portada del producto:</h3>
-          <div class="portada"><img id="img-upload" /></div>
+      <div class=" product-images col-sm-10 col-md-10 col-lg-10">
+              <div class="caja-galeria">
+                <h2>Imagenes del producto</h2>
+                <p>Vista previa de las imagenes del producto</p>
+                <h3>Portada del producto:</h3>
+                <div class="portada"><img id="img-upload" /></div>
 
-          <h3>Galeria de fotos:</h3>
-          <div class="gallery"></div>
-        </div>
-      </div>
-      <div class="btn-crear col-sm-11 col-md-12 col-lg-12">
-        <button type="submit" form="newProduct" class="btn-new">
-          CREAR NUEVO PRODUCTO
-        </button>
-      </div>
-    </section>
-  </body>
+                <h3>Galeria de fotos:</h3>
+                <div class="gallery"></div>
+              </div>
+            </div>
+            <div class="btn-crear col-sm-11 col-md-12 col-lg-12">
+              <button type="submit" id="submit" form="newProduct" class="btn-new">
+                CREAR NUEVO PRODUCTO
+              </button>
+            </div>
+  </section>
+</body>
+
 </html>

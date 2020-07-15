@@ -1,134 +1,131 @@
-const fs = require('fs');
-const path = require('path');
+const fs = require("fs");
+const path = require("path");
 const bcrypt = require("bcrypt");
 var { check, validationResult, body, Result } = require("express-validator");
 
-var upload = require('../middlewares/helperMulter');
+var upload = require("../middlewares/helperMulter");
 
 // Require Sequelize
-const db = require('../server/models');
-const { Sequelize } = require('../server/models');
-const { errors } = require('../middlewares/helperMulter');
-const Op = Sequelize.Op
+const db = require("../server/models");
+const { Sequelize } = require("../server/models");
+const { errors } = require("../middlewares/helperMulter");
+const Op = Sequelize.Op;
 
 let userControllers = {
-    login: (req, res) => {
-        res.render('login');
-    },
-    loggedIn: (req, res) => {
-        let errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            console.log('  ==> validación con error');
-            return res.render("login", { errors: errors.errors })
+  emailValidation: (req, res, next) =>   {
+    value = req.params.email;
 
-        } else {
-            var usuarioALoguearse;
+    db.User.findOne({where : {email : value }})
+    .then(user => {
+     if (user) {
+        res.json({
+            esvalido: false,
+        });
+      } else {
+        res.json({
+            esvalido: true,
+        });
+      }
+      });
+  },
+  login: (req, res) => {
+    res.render("login");
+  },
+  loggedIn: (req, res) => {
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      console.log("  ==> validación con error");
+      return res.render("login", {
+        errors: [{ msg: "Credenciales no válidas" }],
+      });
+    } else {
+      var usuarioALoguearse;
 
-            db.User.findAll({
-                where: { email: req.body.email },
-                include: [{ association: 'userTypes' }],
-            }).then((resultFindUser) => {
+      db.User.findAll({
+        where: { email: req.body.email },
+        include: [{ association: "userTypes" }],
+      })
+        .then((resultFindUser) => {
+          usuarioALoguearse = resultFindUser[0].dataValues;
 
-                usuarioALoguearse = resultFindUser[0].dataValues
+          if (
+            bcrypt.compareSync(req.body.password, usuarioALoguearse.password)
+          ) {
+            console.log("  ==> validación usuario autorizado");
 
+            /* Acá está el session */
+            req.session.usuarioLogueado = usuarioALoguearse;
+            console.log(
+              ` ==> confirmación de usuario logueado como: ${req.session.usuarioLogueado.first_name}`
+            );
 
-                if (bcrypt.compareSync(req.body.password, usuarioALoguearse.password)) {
-                    console.log('  ==> validación usuario autorizado');
+            /* Acá está la cookie */
+            if (req.body.recordame != undefined) {
+              res.cookie("recordame", usuarioALoguearse, { maxAge: 60000 });
+            }
 
-                    /* Acá está el session */
-                    req.session.usuarioLogueado = usuarioALoguearse;
-                    console.log(` ==> confirmación de usuario logueado como: ${req.session.usuarioLogueado.first_name}`);
-
-                    /* Acá está la cookie */
-                    if (req.body.recordame != undefined) {
-                        res.cookie("recordame", usuarioALoguearse, { maxAge: 60000 });
-                    };
-
-                    res.redirect('/');
-
-                } else {
-                    res.render("login", { errors: [{ msg: "Credenciales no válidas" }] })
-                };
-
-            }).catch((err) => {
-                console.log(err);
+            res.redirect("/");
+          } else {
+            res.render("login", {
+              errors: [{ msg: "Credenciales no válidas" }],
             });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  },
+  register: (req, res) => {
+    //let pedidoUser = db.User.findAll();
 
-        };
-    },
-    register: (req, res) => {
+    let pedidoUser = db.User.findAll();
 
-        //let pedidoUser = db.User.findAll();
- 
-        let pedidoUser = db.User.findAll();
- 
-             let pedidoRoles = db.UserTypes.findAll();
- 
-             Promise.all([pedidoUser, pedidoRoles])
-             .then(function([user, roles]){
-                 res.render("register", {user: user, roles : roles} )
-             })
+    let pedidoRoles = db.UserTypes.findAll();
 
+    Promise.all([pedidoUser, pedidoRoles]).then(function ([user, roles]) {
+      res.render("register", { user: user, roles: roles });
+    });
+  },
+  store: (req, res) => {
+    let errors = validationResult(req);
 
+    if (errors.isEmpty()) {
+      let avatar;
 
-       
-    },
-    store: (req, res) => {
+      if (req.files[0] == undefined) {
+        avatar = "";
+      } else {
+        avatar = req.files[0].filename;
+      }
 
-        console.log("es por acaaaaaaaaa");
-        console.log(req.files[0])
-        console.log(req.files)
-        
-        let errors = validationResult(req);
+      // Do the magic
 
-        
-        
-       
-        
-        
-        if (errors.isEmpty())
+      db.User.create({
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        email: req.body.email,
+        password: bcrypt.hashSync(req.body.password, 10),
+        user_type_id: req.body.user_type_id,
+        createdAt: Date.now(),
+        avatar: avatar,
+      });
 
-        {
+      res.redirect("/login");
+    } else {
+      let pedidoUser = db.User.findByPk(req.params.id);
 
-            let avatar
+      let pedidoRoles = db.UserTypes.findAll();
 
-            if (req.files[0] == undefined) {
-                avatar = '';
-            } else {
-                avatar = req.files[0].filename;
-            };
-
-            // Do the magic
-
-            db.User.create({
-                first_name: req.body.first_name,
-                last_name: req.body.last_name,
-                email: req.body.email,
-                password: bcrypt.hashSync(req.body.password, 10),
-                user_type_id: req.body.user_type_id,
-                createdAt: Date.now(),
-                avatar: avatar
-
-            });
-
-            res.redirect('/login');
-
-        } else {
-
-            let pedidoUser = db.User.findByPk(req.params.id);
- 
-             let pedidoRoles = db.UserTypes.findAll();
- 
-             Promise.all([pedidoUser, pedidoRoles])
-             .then(function([user, roles]){
-                 res.render("register", {errors: errors.errors, user: user, roles : roles} )
-             })
-           
-                 
-           
-        }
-
-    },
+      Promise.all([pedidoUser, pedidoRoles]).then(function ([user, roles]) {
+        res.render("register", {
+          errors: errors.errors,
+          user: user,
+          roles: roles,
+        });
+      });
+    }
+  },
 };
 
 module.exports = userControllers;

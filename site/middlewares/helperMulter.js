@@ -104,7 +104,7 @@ var storageProduct = multer.diskStorage({
   })
    
 var uploadProduct = multer({ storage: storageProduct })
-var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, { name: 'img-products', maxCount: 9 }]) 
+var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, { name: 'gallery', maxCount: 9 }]) 
 
 
 
