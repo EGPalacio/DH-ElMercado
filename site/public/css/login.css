@@ -131,3 +131,19 @@ body {
     color: #fff;
   }
   
+  .errores {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+  
+  }
+  
+  .errores ul {
+    background-color: #ff0707b9;
+    padding: 30px;
+    border-radius: 15px;
+    list-style: none;
+    line-height: 1.5;
+    color: #f6f6f6;
+  }

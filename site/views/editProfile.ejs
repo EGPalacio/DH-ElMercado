@@ -14,29 +14,33 @@
 
     <%- include('partials/head.ejs')%>
 
-    
+    <script src="/js/profileEdit.js"></script>
 
 </head>
 
 <body>
 
     <%- include('partials/header.ejs')%>
-  
-   
 
     <div class="cont">
         <div class="avatar-flip">
             <img src="/images/users/<%=user.id%>/<%=user.avatar%>" height="150" width="150">
             <img src="/images/bk-profile.jpg" height="150" width="150">
+        </div>
+        <div class="errores">
+            <% if (typeof errors != "undefined" ) { %>
 
-                   
+             <ul>
+                <% errors.forEach(function(elemento){ %>
+                <li>
+                  <%= elemento.msg %>
+                </li>
+                <% }) %>
+             </ul>
+           <% } %>
         </div>
 
-
-
-        
-
-        <form action="/profile/edit/<%=user.id%>" method="POST" enctype="multipart/form-data" >
+        <form id="" action="/profile/edit/<%=user.id%>" method="POST" enctype="multipart/form-data" >
 
             <div class="input-group mb-3">
 
@@ -45,68 +49,45 @@
                       <span class="input-group-text" id="inputGroupFileAddon01">Avatar</span>
                     </div>
                     <div class="custom-file">
-                      <input type="file" class="custom-file-input" id="avatar" name="avatar"
-                        aria-describedby="inputGroupFileAddon01"  >
+                      <input type="file" class="custom-file-input" id="avatar" name="avatar"aria-describedby="inputGroupFileAddon01" >
                       <label class="custom-file-label" for="inputGroupFile01">Elegir avatar</label>
                     </div>
-                  </div>
-
-                
-               
-
+                </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Nombre</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default" name="first_name" value="<%=user.first_name%>">
+                    <input id="first_name" type="text" class="form-control" aria-label="Default"aria-describedby="inputGroup-sizing-default" name="first_name" value="<%=user.first_name%>">
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Apellido</span>
                     </div>
-                    <input type="text" class="form-control" aria-label="Default"
-                        aria-describedby="inputGroup-sizing-default" name="last_name" value="<%=user.last_name%>">
+                    <input id="last_name" type="text" class="form-control" aria-label="Default"aria-describedby="inputGroup-sizing-default" name="last_name" value="<%=user.last_name%>">
                 </div>
-
-
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Tipo de usuario</span>
                     </div>
-                    <select name="user_type_id" class="custom-select" >
+                    <select id="user_type" name="user_type_id" class="custom-select" >
                         <% for (let i=0; i < roles.length; i++) { %>
-                
                             <% if (roles[i].id == user.user_type_id) { %> 
                                 <option value="<%=roles[i].id%>" selected>
                                     <%=roles[i].user_type%>
                                 </option>
-                
-                
                             <% } else { %>
-                
                             <option value="<%=roles[i].id%>">
                                 <%=roles[i].user_type%>
                             </option>
-                
                        <% } %>
                        <% } %>
-                       
                     </select>
                 </div>
-
-               
-
-                
-
-
-
-
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Email</span>
                     </div>
-                    <input type="email" class="form-control" aria-label="Default"
+                    <input id="email" type="email" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" name="email" value=" <%=user.email%>">
                 </div>
 
@@ -114,30 +95,24 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="inputGroup-sizing-default">Password</span>
                     </div>
-                    <input type="password" class="form-control" aria-label="Default"
+                    <input id="password" type="password" class="form-control" aria-label="Default"
                         aria-describedby="inputGroup-sizing-default" name="password" placeholder="Ingresa un nuevo password">
                 </div>
-
-
-
-
             </div>
-
-          
                 <div class="bd-example">
                     <button type="submit" class="btn btn-primary">Guardar</button>
-                   
-    <a href="/profile" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Volver</a>
+                    <a href="/profile" class="btn btn-secondary btn-sm active" role="button" aria-pressed="true">Volver</a>
                 </div>
-         
+
         </form>
     </div>
-
-
 
     <!-- Footer section -->
     <%- include('partials/footer.ejs')%>
     <!-- Footer section end -->
+<!-- Sweet Alert JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 
 </body>
 
