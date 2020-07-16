@@ -1,12 +1,15 @@
 window.addEventListener("load", function(){
+
     let first_name = document.querySelector("#first_name")
     let last_name = document.querySelector("#last_name")
     let email = document.querySelector("#email")
     let password = document.querySelector("#password")
+    let file = document.getElementById("avatar");
 
     var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     let form = document.querySelector("#form")
+    console.log(form)
 
     form.addEventListener("submit", function(e){
         let errores = [];
@@ -29,12 +32,24 @@ window.addEventListener("load", function(){
         ) {
             errores.push("La contraseña debe contar con una letra Mayuscula, una minuscula, un numero y al menos 8 caracteres");
         }
-        console.log(errores)
+        var avatar = file.value,
+        idxDot = avatar.lastIndexOf(".") + 1,
+        extFile = avatar.substr(idxDot, avatar.length).toLowerCase();
+        if (
+        extFile == "jpg" ||
+        extFile == "jpeg" ||
+        extFile == "png" ||
+        extFile == ""
+        ) {
+        } else {
+        errores.push("Solo archivos jpg/jpeg y png estan permitidos!");
+        file.value = ""; // Reset  input
+        }
 
         if (errores.length > 0) {
             e.preventDefault()
 
-            let mensaje;
+            let mensaje = "";
             for (let error of errores) {
                 mensaje += `${error}` + " <br>";
                 console.log(error)
