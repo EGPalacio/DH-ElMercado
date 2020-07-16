@@ -33,9 +33,9 @@ const newProductId = newId.newProductId;
 module.exports = {
     detalleProductos: (req, res) => {
         var user = req.session.usuarioLogueado
-        /*  let index = arrayProductos; */
-        /*         let pdtoID = req.params.id;
-                let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
+            /*  let index = arrayProductos; */
+            /*         let pdtoID = req.params.id;
+                    let productFind = arrayProductos.find(pdto => pdto.id == pdtoID); */
 
         db.Product.findByPk(req.params.id, {
                 /*  include: [{association: "Discounts"}] */
@@ -56,20 +56,20 @@ module.exports = {
                     products: products,
                     thousandGenerator: toThousand,
                     userType: userType,
-                    user : user
+                    user: user
                 })
             })
     },
     todosLosProductos: (req, res) => {
 
         var user = req.session.usuarioLogueado
-        /*   let index = arrayProductos;
-          res.render('products', {
-              "index": index,
-              pdtosInSale,
-              pdtosVisited,
-              thousandGenerator: toThousand,
-          }); */
+            /*   let index = arrayProductos;
+              res.render('products', {
+                  "index": index,
+                  pdtosInSale,
+                  pdtosVisited,
+                  thousandGenerator: toThousand,
+              }); */
         db.Product.findAll({
                 /*  include: [{association: "Discounts"}, {association: "Categories"} ] */
             })
@@ -77,7 +77,7 @@ module.exports = {
                 res.render("products", {
                     products: products,
                     thousandGenerator: toThousand,
-                    user : user
+                    user: user
                 })
             })
     },
@@ -108,54 +108,54 @@ module.exports = {
     },
     store: (req, res) => {
 
-        let errors = validationResult(req);      
+        let errors = validationResult(req);
         if (errors.isEmpty())
 
         {
-        
-        req.body.price = Number(req.body.price);
 
-        let portada
+            req.body.price = Number(req.body.price);
+
+            let portada
 
             if (req.files.imgPortada == undefined) {
                 portada = '';
             } else {
                 portada = req.files.imgPortada[0].filename;
                 console.log(portada);
-                
+
             };
 
-        db.Product.create({
-            name: req.body.name,
-            description: req.body.description,
-            price: req.body.price,
-            discount_id: req.body.discount_id,
-            category_id: req.body.category_id,
-            image: portada,
+            db.Product.create({
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                discount_id: req.body.discount_id,
+                category_id: req.body.category_id,
+                image: portada,
 
-        });
-        res.redirect('/');
-    } else {
+            });
+            res.redirect('/');
+        } else {
 
-        var user = req.session.usuarioLogueado
+            var user = req.session.usuarioLogueado
 
 
-        let pedidoCategorias = db.Category.findAll({
-            include: [{ association: "products" }]
-        });
+            let pedidoCategorias = db.Category.findAll({
+                include: [{ association: "products" }]
+            });
 
-        let pedidoDescuentos = db.Discount.findAll({
-            include: [{ association: "products" }]
-        });
+            let pedidoDescuentos = db.Discount.findAll({
+                include: [{ association: "products" }]
+            });
 
-        Promise.all([pedidoCategorias, pedidoDescuentos])
-            .then(function([categorias, descuentos]) {
-                res.render("addProduct", { errors: errors.errors, categorias: categorias, descuentos: descuentos, user: user })
-            })
-       
-             
-       
-    }
+            Promise.all([pedidoCategorias, pedidoDescuentos])
+                .then(function([categorias, descuentos]) {
+                    res.render("addProduct", { errors: errors.errors, categorias: categorias, descuentos: descuentos, user: user })
+                })
+
+
+
+        }
     },
     edit: (req, res) => {
         var user = req.session.usuarioLogueado
@@ -178,7 +178,7 @@ module.exports = {
                             title: 'editProduct',
                             prod: prod.dataValues,
                             categ: categories,
-                            user : user,
+                            user: user,
 
                         });
                     });
@@ -188,25 +188,64 @@ module.exports = {
             });
     },
     editStorage: (req, res) => {
-        let editFormData = {}
-        for (item in req.body) {
-            if (req.body[item] != "" && isNaN(Number(req.body[item]))) {
-                editFormData[item] = req.body[item];
-            } else if (req.body[item] != "") {
-                editFormData[item] = Number(req.body[item]);
-            };
-        };
-        console.log(`  ==> form`);
-        console.log(editFormData);
-        db.Product.update(editFormData, { where: { id: editFormData.id } })
-            .then((result) => {
-                console.log(`  ==> product updated`);
-                console.log(editFormData.name);
-                res.redirect(`/products/${editFormData.id}`);
-            })
-            .catch((err) => { console.log(err) });
 
-        // router.get(`/detalleProductos/${req.params.id}`, detalleProductos);
+        let errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            console.log('   => Tenemos errores');
+            console.log(errors.errors);
+            var user = req.session.usuarioLogueado
+            let prodToEdit = req.params.id;
+
+            db.Product.findByPk(prodToEdit)
+                .then((prod) => {
+                    db.Category.findAll()
+                        .then((categ) => {
+                            console.log(`  ==> selector de categorías`);
+                            let categories = [];
+                            for (let item of categ) {
+                                categories.push(item.dataValues);
+                            };
+                            console.log(categories);
+
+                            console.log(`  ==> este es el producto que vamos a editar`);
+                            console.log(prod.dataValues);
+                            res.render('editProduct', {
+                                title: 'editProduct',
+                                prod: prod.dataValues,
+                                categ: categories,
+                                user: user,
+                                error: errors.errors,
+
+                            });
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+
+        } else {
+
+            let editFormData = {}
+            for (item in req.body) {
+                if (req.body[item] != "" && isNaN(Number(req.body[item]))) {
+                    editFormData[item] = req.body[item];
+                } else if (req.body[item] != "") {
+                    editFormData[item] = Number(req.body[item]);
+                };
+            };
+            console.log(`  ==> form`);
+            console.log(editFormData);
+            db.Product.update(editFormData, { where: { id: editFormData.id } })
+                .then((result) => {
+                    console.log(`  ==> product updated`);
+                    console.log(editFormData.name);
+                    res.redirect(`/products/${editFormData.id}`);
+                })
+                .catch((err) => { console.log(err) });
+
+            // router.get(`/detalleProductos/${req.params.id}`, detalleProductos);
+        };
     },
     delete: (req, res) => {
         let prodToDelete = req.body.id;

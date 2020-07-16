@@ -6,6 +6,7 @@ const upload = require('../middlewares/helperMulter');
 const gestUserCheck = require('../middlewares/guestUserCheck');
 
 const addProdValidate = require('../middlewares/addProductValidation');
+const editProdValidate = require('../middlewares/editProductValidation');
 
 /* GET home page. */
 
@@ -18,7 +19,7 @@ router.post('/products/create', upload.productUpload, addProdValidate.storeValid
 
 
 router.get('/products/:id/edit', gestUserCheck.userCheck, productControllers.edit);
-router.put('/products/:id/edit', productControllers.editStorage);
+router.put('/products/:id/edit', editProdValidate.storeValidation, productControllers.editStorage);
 router.delete('/products/:id/delete', productControllers.delete);
 
 router.get('/products/', productControllers.todosLosProductos);
