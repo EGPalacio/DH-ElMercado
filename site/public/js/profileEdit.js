@@ -1,15 +1,24 @@
 window.addEventListener("load", function(){
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     let first_name = document.querySelector("#first_name")
     let last_name = document.querySelector("#last_name")
     let email = document.querySelector("#email")
     let password = document.querySelector("#password")
+<<<<<<< Updated upstream
     let file = document.getElementById("avatar");
+=======
+>>>>>>> Stashed changes
 
     var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
     let form = document.querySelector("#form")
+<<<<<<< Updated upstream
     console.log(form)
+=======
+>>>>>>> Stashed changes
 
     form.addEventListener("submit", function(e){
         let errores = [];
