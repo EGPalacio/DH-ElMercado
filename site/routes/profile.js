@@ -9,6 +9,25 @@ let perfil = upload.avatarUpdate.any();
 router.get('/profile', profileController.profile);
 router.get('/profile/edit/:id', profileController.edit);
 router.post('/profile/edit/:id', perfil, [
+    check("avatar")
+    .custom((value, { req }) => {
+        
+        console.log(req.files[0]);
+        
+        if (req.files[0]) {
+            var avatarFile =req.files[0].mimetype;
+
+            if ( avatarFile == 'image/jpeg' || avatarFile == 'image/png' || avatarFile == 'image/jpg' ) {
+                return true;
+            } else {
+                throw new Error("Error en el formato de la imagen ");
+            }
+
+
+        } else {
+            return true;
+        }
+    }), 
     check("first_name")
         .isLength({min:2})
         .withMessage("El nombre debe tener minimo 2 caracteres"),
@@ -23,6 +42,7 @@ router.post('/profile/edit/:id', perfil, [
     check("email")
         .isEmail()
         .withMessage("El Email ingresado no es válido"),
+    
 ], profileController.save);
 
 module.exports = router;

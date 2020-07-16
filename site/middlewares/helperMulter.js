@@ -64,21 +64,9 @@ var updateAvatar = multer.diskStorage({
   },
 });
 
-let error;
-var avatarUpdate = multer({ 
-  storage: updateAvatar,
-  fileFilter: (req, file, cb) => {
-    if(file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg"){
-      cb(null,true);
-    }else{
-      cb(null, false);
-      console.log("ACÁ ESTÁ EL EROROR")
-      /* error.push(
-        colocar acá el mismo formato que los errores .msg y exportarlo al controller
-      ) */
-    }
-  }
-});
+
+var avatarUpdate = multer({  storage: updateAvatar}
+);
 
 var storageProduct = multer.diskStorage({
     destination: function (req, file, cb) {
