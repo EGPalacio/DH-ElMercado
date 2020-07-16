@@ -33,7 +33,7 @@
                         <% if(typeof errors != 'undefined') { %>
                             <ul>
                                 <% for(var i = 0; i < errors.length; i++) { %>
-                                    <li id="errorsBack">
+                                    <li class="errorsBack" style="color: red">
                                         <%= errors[i].msg %>
                                     </li>
                                     <% } %>
