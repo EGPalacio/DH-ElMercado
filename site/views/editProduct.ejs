@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- Redirect, cambiar del home para el detalle de productos, está con redirect pero no refresca. está mal.
+<!-- 
     Cambiar la ruta para buscar y guardar las imagenes
     configurar la edición de files con multer -->
 
@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
     <%- include('partials/header.ejs')%>
         <div id="main" class="container-fluid mt-3">
             <form method="POST" class="form-inline col-12">
@@ -39,25 +40,25 @@
                     <!-- Name // Description // Price // Discount -->
                     <div class="input-group-prepend mb-2">
                         <label class="input-group-text text-capitalize col-md-4"><%= `${Object.keys(prod)[1]}:` %></label>
-                        <input name="<%= Object.keys(prod)[1] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.name}` %>" aria-describedby="addon-wrapping">
+                        <input id="name" name="<%= Object.keys(prod)[1] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.name}` %>" aria-describedby="addon-wrapping">
                     </div>
                     <div class="input-group-prepend mb-2">
                         <label class="input-group-text text-capitalize col-md-4"><%= `${Object.keys(prod)[2]}:` %></label>
-                        <input name="<%= Object.keys(prod)[2] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.description  }` %>" aria-describedby="addon-wrapping">
+                        <input id="description" name="<%= Object.keys(prod)[2] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.description  }` %>" aria-describedby="addon-wrapping">
                     </div>
                     <div class="input-group-prepend mb-2">
                         <label class="input-group-text text-capitalize col-md-4"><%= `${Object.keys(prod)[3]}:` %></label>
-                        <input name="<%= Object.keys(prod)[3] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.price}` %>" aria-describedby="addon-wrapping">
+                        <input id="price" name="<%= Object.keys(prod)[3] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.price}` %>" aria-describedby="addon-wrapping">
                     </div>
                     <div class="input-group-prepend mb-2">
                         <label class="input-group-text text-capitalize col-md-4"><%= `${Object.keys(prod)[5]}:` %></label>
-                        <input name="<%= Object.keys(prod)[5] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.discount_id}` %>" aria-describedby="addon-wrapping">
+                        <input id="discount" name="<%= Object.keys(prod)[5] %>" type="text" class="input-group form-control col-8" placeholder="<%= `${prod.discount_id}` %>" aria-describedby="addon-wrapping">
                     </div>
 
                     <!-- Category -->
                     <div class="input-group-prepend mb-2">
                         <label class="input-group-text text-capitalize col-md-4"><%= `${Object.keys(prod)[6]}:` %></label>
-                        <select name="<%= prod.Category_id %>" class="input-group form-control col-8" aria-describedby="addon-wrapping">
+                        <select id="categ" name="<%= prod.Category_id %>" class="input-group form-control col-8" aria-describedby="addon-wrapping">
                                     <% for (let item of categ) { %>
                                         <% if ( item.id == prod.id){ %>
                                             <option selected value="<%= item.id %>" > <%= item.category %> </option>
@@ -69,9 +70,9 @@
                     </div>
 
                     <!-- Edit // Delete Buttons -->
-                    <div class="form-actions form-inline btn-toolbar mt-3 ml-auto text-center ">
-                        <input type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-md-lg m-md-auto col-12 col-md-5 mb-3">
-                        <input type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-md-lg m-md-auto col-md-5">
+                    <div id="subButtons" class="form-actions form-inline btn-toolbar mt-3 ml-auto text-center ">
+                        <input id="editButton" type="submit" value="Editar" formaction="/products/<%= prod.id %>/edit?_method=PUT" class="btn btn-primary btn-md-lg m-md-auto col-12 col-md-5 mb-3">
+                        <input id="delButton" type="submit" value="Eliminar" formaction="/products/<%= prod.id %>/delete?_method=DELETE" class="btn btn-danger btn-md-lg m-md-auto col-md-5">
                     </div>
 
                 </div>
@@ -81,7 +82,7 @@
         <%- include('partials/footer.ejs')%>
             <!-- Footer section end -->
 
-
+            <script src="/js/editProduct.js"></script>
 </body>
 
 </html>
