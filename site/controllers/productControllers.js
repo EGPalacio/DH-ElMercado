@@ -192,8 +192,7 @@ module.exports = {
         let errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            console.log('   => Tenemos errores');
-            console.log(errors.errors);
+
             var user = req.session.usuarioLogueado
             let prodToEdit = req.params.id;
 
@@ -210,12 +209,16 @@ module.exports = {
 
                             console.log(`  ==> este es el producto que vamos a editar`);
                             console.log(prod.dataValues);
+
+                            console.log('   => Tenemos errores');
+                            console.log(errors.errors);
+
                             res.render('editProduct', {
                                 title: 'editProduct',
                                 prod: prod.dataValues,
                                 categ: categories,
                                 user: user,
-                                error: errors.errors,
+                                errors: errors.errors,
 
                             });
                         });

@@ -27,6 +27,20 @@
                     <input type="file" id="imageEdit" class="form-control-file mb-3" data-default-file="" data-height="500">
                 </div>
                 <div class="col-md-6">
+
+                    <!-- Errors Backend Validation -->
+                    <div class="input-group-prepend mb-2">
+                        <% if(typeof errors != 'undefined') { %>
+                            <ul>
+                                <% for(var i = 0; i < errors.length; i++) { %>
+                                    <li id="errorsBack">
+                                        <%= errors[i].msg %>
+                                    </li>
+                                    <% } %>
+                            </ul>
+                            <% } %>
+                    </div>
+
                     <!-- hidden data required on edit form -->
                     <div class="input-group-prepend mb-2">
                         <label hidden class="input-group-text text-left text-capitalize col-md-4"><%= `${Object.keys(prod)[0]}:` %></label>
@@ -82,7 +96,12 @@
         <%- include('partials/footer.ejs')%>
             <!-- Footer section end -->
 
+            <!-- Form Validation Front-end -->
             <script src="/js/editProduct.js"></script>
+
+            <!-- Sweet Alert JavaScript -->
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+            <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 
 </html>

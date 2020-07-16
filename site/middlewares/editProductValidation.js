@@ -2,7 +2,7 @@ var { check, validationResult, body } = require("express-validator");
 
 exports.storeValidation = [
     check("name")
-    .isLength({ min: 7 })
+    .isLength({ min: 5 })
     .withMessage("El nombre del producto debe tener minimo 5 caracteres"),
 
     check("description")
