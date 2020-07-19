@@ -1,101 +1,46 @@
-const fs = require('fs');
-const path = require('path');
-const { check, validationResult } = require('express-validator');
-
-// Require Sequelize
-const db = require('../server/models');
-const { Sequelize } = require('../server/models');
-const Op = Sequelize.Op
+const path = require("path");
+const dirPaths = require("./dirPaths");
 
 const multer = require("multer");
 
+//Nombre del archivo para la imagen de perfil
+let filename = function (req, file, cb) {
+  cb(null, file.fieldname + path.extname(file.originalname));
+};
+
+//Destino Nueva imagen de Perfil (Se configura ubicacion + nombre)
 var storage = multer.diskStorage({
-
-    destination: function(req, file, cb) {
-
-      db.User.max('id').then(max => {
-
-        let lastId = max + 1;
-        userIdPath2 = path.join(__dirname, '../public/images/users/' + lastId)
-        if (!fs.existsSync(userIdPath2)){
-          fs.mkdirSync(userIdPath2);
-          };
-        cb(null, userIdPath2);
-      })
-
-    },
-    filename: function(req, file, cb) {
-
-        cb(null, req.body.first_name + path.extname(file.originalname));
-
-    },
-
+  destination: dirPaths.newProfileLocation,
+  filename: filename,
 });
 
-
-
-var avatarUpload = multer({
-  storage: storage,
-  fileFilter: (req, file, cb) => {
-    if (file.mimetype == "image/png" || file.mimetype == "image/jpg" || file.mimetype == "image/jpeg") {
-      cb(null, true);
-    } else {
-      cb(null, true);
-
-    }
-  }
-   });
-
-
-
-
+//Destino Actualizar imagen de perfil 
 var updateAvatar = multer.diskStorage({
+  destination: dirPaths.updateProfileLocation,
+  filename: filename,
+});
 
-  destination: function(req, file, cb) {
-
-      let id =req.params.id;
-      userId = path.join(__dirname, '../public/images/users/' +id)
-      cb(null, userId);
-
-  },
-  filename: function(req, file, cb) {
-
-      cb(null, file.fieldname + path.extname(file.originalname));
+//Destino nueva imagen de producto
+var storageProduct = multer.diskStorage({
+  destination: dirPaths.newProductLocation,
+  filename: function (req, file, cb) {
+    cb(null, req.body.name + "-" + file.originalname);
   },
 });
 
+var avatarUpload = multer({ storage: storage });
+var avatarUpdate = multer({ storage: updateAvatar });
+var uploadProduct = multer({ storage: storageProduct });
 
-var avatarUpdate = multer({  storage: updateAvatar}
-);
-
-var storageProduct = multer.diskStorage({
-    destination: function (req, file, cb) {
-      db.Product.max('id').then(max => {
-        // this will return 40
-        let lastId = max + 1;
-        prodIdPath2 = path.join(__dirname, '../public/images/products/' + lastId)
-        if (!fs.existsSync(prodIdPath2)){
-          fs.mkdirSync(prodIdPath2);
-          };
-        cb(null, prodIdPath2);
-      })
-    },
-    filename: function (req, file, cb) {
-      cb(null, req.body.name + '-' + file.originalname)
-    }
-  })
-
-var uploadProduct = multer({ storage: storageProduct })
-var productUpload = uploadProduct.fields([{ name: 'imgPortada', maxCount: 1 }, { name: 'gallery', maxCount: 9 }]) 
-
-
-
-
+var productUpload = uploadProduct.fields([
+  { name: "imgPortada", maxCount: 1 },
+  { name: "gallery", maxCount: 9 },
+]);
 
 const upload = {
-    avatarUpload,
-    avatarUpdate,
-    productUpload,
+  avatarUpload,
+  avatarUpdate,
+  productUpload,
 };
 
 module.exports = upload;
