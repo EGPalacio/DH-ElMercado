@@ -20,7 +20,7 @@ exports.storeValidation = [
         return db.User.findOne({where : {email : value }})
         .then(user => {
          if (user) {
-            return Promise.reject('El correo ingresado ya se encuentra registrado');
+            throw new Error('El correo ingresado ya se encuentra registrado');
           }
           });
         }),
@@ -39,12 +39,12 @@ exports.storeValidation = [
     check('password_repeat', 'Los campos de contraseña no coinciden')
         .exists()
         .custom((value, { req }) => value === req.body.password),
-    
+
     check('avatar')
     .custom((value, { req }) => {
-        
+
         console.log(value);
-        
+
         if (req.files[0]) {
             var avatarFile =req.files[0].mimetype;
 
