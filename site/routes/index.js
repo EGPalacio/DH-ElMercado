@@ -1,11 +1,17 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
 var indexControllers = require('../controllers/indexControllers');
 var userControllers = require('../controllers/userControllers');
 
 
 
 
+=======
+var indexControllers = require('../controllers/indexControllers')
+var userControllers = require('../controllers/userControllers')
+var api = require("./api");
+>>>>>>> 97200f87e579e9a4d5a94a62cb8a41101dbe08fa
 
 
 //Modularizadas
@@ -55,7 +61,8 @@ router.get("/check", function(req, res) {
 
 router.get('/logout', indexControllers.logout );
 
-
+/* API router */
+router.use("/api", api);
 
 
 

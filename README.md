@@ -38,6 +38,8 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 > node productCreate.js
     // crea tablas y completa datos de testing productos y tablas secundarias de producto.
 > node userCreate.js
+> cd..
+> cd..
 
 4) iniciar el sitio con nodemon start
 > npx nodemon start
