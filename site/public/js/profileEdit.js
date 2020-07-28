@@ -3,10 +3,7 @@ window.addEventListener("load", function(){
     let last_name = document.querySelector("#last_name")
     let email = document.querySelector("#email")
     let password = document.querySelector("#password")
-<<<<<<< HEAD
-=======
     let file = document.getElementById("avatar");
->>>>>>> 97200f87e579e9a4d5a94a62cb8a41101dbe08fa
 
     var mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
