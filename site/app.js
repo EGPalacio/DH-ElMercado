@@ -13,6 +13,10 @@ const Swal = require('sweetalert2');
 
 var indexRouter = require('./routes/index');
 //var usersRouter = require('./routes/users');
+
+var apiRouter = require('./routes/api');
+
+
 var productsRouter = require('./routes/products');
 var session = require("express-session");
 var cookieRecordameMiddleware = require("./middlewares/cookieLoginMiddleware");
@@ -39,6 +43,8 @@ app.use(cookieRecordameMiddleware);
 
 app.use('/', indexRouter);
 //app.use('/users', usersRouter);
+
+app.use('/api', apiRouter);
 
 
 

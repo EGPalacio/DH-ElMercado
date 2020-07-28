@@ -107,7 +107,7 @@ let userControllers = {
         email: req.body.email,
         password: bcrypt.hashSync(req.body.password, 10),
         user_type_id: req.body.user_type_id,
-        createdAt: Date.now(),
+        
         avatar: avatar,
       });
 

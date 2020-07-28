@@ -90,7 +90,6 @@ module.exports =  {
                 email: email,
                 user_type_id : req.body.user_type_id,
                 password : password,
-                updatedAt: Date.now(),
                 avatar : avatar,
             }, {
                 where : {
