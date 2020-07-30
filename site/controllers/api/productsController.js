@@ -65,19 +65,30 @@ module.exports = {
             console.log(error);
         }
     } */
-    prodDetail: (req,res) =>{
-        let id = req.params.id;
+    prodDetail: async (req,res) =>{
 
-        db.Product.findByPk(id,{
-            include: [
-                { association: "categories" },
-                { association: "discounts" }
-            ]
+        try{
+            let id = req.params.id;
+
+            let product = await db.Product.findByPk(id,{
+                include: [
+                    { association: "categories" },
+                    { association: "discounts" },
+                ]
+            });
+
+            return res.json({
+                meta: {
+                    host: req.headers.host,
+                    url: req.url,
+                    imgPth: `${req.headers.host}/images/products/${product.id}/${product.image}`,
+                },
+                data: product,
+            });
+
+        } catch (error) {
+            return res.status(500).json({error: true})
         }
-            )
-        .then(function(products) {
-            res.json(products);
-        })
 
     },
     prodCateg: (req,res) =>{
