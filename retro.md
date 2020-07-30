@@ -1,9 +1,44 @@
+RETRO SPRINT 7: Revisión del trabajo realizado en el Sprint 6
+==============
+
+Reunión 21 de Julio de 2020
+
+Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 6.
+
+1 - Que hicimos bien:
+    - Estamos contentos con la implementación de sweet alert en el sitio y como quedaron las validaciones de los usuarios.
+
+2 - Que hicimos mal:
+    - Tenemos que tener más precaución con el trello y completar todas las tareas.
+
+3 - Que tenemos que hacer.
+
+    Para este Sprint nos repartimos las tareas de la siguiente manera:
+    ==================================================================
+
+    APIs:                           React:
+    - users (MP)                    - Totals:   Products (LH)
+    - users/:id (MP)                -           Users (MP)
+    - api/products (LH)             -           Categories (EP)
+    - api/products/:id (EP)         - Panel last user/product (MP)
+                                    - Panel Categorías con total de Productos (EP)
+                                    - Panel Listado de Productos (LH)
+
+4 - Que es lo que no tenemos que hacer.
+    - Sin comentarios para esta retro.
+
+Martín.
+Leandro.
+Eduardo.
+
+---------------------------------------------------------------------------------------------------------------
+
 RETRO SPRINT 6: Revisión del trabajo realizado en el Sprint 5
 ==============
 
 Reunión 30 de Junio de 2020
 
-Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 4.
+Nos reunimos para repasar los asuntos positivos y las oportunidades de mejora observadas en el sprint 5.
 
 1 - Que hicimos bien:
     - El equipo está muy contento con las mejoras estéticas del sitio que aportó Martín para mejorar la visual del Home y el agregado del blog del recorrido del curso.
