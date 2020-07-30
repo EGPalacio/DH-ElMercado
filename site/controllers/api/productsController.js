@@ -93,7 +93,9 @@ module.exports = {
     },
     prodCateg: async (req,res) =>{
         try{
-            let categories = await db.Category.findAll();
+            let categories = await db.Category.findAll({
+                include: [{association: 'products'}]
+            });
             return res.json(categories);
         } catch (error) {
             return res.status(500).json({error: true})
