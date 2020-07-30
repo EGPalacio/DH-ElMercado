@@ -96,7 +96,20 @@ module.exports = {
             let categories = await db.Category.findAll({
                 include: [{association: 'products'}]
             });
-            return res.json(categories);
+
+            let prodCount = [];
+            for (const item of categories) {
+                let itemCount = {
+                    name: item.category,
+                    countProd: item.products.length
+                };
+                prodCount.push(itemCount);
+            }
+
+            return res.json({
+                totals: prodCount,
+                data: categories,
+            });
         } catch (error) {
             return res.status(500).json({error: true})
         }
