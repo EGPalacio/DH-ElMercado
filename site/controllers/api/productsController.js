@@ -1,7 +1,11 @@
-let db = require ("../../server/models");
+// Require Sequelize
+const db = require('../../server/models');
+const { Sequelize } = require('../../server/models');
+const Op = Sequelize.Op
+
 let sequelize = db.sequelize;
 
-let productsController = {
+module.exports = {
       list: (req, res) =>{
         db.Product.findAll({
             include: [{association: "categories"}, {association: "discounts"}],
@@ -40,7 +44,7 @@ let productsController = {
         });
        
        
-    }
+    },
      /* list: async(req, res) => {
         try{
             const product = await db.Product.findAll({
@@ -61,6 +65,22 @@ let productsController = {
             console.log(error);
         }
     } */
-}
+    prodDetail: (req,res) =>{
+        let id = req.params.id;
 
-module.exports = productsController;
+        db.Product.findByPk(id,{
+            include: [
+                { association: "categories" },
+                { association: "discounts" }
+            ]
+        }
+            )
+        .then(function(products) {
+            res.json(products);
+        })
+
+    },
+    prodCateg: (req,res) =>{
+        res.send('API categorías  con total de productos')
+    }
+}
