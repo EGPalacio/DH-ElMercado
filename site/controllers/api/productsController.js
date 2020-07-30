@@ -107,7 +107,8 @@ module.exports = {
             }
 
             return res.json({
-                totals: prodCount,
+                categCount: categories.length,
+                prodCount: prodCount,
                 data: categories,
             });
         } catch (error) {
