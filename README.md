@@ -43,6 +43,6 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 
 4) iniciar el sitio con nodemon start
 > npx nodemon start
-http://localhost:3000/
+http://localhost:3030/
 
 
