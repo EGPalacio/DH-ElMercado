@@ -4,7 +4,7 @@ var productsAPIController = require("../../controllers/api/productsController");
 
 /* GET actors. */
 router.get("/products/", productsAPIController.list);
-router.get("/products/detail/:id", productsAPIController.prodDetail);
 router.get("/products/categories", productsAPIController.prodCateg);
+router.get("/products/:id", productsAPIController.prodDetail);
 
 module.exports = router;
