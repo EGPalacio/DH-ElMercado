@@ -75,5 +75,15 @@
   "password_repeat": "",
   "category": 1,
   "avatar": "avatar-110816.jpg"
- }
+ },
+ {
+    "id": 9,
+    "firstName": "Gregor",
+    "lastName": "Clegane",
+    "email": "Gregor@got.com",
+    "password": "$2b$10$hv76tkVb2FpxxwDmiAwg5OQ1GrC6s3nghRdmPw.p40DKGamRfrHKK",
+    "password_repeat": "Gregor123",
+    "category": 2,
+    "avatar": "avatar.jpg"
+   }
 ]
