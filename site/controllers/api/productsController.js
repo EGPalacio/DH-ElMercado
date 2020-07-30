@@ -34,6 +34,12 @@ let productsController = {
             }
             res.json(respuesta)
         })
+
+        .catch((err) => {
+            return res.status(500).json({error: true});
+        });
+       
+       
     }
      /* list: async(req, res) => {
         try{

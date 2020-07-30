@@ -1,15 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-const {listAll, findOne, updateOne, destroyOne, createOne} = require('../controllers/apiControllers/userControllers');
+const userRouter = require('./api/users');
+const productRouter = require('./api/products');
 
-
-//Endpoint List Users
-router.get("/users/", listAll);
-router.get("/users/:id", findOne);
-router.patch("/users/:id", updateOne);
-router.delete("/users/:id", destroyOne);
-router.post("/users/", createOne);
+router.use(userRouter).use(productRouter)
 
 
 

@@ -13,7 +13,7 @@
   "firstName": "Tyrion",
   "lastName": "Lannister",
   "email": "tyrion@lannister.com",
-  "password": "12345",
+  "password": "$2b$10$.PoOws7eOx.iBMDHWBq3H.iLm6Ganm2H8MxlsOh8hqjxKEQUvRNQ2",
   "category": 1,
   "avatar": "avatar.jpg"
  },
@@ -22,7 +22,7 @@
   "firstName": "Daenerys",
   "lastName": "Targaryen",
   "email": "Khaleesi@got.com",
-  "password": "123456",
+  "password": "$2b$10$.PoOws7eOx.iBMDHWBq3H.iLm6Ganm2H8MxlsOh8hqjxKEQUvRNQ2",
   "category": 1,
   "avatar": "avatar-Khaleesi.jpg"
  },
@@ -31,7 +31,7 @@
   "firstName": "Arya",
   "lastName": "Stark",
   "email": "arya@Stark.com",
-  "password": "123456",
+  "password": "$2b$10$.PoOws7eOx.iBMDHWBq3H.iLm6Ganm2H8MxlsOh8hqjxKEQUvRNQ2",
   "password_repeat": "13456",
   "category": 2,
   "avatar": "avatar-AryaStark.jpg"
@@ -51,7 +51,7 @@
   "firstName": "Hodor",
   "lastName": "Hodor-Hodor-Hodor",
   "email": "Hodor@got.com",
-  "password": "$2b$10$C81/beI4gN7wY.UDJxiqbOxBCRDxoTzJFWMUFjK/d6r8JWsGjaeQ.",
+  "password": "$2b$10$.PoOws7eOx.iBMDHWBq3H.iLm6Ganm2H8MxlsOh8hqjxKEQUvRNQ2",
   "password_repeat": "123456",
   "category": 1,
   "avatar": "avatar-hodor.jpg"
