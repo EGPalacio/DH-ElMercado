@@ -91,7 +91,12 @@ module.exports = {
         }
 
     },
-    prodCateg: (req,res) =>{
-        res.send('API categorías  con total de productos')
-    }
+    prodCateg: async (req,res) =>{
+        try{
+            let categories = await db.Category.findAll();
+            return res.json(categories);
+        } catch (error) {
+            return res.status(500).json({error: true})
+        }
+    },
 }
