@@ -13,14 +13,19 @@ export default class ContentRowTop extends Component {
     constructor (props){
         super(props);
         this.state = {
-            categCount: 'Cargando'
+            categCount: 'Cargando',
+            color: 'danger'
+
         }
     }
 
     componentDidMount(){
        api('/products/categories').then( (result) => {
                     console.log(result.data.categCount);
-                    this.setState({categCount: result.data.categCount})
+                    this.setState({
+                        categCount: result.data.categCount,
+                        color: 'primary'
+                    })
                 })
     }
 
@@ -35,7 +40,7 @@ export default class ContentRowTop extends Component {
                     title="Categorias del sitio"
                     total={this.state.categCount}
                     icon="fa-th-list"
-                    colorCard="secondary"
+                    colorCard={this.state.color}
                     />
 
             {/* <!-- Amount of users in DB --> */}
