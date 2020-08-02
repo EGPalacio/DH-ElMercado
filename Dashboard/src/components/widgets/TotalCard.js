@@ -3,9 +3,6 @@ import React, { Component } from 'react'
 export default class TotalCard extends Component {
     constructor(props){
         super(props);
-        this.state ={
-            total: props.total,
-        }
     }
     render() {
         return (
