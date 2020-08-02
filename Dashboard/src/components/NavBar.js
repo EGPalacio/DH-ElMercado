@@ -1,5 +1,5 @@
 import React from 'react';
-const walter  = require ('../assets/images/dummy-avatar.jpg');
+const logoElMercado  = require ('../assets/images/logo-elMercado.png');
 
 function NavBar() {
   return (
@@ -36,8 +36,8 @@ function NavBar() {
         {/* <!-- Nav Item - User Information --> */}
         <li className="nav-item dropdown no-arrow">
           <a className="nav-link dropdown-toggle" href="/" id="userDropdown">
-            <span className="mr-2 d-none d-lg-inline text-gray-600 small">Walter White</span>
-            <img className="img-profile rounded-circle" src={walter} alt="Walter" width="60" />
+            <span className="mr-2 d-none d-lg-inline text-gray-600 small">El Mercado</span>
+            <img className="img-profile rounded-circle" src={logoElMercado} alt="Walter" width="60" />
           </a>
         </li>
 
