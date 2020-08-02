@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { Component } from 'react'
 import LastProductInDB from './LastProductInDB';
 import CategoriesInDB from './CategoriesInDB';
 
-function ContentRowBottom(){
-    return (
-        <div className="row">
-            
-            {/* <!-- Last Product in DB --> */}
-            <LastProductInDB />
+export default class ContentRowBottom extends Component {
+    render(){
+        return (
+            <div className="row">
 
-            {/* <!-- Categories in DB --> */}
-            <CategoriesInDB />
+                {/* <!-- Last Product in DB --> */}
+                <LastProductInDB />
 
-        </div>
-    )
+                {/* <!-- Categories in DB --> */}
+                <CategoriesInDB />
+
+            </div>
+        )
+    }
 }
-
-export default ContentRowBottom;
