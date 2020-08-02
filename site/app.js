@@ -4,9 +4,27 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const methodOverride = require('method-override');
+var app = express();
+/* CORS */
+var cors = require('cors')
 
 const Swal = require('sweetalert2');
+var whitelist = ['http://localhost:3000']
 
+
+
+var corsOptions = {
+    origin: function (origin, callback) {
+        console.log(origin)
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
+            callback(null, true)
+        } else {
+            callback(new Error('Not allowed by CORS'))
+        }
+    }
+}
+app.use(cors(corsOptions))
+/* CORS */
 
 
 
@@ -21,7 +39,7 @@ var productsRouter = require('./routes/products');
 var session = require("express-session");
 var cookieRecordameMiddleware = require("./middlewares/cookieLoginMiddleware");
 
-var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
