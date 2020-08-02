@@ -1,7 +1,7 @@
 import React from 'react';
 import ProductsInDB from './ProductsInDB';
-import AmountOfProductsInDB from './AmountOfProductsInDB';
 import AmountOfUsersInDB from './AmountOfUsersInDB';
+import Widget from './widgets/TotalCard';
 
 function ContentRowTop(){
     return (
@@ -9,8 +9,8 @@ function ContentRowTop(){
         {/* <!-- Products in DB --> */}
             <ProductsInDB />
 
-        {/* <!-- $$$ of all products in DB --> */}
-            <AmountOfProductsInDB />
+        {/* <!-- Categories in DB --> */}
+            <Widget />
 
         {/* <!-- Amount of users in DB --> */}
             <AmountOfUsersInDB />
