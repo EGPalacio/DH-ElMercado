@@ -4,11 +4,6 @@ import ProductsInDB from './ProductsInDB';
 import AmountOfUsersInDB from './AmountOfUsersInDB';
 import Widget from './widgets/TotalCard';
 
-const api = axios.create({
-    method: 'GET',
-    baseURL: `http://localhost:3030/api`,
-});
-
 export default class ContentRowTop extends Component {
     constructor (props){
         super(props);
@@ -20,8 +15,12 @@ export default class ContentRowTop extends Component {
     }
 
     componentDidMount(){
+        const api = axios.create({
+            method: 'GET',
+            baseURL: `http://localhost:3030/api`,
+        });
+
        api('/products/categories').then( (result) => {
-                    console.log(result.data.categCount);
                     this.setState({
                         categCount: result.data.categCount,
                         color: 'primary'
