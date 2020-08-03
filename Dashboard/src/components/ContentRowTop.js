@@ -8,9 +8,9 @@ export default class ContentRowTop extends Component {
     constructor (props){
         super(props);
         this.state = {
-            categCount: 'Cargando',
-            color: 'danger',
-            userCount: 'Cargando',
+            categCount: 'Cargando...',
+            color: 'warning',
+            userCount: 'Cargando...',
             userColor: 'warning'
 
         }

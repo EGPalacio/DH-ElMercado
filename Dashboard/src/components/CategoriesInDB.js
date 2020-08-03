@@ -32,20 +32,24 @@ export default class CategoriesInDB extends Component {
     }
 
     categoriesList = ()=>{
-        if (this.state.categories == []){
-            return <div className="row">Cargando</div>
+        console.log(this.state.categories);
+        if (this.state.categories.length == 0){
+            return (<h3 className="row ml-2">Cargando...</h3>);
         } else {
-            return <div className="row">insertar api</div>
-            // {this.state.categories.map( (category) =>{
-            //     return
-            //     <div className="row">
-            //             <CategoryCard
-            //             nombre={`Categoria`}
-            //             items={`0`}
-            //             importe={`$ 0`}
-            //         />
-            //     </div>
-            //   })}
+            return (
+                <>
+                {this.state.categories.map( (category) =>{
+                    return (
+                            <CategoryCard
+                            key={category.id}
+                            nombre={category.category}
+                            items={category.products.length}
+                            importe={`$ ${this.addCommas(this.priceTotal(category.products))}`}
+                        />
+                    )
+                })}
+                </>
+            )
         }
     }
 
@@ -83,16 +87,7 @@ export default class CategoriesInDB extends Component {
                         </div >
                         <div className="card-body">
                             <div className="row">
-                                {this.state.categories.map( (category) =>{
-                                    return (
-                                            <CategoryCard
-                                            key={category.id}
-                                            nombre={category.category}
-                                            items={category.products.length}
-                                            importe={`$ ${this.addCommas(this.priceTotal(category.products))}`}
-                                        />
-                                    )
-                                })}
+                                {this.categoriesList()}
                             </div>
                         </div>
                     </div>
