@@ -1,15 +1,17 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 import ProductsInDB from './ProductsInDB';
-import AmountOfUsersInDB from './AmountOfUsersInDB';
 import Widget from './widgets/TotalCard';
 
 export default class ContentRowTop extends Component {
+    
     constructor (props){
         super(props);
         this.state = {
             categCount: 'Cargando',
-            color: 'danger'
+            color: 'danger',
+            userCount: 'Cargando',
+            userColor: 'warning'
 
         }
     }
@@ -25,7 +27,14 @@ export default class ContentRowTop extends Component {
                         categCount: result.data.categCount,
                         color: 'primary'
                     })
-                })
+                });
+       api('/users/').then( (result) => {
+                    this.setState({
+                        userCount: result.data.users.length,
+                        userColor: 'warning'
+                    })
+                    console.log(this.state.userCount);
+          })
     }
 
     render() {
@@ -43,7 +52,12 @@ export default class ContentRowTop extends Component {
                     />
 
             {/* <!-- Amount of users in DB --> */}
-                <AmountOfUsersInDB />
+            <Widget 
+                    title="User quantity"
+                    total={this.state.userCount}
+                    icon="fa-user-check"
+                    colorCard={this.state.userColor}
+                    />
         </div>
         )
     }
