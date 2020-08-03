@@ -12,10 +12,31 @@ const Op = Sequelize.Op;
 let userControllers = {
     listAll: async (req, res, next) =>   {
        try {
-            const users = await User.findAll();
+            const users = await User.findAll({
+                include: [{ association: "userTypes" }],
+                attributes: {
+                   
+                    exclude: ['password', 'user_type_id']
+                }
+            })
             if(!users) {
                 return res.status(404).json({msg: 'No se encontró el usuario'})
             }
+            let setUserType;
+          
+            let url = 'http://' + req.headers.host;
+            
+            for (let i=0; i<users.length; i++){
+               
+               setUserType = users[i].userTypes.dataValues.user_type;
+             
+               users[i].setDataValue("avatar", url + "/images/users/" + users[i].id + "/" + users[i].avatar);
+               users[i].setDataValue("userTypes",  setUserType)
+               console.log(setUserType);
+         
+                //console.log(product[i].categories.dataValues.category)
+           }
+           
             return res.json({users});
         
         } catch (error) {
@@ -31,11 +52,16 @@ let userControllers = {
         
         try {
             const user = await User.findByPk(id,
-                {include: [{ association: "userTypes" }]}
+                {include: [{ association: "userTypes" }],
+                attributes: {
+                    exclude: ['password']
+                }}
                 );
             if(!user) {
                 return res.status(404).json({msg: 'No se encontró el usuario'})
             }
+
+            
             return res.json({
                   
                 id: user.id,
