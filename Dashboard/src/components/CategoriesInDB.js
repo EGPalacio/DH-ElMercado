@@ -57,6 +57,18 @@ export default class CategoriesInDB extends Component {
         });
         return total;
     }
+    
+    addCommas(nStr) {
+        nStr += '';
+        var x = nStr.split('.');
+        var x1 = x[0];
+        var x2 = x.length > 1 ? '.' + x[1] : '';
+        var rgx = /(\d+)(\d{3})/;
+        while (rgx.test(x1)) {
+            x1 = x1.replace(rgx, '$1' + ',' + '$2');
+        }
+        return x1 + x2;
+    }
 
     componentDidMount(){
         this.getCategoriesApi();
@@ -68,20 +80,20 @@ export default class CategoriesInDB extends Component {
                     <div className="card shadow mb-4">
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-primary">Dashboard de Categorias</h6>
-                        </div>
+                        </div >
                         <div className="card-body">
-                            {this.state.categories.map( (category) =>{
-                                console.log(category);
-                                return (
-                                    <div key={category.id} className="row">
+                            <div className="row">
+                                {this.state.categories.map( (category) =>{
+                                    return (
                                             <CategoryCard
+                                            key={category.id}
                                             nombre={category.category}
                                             items={category.products.length}
-                                            importe={this.priceTotal(category.products)}
+                                            importe={`$ ${this.addCommas(this.priceTotal(category.products))}`}
                                         />
-                                    </div>
-                                )
-                            })}
+                                    )
+                                })}
+                            </div>
                         </div>
                     </div>
                 </div>
