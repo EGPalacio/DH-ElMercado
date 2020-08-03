@@ -76,7 +76,7 @@ export default class CategoriesInDB extends Component {
 
     render() {
         return (
-            <div className="col-lg-4 mb-4">
+            <div className="col-lg-12 mb-4">
                     <div className="card shadow mb-4">
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-primary">Dashboard de Categorias</h6>
