@@ -14,6 +14,7 @@ module.exports = {
         .then((product) => {
             let tecnologia = 0;
             let electrodomesticos = 0;
+            let url = 'http://' + req.headers.host;
             for (let i=0; i<product.length; i++){
                  if(product[i].categories != null){
                      if(product[i].categories.dataValues.category == "Tecnologia"){
@@ -22,7 +23,8 @@ module.exports = {
                          electrodomesticos++
                      }
                 }
-                product[i].setDataValue("url", "/api/products/" + product[i].id)
+                
+                product[i].setDataValue("url", url + "/images/products/" + product[i].id + "/" + product[i].image);
 
                 /* console.log(product[i].categories.dataValues.category) */
             }
