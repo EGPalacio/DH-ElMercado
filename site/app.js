@@ -9,7 +9,7 @@ var app = express();
 var cors = require('cors')
 
 const Swal = require('sweetalert2');
-var whitelist = ['http://localhost:3000']
+var whitelist = ['http://localhost:3000', 'http://localhost:3030']
 
 
 
