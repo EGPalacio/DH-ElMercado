@@ -26,14 +26,16 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 > cd Nordelta-Team-4\site
 > npm install
 
-2) Crear el schema en SQL usando MySQL Workbrench
+2) Prender Xampp
+
+3) Crear el schema en SQL usando MySQL Workbrench
 >npx sequelize-cli db:create
     Bases de Datos:
         DB: siteTeam4
         User: team4
         Password: team4
 
-3) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
+4) Ejecutar los scripts de JavaScript que crean las tablas y populan los datos de testing
 > cd server\dbInstall
 > node productCreate.js
     // crea tablas y completa datos de testing productos y tablas secundarias de producto.
@@ -41,8 +43,13 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 > cd..
 > cd..
 
-4) iniciar el sitio con nodemon start
+5) iniciar el sitio con nodemon start
 > npx nodemon start
 http://localhost:3030/
+
+6) iniciar el dashboard:
+>cd..
+>cd dashboard
+>npm start
 
 
