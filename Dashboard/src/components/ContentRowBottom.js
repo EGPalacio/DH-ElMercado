@@ -9,12 +9,13 @@ export default class ContentRowBottom extends Component {
             <div className="row">
 
                 {/* <!-- Last Product in DB --> */}
-                
-                <LastUserInDB />
                 <LastProductInDB />
 
                 {/* <!-- Categories in DB --> */}
                 <CategoriesInDB />
+
+                {/* <!-- Users in DB --> */}
+                <LastUserInDB />
 
             </div>
         )

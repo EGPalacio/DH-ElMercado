@@ -7,7 +7,7 @@ export default class CategoryCard extends Component {
 
     render() {
         return (
-            <div className="col-lg-6 mb-4">
+            <div className="col-lg-12 mb-4">
                 <div className="card bg-primary text-white shadow">
                     <div className="card-body">
                     <div className="col mr-2">
