@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import LastItemCard from './widgets/LastItemCard';
+
+
 
 
 
@@ -10,68 +13,92 @@ class LastProductInDB extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            products: []
+            products: [],
+            title: " Cargando.. ",
+            content: "Cargando..",
+            image: "https://informesinbandera.com/img/placeholder-img.png"
         }
 
     }
+
+
 
     async componentDidMount() {
         this.getProduct();
     }
 
-
     getProduct = async () => {
-        const req = await axios.get("http://localhost:3030/api/products");
-        let lastProduct = req.data.meta.countByCategory.Productos.length - 1
-        let detail = req.data.meta.countByCategory.Productos;
-        this.setState({ products: detail[lastProduct] })
-        console.log(detail);
+
+
+        try{
+            const api = await axios.create({
+                method: 'GET',
+                baseURL: `http://localhost:3030/api`,
+            });
+           let req = await api('/products');
+           let lastProduct = req.data.meta.countByCategory.Productos.length - 1
+           let detail = req.data.meta.countByCategory.Productos;
+           
+          this.setState({ products: detail[lastProduct], 
+                title: detail[lastProduct].name,
+                image: detail[lastProduct].url,
+                description: detail[lastProduct].description,
+                price: `$ ${detail[lastProduct].price}`
+            })
+            console.log(this.state.products);
+           
+
+        } catch (err) {
+            console.log(err);
+           
+            
+        }
+
     }
 
-    onSubmit = async e => {
-        this.getProduct();
-        Swal.fire('Last Product Updated!')
-    }
-    componentDidUpdate() {
+    productUpdate = async e => {
 
+        try {
+            let alertUpdate = await this.getProduct();
+            if(alertUpdate) {
+                Swal.fire('Ultimo producto actualizado')
+               
+            }
+           
+        }
+        catch (err) {
+            console.log(err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Error al conectar a la base de datos',
+           
+              })
+        }
+             
     }
-    componentWillUnmount() {
-
-    }
+  
     render() {
 
 
         return (
             <div className="col-lg-4 mb-4">
-                <div className="card shadow mb-4">
-                    <div className="card-header py-3">
-                        <h6 className="m-0 font-weight-bold text-primary">Ultimo Producto creado: <br></br>{this.state.products.name} </h6>
-                    </div>
-                    <div className="card-body">
-                        <div className="text-center">
-                            <img className="img-fluid px-3 px-sm-4 mt-3 mb-4" style={{ width: 20 + 'rem' }} src={this.state.products.url} alt="dummy" />
 
-
-
-                            <div className="card-body">
-                                <h4 className="card-title"> {this.state.products.name} </h4>
-                                <p>Descripcion: {this.state.products.description} <br></br>
-                              {/*  Categoria: {this.state.products.categories} <br></br>
-                               Descuento: {this.state.products.discounts} % <br></br> */}
-                               Precio: $ {this.state.products.price}  <br></br>
-                            Portada:   <a href={this.state.products.url}  >{this.state.products.url}  </a> </p>
-
-
-                                <button type="submit" onClick={this.onSubmit} className="btn btn-info">Actualizar Info </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+               < LastItemCard 
+                title={this.state.title} 
+                image={this.state.image} 
+                contentLine01= {this.state.description}
+                contentLine02={this.state.price}
+                update={this.productUpdate}
+                
+               />
 
 
             </div>
         )
     }
 }
+
+
 
 export default LastProductInDB;

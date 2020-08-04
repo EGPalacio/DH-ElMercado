@@ -11,7 +11,7 @@ export default class ContentRowTop extends Component {
             categCount: 'Cargando...',
             color: 'warning',
             userCount: 'Cargando...',
-            userColor: 'warning'
+            userColor: 'danger'
 
         }
     }
