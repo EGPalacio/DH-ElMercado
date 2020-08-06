@@ -24,6 +24,9 @@ class LastUserInDB extends Component {
     async componentDidMount() {
         this.getUser();
     }
+    async componentDidUpdate() {
+        this.getUser();
+    }
 
     getUser = async () => {
 
@@ -40,8 +43,8 @@ class LastUserInDB extends Component {
                 users: detail,
                 title: detail.first_name + ' ' + detail.last_name,
                 email: `Email:  ${this.state.users.email}`,
-                Rol: `Rol: ${this.state.users.userTypes} `,
-                Avatar: `Avatar: ${this.state.users.avatar}`,
+                rol: `Tipo de Usuario: ${this.state.users.userTypes} `,
+                avatar: `Avatar: ${this.state.users.avatar}`,
                 image: detail.avatar
             })
 

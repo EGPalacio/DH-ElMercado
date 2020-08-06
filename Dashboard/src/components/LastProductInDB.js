@@ -47,7 +47,8 @@ class LastProductInDB extends Component {
                 description: detail[lastProduct].description,
                 category: detail[lastProduct].categories,
                 discount: detail[lastProduct].discounts,
-                price: `$ ${detail[lastProduct].price}`
+                price: `$ ${detail[lastProduct].price}`,
+                catDisco: `Categoria: ${detail[lastProduct].categories} | Descuento: ${detail[lastProduct].discounts} %`
             })
             console.log(this.state.products);
 
@@ -92,7 +93,7 @@ class LastProductInDB extends Component {
                     title={this.state.title}
                     image={this.state.image}
                     contentLine01={this.state.description}
-                    contentLine02={`Categoria: ${this.state.category} | Descuento: ${this.state.discount} %`}
+                    contentLine02={this.state.catDisco}
                     contentLine03={this.state.price}
                     update={this.productUpdate}
 

@@ -6,6 +6,7 @@ class ProductsInDB extends Component{
         super(props);
         this.state = {
             cantidad: ""
+            
         }
     }
     apiCall(url, consecuencia){

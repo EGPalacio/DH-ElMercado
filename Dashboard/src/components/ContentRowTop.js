@@ -8,8 +8,10 @@ export default class ContentRowTop extends Component {
     constructor (props){
         super(props);
         this.state = {
+            prodCount: 'Cargando...',
+            prodColor: 'danger',
             categCount: 'Cargando...',
-            color: 'warning',
+            color: 'danger',
             userCount: 'Cargando...',
             userColor: 'danger'
 
@@ -21,6 +23,12 @@ export default class ContentRowTop extends Component {
             method: 'GET',
             baseURL: `http://localhost:3030/api`,
         });
+        api('/products/').then( (result) => {
+            this.setState({
+                prodCount: result.data.count,
+                color: 'primary'
+            })
+        });
 
        api('/products/categories').then( (result) => {
                     this.setState({
@@ -31,7 +39,7 @@ export default class ContentRowTop extends Component {
        api('/users/').then( (result) => {
                     this.setState({
                         userCount: result.data.users.length,
-                        userColor: 'warning'
+                        userColor: 'primary'
                     })
                     console.log(this.state.userCount);
           })
@@ -41,7 +49,12 @@ export default class ContentRowTop extends Component {
         return (
             <div className="row">
             {/* <!-- Products in DB --> */}
-                <ProductsInDB />
+            <Widget 
+                    title="Total de Productos"
+                    total={this.state.prodCount}
+                    icon="fa-clipboard-list"
+                    colorCard={this.state.color}
+                    />
 
             {/* <!-- Categories in DB --> */}
                 <Widget 
@@ -53,7 +66,7 @@ export default class ContentRowTop extends Component {
 
             {/* <!-- Amount of users in DB --> */}
             <Widget 
-                    title="User quantity"
+                    title="Usuarios Registrados"
                     total={this.state.userCount}
                     icon="fa-user-check"
                     colorCard={this.state.userColor}
