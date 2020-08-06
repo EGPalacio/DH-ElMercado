@@ -7,14 +7,17 @@ let sequelize = db.sequelize;
 
 module.exports = {
       list: (req, res) =>{
+       
         db.Product.findAll({
             include: [{association: "categories"}, {association: "discounts"}],
             attributes: ['id', 'name', "description", "price", "image"]
         })
         .then((product) => {
+            let setCategory;
+            let setDisc;
+            let url = 'http://' + req.headers.host;
             let tecnologia = 0;
             let electrodomesticos = 0;
-            let url = 'http://' + req.headers.host;
             for (let i=0; i<product.length; i++){
                  if(product[i].categories != null){
                      if(product[i].categories.dataValues.category == "Tecnologia"){
@@ -22,21 +25,29 @@ module.exports = {
                      }else if(product[i].categories.dataValues.category == "Electrodomesticos"){
                          electrodomesticos++
                      }
+                     setCategory = product[i].categories.dataValues.category;
+                     setDisc = product[i].discounts.dataValues.discount;
+                     console.log(product[i].discounts.dataValues.discount)
                 }
-                
+               
+              
                 product[i].setDataValue("url", url + "/images/products/" + product[i].id + "/" + product[i].image);
+                product[i].setDataValue("categories",  setCategory)
+                product[i].setDataValue("discounts",  setDisc)
 
-                /* console.log(product[i].categories.dataValues.category) */
+                 //console.log(product[i].categories.dataValues.category)
             }
             let respuesta = {
-                meta: {
+               
+                    products: product,
                     count: product.length,
+                    
                     countByCategory: {
                         "Tecnologia":tecnologia,
                         "Electrodomesticos":electrodomesticos,
-                        "Productos": product
+                       
                     },
-                }
+                
             }
             res.json(respuesta)
         })
@@ -46,8 +57,8 @@ module.exports = {
         });
        
        
-    },
-     /* list: async(req, res) => {
+    }, /*
+      list: async(req, res) => {
         try{
             const product = await db.Product.findAll({
                 include: [{association: "categories"}, {association: "discounts"}]
@@ -66,7 +77,9 @@ module.exports = {
         } catch(error){
             console.log(error);
         }
-    } */
+    },
+
+   */
     prodDetail: async (req,res) =>{
 
         try{

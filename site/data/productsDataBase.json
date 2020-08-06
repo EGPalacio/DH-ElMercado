@@ -10,6 +10,7 @@
         "category": "in-sale",
         "description": "Macbook Pro 2019 Mpxq2ll/a Intel Core i5 2.3 Ghz 8gb RAM 128gb SSD Pantalla 13.3\" Retina Apple Nueva Original. Importada de USA. Se entrega con la factura de compra para contar con la garantía del fabricante",
         "category_id": 2,
+        "discount_id": 1,
         "image": "img-macbook-pro-2019.jpg"
     },
     {
@@ -57,6 +58,7 @@
         "discount": 5,
         "image": "img-laptop-lenovo.jpg",
         "category_id": 2,
+        "discount_id": 1,
         "category": "in-sale"
     },
     {
@@ -106,6 +108,7 @@
         "discount": 5,
         "image": "img-sony-blueray.jpg",
         "category_id": 4,
+        "discount_id": 1,
         "category": "visited"
     },
     {
@@ -115,7 +118,10 @@
         "price": 15979,
         "discount": 12,
         "image": "img-bicicleta-fierce.jpg",
-        "category": "visited"
+        "category": "visited",
+        "discount_id": 1,
+        "category_id": 4
+
     },
     {
         "id": 16,

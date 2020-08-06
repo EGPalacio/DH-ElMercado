@@ -28,23 +28,23 @@ class LastUserInDB extends Component {
     getUser = async () => {
 
 
-        try{
+        try {
             const api = await axios.create({
                 method: 'GET',
                 baseURL: `http://localhost:3030/api`,
             });
-           let req = await api('/users');
-           let lastUser = req.data.users.length - 1
-           let detail = req.data.users[lastUser];
+            let req = await api('/users');
+            let lastUser = req.data.users.length - 1
+            let detail = req.data.users[lastUser];
             this.setState({
-                users: detail, 
+                users: detail,
                 title: detail.first_name + ' ' + detail.last_name,
-                email: `Email:  ${this.state.users.email}`, 
+                email: `Email:  ${this.state.users.email}`,
                 Rol: `Rol: ${this.state.users.userTypes} `,
-                Avatar:`Avatar: ${this.state.users.avatar}`,
+                Avatar: `Avatar: ${this.state.users.avatar}`,
                 image: detail.avatar
             })
-           
+
 
         } catch (err) {
             console.log(err);
@@ -52,9 +52,9 @@ class LastUserInDB extends Component {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Error al conectar a la base de datos',
-           
-              })
-            
+
+            })
+
         }
 
     }
@@ -63,11 +63,11 @@ class LastUserInDB extends Component {
 
         try {
             let alertUpdate = await this.getUser();
-            if(alertUpdate) {
+            if (alertUpdate) {
                 Swal.fire('Ultimo usuario actualizado')
-               
+
             }
-           
+
         }
         catch (err) {
             console.log(err);
@@ -75,27 +75,27 @@ class LastUserInDB extends Component {
                 icon: 'error',
                 title: 'Oops...',
                 text: 'Error al conectar a la base de datos',
-           
-              })
+
+            })
         }
-             
+
     }
-  
+
     render() {
 
 
         return (
             <div className="col-lg-4 mb-4">
 
-               < LastItemCard 
-                title={this.state.title} 
-                image={this.state.image} 
-                contentLine01={this.state.email}
-                contentLine02={this.state.rol}
-                contentLine03={this.state.avatar}
-                update={this.onSubmit}
-                
-               />
+                < LastItemCard
+                    title={this.state.title}
+                    image={this.state.image}
+                    contentLine01={this.state.email}
+                    contentLine02={this.state.rol}
+                    contentLine03={this.state.avatar}
+                    update={this.onSubmit}
+
+                />
 
 
             </div>
