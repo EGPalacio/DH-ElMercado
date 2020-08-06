@@ -25,7 +25,7 @@ class LastUserInDB extends Component {
         this.getUser();
     }
     async componentDidUpdate() {
-        this.getUser();
+        
     }
 
     getUser = async () => {
