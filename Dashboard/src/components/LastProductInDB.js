@@ -36,14 +36,17 @@ class LastProductInDB extends Component {
                 baseURL: `http://localhost:3030/api`,
             });
             let req = await api('/products');
-            let lastProduct = req.data.meta.countByCategory.Productos.length - 1
-            let detail = req.data.meta.countByCategory.Productos;
+            let lastProduct = req.data.count-1;
+            let detail = req.data.products;
+            console.log(lastProduct);
 
             this.setState({
                 products: detail[lastProduct],
                 title: detail[lastProduct].name,
                 image: detail[lastProduct].url,
                 description: detail[lastProduct].description,
+                category: detail[lastProduct].categories,
+                discount: detail[lastProduct].discounts,
                 price: `$ ${detail[lastProduct].price}`
             })
             console.log(this.state.products);
@@ -89,7 +92,8 @@ class LastProductInDB extends Component {
                     title={this.state.title}
                     image={this.state.image}
                     contentLine01={this.state.description}
-                    contentLine02={this.state.price}
+                    contentLine02={`Categoria: ${this.state.category} | Descuento: ${this.state.discount} %`}
+                    contentLine03={this.state.price}
                     update={this.productUpdate}
 
                 />

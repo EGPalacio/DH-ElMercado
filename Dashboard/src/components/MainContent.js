@@ -1,6 +1,7 @@
 import React from 'react';
 import ContentRowTop from './ContentRowTop';
 import ContentRowBottom from './ContentRowBottom'
+import AllProducts from './ProductsTable'
 
 function MainContent(){
     return (
@@ -14,8 +15,8 @@ function MainContent(){
                 </div>
                 
                 <ContentRowTop />
-                
                 <ContentRowBottom />
+                <AllProducts />
             
             </div>
 

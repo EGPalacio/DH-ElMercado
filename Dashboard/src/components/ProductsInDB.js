@@ -22,7 +22,7 @@ class ProductsInDB extends Component{
     }
     mostrarCantidades = (data) => {
         this.setState({
-            cantidad: data.meta.count
+            cantidad: data.count
         })
     }
     render() {
@@ -30,7 +30,7 @@ class ProductsInDB extends Component{
         if(this.state.cantidad === ""){
             contenido = <div className="h5 mb-0 font-weight-bold text-gray-800">Cargando...</div>
         }else{
-            contenido = <div className="h5 mb-0 font-weight-bold text-gray-800">{this.state.cantidad}.</div>
+            contenido = <div className="h5 mb-0 font-weight-bold text-gray-800">{this.state.cantidad}</div>
         }
         return(
             <div className="col-md-4 mb-4">
