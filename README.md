@@ -22,7 +22,7 @@ PROCESO PARA INSTALACIÓN DEL PROYECTO:
 ======================================
 
 1) Clonar el proyecto e instalar los paquetes
-> git clone https://github.com/0220CBFSNCN01ARND/Nordelta-Team-4.git
+> git clone https://github.com/EGPalacio/DH-ElMercado.git
 > cd Nordelta-Team-4\site
 > npm install
 
